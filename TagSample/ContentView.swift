@@ -6,19 +6,30 @@
 //
 
 import SwiftUI
+import SwiftUI
 
 struct ContentView: View {
+    
+    @State var offset: CGFloat = .zero
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+        
+        
+        OnBoarding()
+        
     }
 }
 
-#Preview {
-    ContentView()
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
+
+extension View {
+    
+    func getScreenBounds() -> CGRect {
+        return UIScreen.main.bounds
+    }
+    
 }
