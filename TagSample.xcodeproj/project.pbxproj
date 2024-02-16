@@ -17,6 +17,7 @@
 		642A111E2B7F0CF1003007A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 642A11182B7F0CF1003007A1 /* Assets.xcassets */; };
 		642A111F2B7F0CF1003007A1 /* OnBoarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642A111A2B7F0CF1003007A1 /* OnBoarding.swift */; };
 		642A11202B7F0CF1003007A1 /* OffsetPageTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642A111B2B7F0CF1003007A1 /* OffsetPageTabView.swift */; };
+		642A11352B7F99E8003007A1 /* Zen_Maru_Gothic in Resources */ = {isa = PBXBuildFile; fileRef = 642A11342B7F99E8003007A1 /* Zen_Maru_Gothic */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		642A11182B7F0CF1003007A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "../../../../../Downloads/SwiftUI-OnBoarding-Screen-Animation-main/Shared/Assets.xcassets"; sourceTree = "<group>"; };
 		642A111A2B7F0CF1003007A1 /* OnBoarding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoarding.swift; sourceTree = "<group>"; };
 		642A111B2B7F0CF1003007A1 /* OffsetPageTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffsetPageTabView.swift; sourceTree = "<group>"; };
+		642A11342B7F99E8003007A1 /* Zen_Maru_Gothic */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Zen_Maru_Gothic; path = ../../../../../Downloads/Zen_Maru_Gothic; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				642A10E92B7F06BC003007A1 /* TagSampleApp.swift */,
 				642A11182B7F0CF1003007A1 /* Assets.xcassets */,
 				642A11172B7F0CF1003007A1 /* ContentView.swift */,
+				642A11342B7F99E8003007A1 /* Zen_Maru_Gothic */,
 				642A11152B7F0CF1003007A1 /* Model */,
 				642A11192B7F0CF1003007A1 /* View */,
 				642A10EF2B7F06BD003007A1 /* Preview Content */,
@@ -257,6 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				642A10F12B7F06BD003007A1 /* Preview Assets.xcassets in Resources */,
+				642A11352B7F99E8003007A1 /* Zen_Maru_Gothic in Resources */,
 				642A111E2B7F0CF1003007A1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -453,6 +457,7 @@
 				DEVELOPMENT_TEAM = QC8NW9PFKL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TagSample/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -482,6 +487,7 @@
 				DEVELOPMENT_TEAM = QC8NW9PFKL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TagSample/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
