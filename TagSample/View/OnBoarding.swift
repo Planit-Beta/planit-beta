@@ -7,6 +7,8 @@ struct OnBoarding: View {
     @State var isShowNextBtn: Bool = true
     @State private var progressVal = 0.0
     
+    @State var inputName: String = ""//旅行名
+    @State var inputDestination: String = ""//行き先
     
     @State var selection = 1
     
@@ -21,11 +23,9 @@ struct OnBoarding: View {
             }
             
             VStack{
-                TabView(selection: $selection) { ///画面中央のメインView
-                    PageOneView()   // Viewファイル①
-                        .tabItem {
-                            Label("Page1", systemImage: "1.circle")
-                        }
+                TabView(selection: $selection) {///画面中央のメインView
+                    
+                    PageOneView(inputName: $inputName, inputDestination: $inputDestination)
                         .tag(1)
                     
                     PageTwoView()   // Viewファイル②
@@ -67,7 +67,7 @@ struct OnBoarding: View {
                     .animation(.easeInOut, value: getIndex())
                     
                     HStack(spacing: 20) {
-                        ForEach(boardingScreens.indices, id: \.self) { index in
+                        ForEach(0..<3, id: \.self) { index in
                             
                             Circle()
                                 .fill(Color(UIColor(hexString: "9C9C9C")))
@@ -100,20 +100,10 @@ struct OnBoarding: View {
         }
     }
     
-//    func getRotation() -> Double {
-//        let process = offset / (getScreenBounds().width * 4)
-//        
-//        let rotation = Double(process) * 360
-//        
-//        return rotation
-//    }
     
     func getIndex() -> Int {
-        
         let process = offset / getScreenBounds().width
-        
         return Int(process)
-        
     }
     
     func goToNextPage() {
@@ -153,9 +143,10 @@ struct OnBoarding_Previews: PreviewProvider {
 
 
 struct PageOneView: View {
+    @Binding var inputName: String
+    @Binding var inputDestination: String
+    
     var body: some View {
-        @State var inputName = ""
-
         VStack{
 //            Color.black
             Text("行き先とそこに行きたい時間帯を入力してください").font(.custom("ZenMaruGothic-Regular", size: 20.0)).foregroundStyle(Color(UIColor(hexString: "333333")))
@@ -174,10 +165,41 @@ struct PageOneView: View {
                 
             }
             Spacer()
+            
+            VStack(spacing: 10){
+                HStack{
+                    Text("行き先").font(.custom("ZenMaruGothic-Regular", size: 20.0)).foregroundStyle(Color(UIColor(hexString: "333333")))
+                    Spacer()
+                }
+                
+                TextField("行き先を入力してください", text: $inputDestination)
+                    .padding()
+                    .font(.custom("ZenMaruGothic-Regular", size: 12.0)).foregroundStyle(Color(UIColor(hexString: "FFFFFF"))).background(Color(UIColor(hexString: "D9D9D9")))
+                    .cornerRadius(10)
+                
+            }
+            Spacer()
+            VStack(spacing: 10){
+                HStack{
+                    Text("人気の行き先").font(.custom("ZenMaruGothic-Regular", size: 20.0)).foregroundStyle(Color(UIColor(hexString: "333333")))
+                    Spacer()
+                }
+                
+                ScrollView{
+                    
+                }
+                
+                TextField("行き先を入力してください", text: $inputDestination)
+                    .padding()
+                    .font(.custom("ZenMaruGothic-Regular", size: 12.0)).foregroundStyle(Color(UIColor(hexString: "FFFFFF"))).background(Color(UIColor(hexString: "D9D9D9")))
+                    .cornerRadius(10)
+                
+            }
+            Spacer()
         }.padding()
 
-    } // body
-} // V
+    }
+}
 
 struct PageTwoView: View {
     var body: some View {
