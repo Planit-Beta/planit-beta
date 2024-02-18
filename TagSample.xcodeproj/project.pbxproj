@@ -21,6 +21,7 @@
 		642A113E2B805152003007A1 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642A113C2B805152003007A1 /* HomeScreen.swift */; };
 		642A113F2B805152003007A1 /* DetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642A113D2B805152003007A1 /* DetailScreen.swift */; };
 		642A11422B823872003007A1 /* PageTwoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642A11412B823872003007A1 /* PageTwoView.swift */; };
+		642A11442B824017003007A1 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642A11432B824017003007A1 /* TagView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		642A113C2B805152003007A1 /* HomeScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		642A113D2B805152003007A1 /* DetailScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailScreen.swift; sourceTree = "<group>"; };
 		642A11412B823872003007A1 /* PageTwoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageTwoView.swift; sourceTree = "<group>"; };
+		642A11432B824017003007A1 /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				642A11412B823872003007A1 /* PageTwoView.swift */,
+				642A11432B824017003007A1 /* TagView.swift */,
 			);
 			path = page2;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 				642A113F2B805152003007A1 /* DetailScreen.swift in Sources */,
 				642A11422B823872003007A1 /* PageTwoView.swift in Sources */,
 				642A111D2B7F0CF1003007A1 /* ContentView.swift in Sources */,
+				642A11442B824017003007A1 /* TagView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

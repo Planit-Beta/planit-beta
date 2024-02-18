@@ -114,7 +114,6 @@ struct OnBoarding: View {
                         .animation(.easeInOut, value: getIndex())
                         Spacer()
                     }
-                    .padding(.top, 25)
                 }
             }
         }

@@ -13,7 +13,7 @@ struct PageOneView: View {
     
     var body: some View {
         ScrollView{
-//            Color.black
+
             Text("行き先とそこに行きたい時間帯を入力してください").font(.custom("ZenMaruGothic-Regular", size: 20.0)).foregroundStyle(Color(UIColor(hexString: "333333")))
             Spacer()
             
