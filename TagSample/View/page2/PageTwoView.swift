@@ -16,20 +16,6 @@ struct PageTwoView: View {
             Text("その他の項目を選択してください").font(.custom("ZenMaruGothic-Regular", size: 20.0)).foregroundStyle(Color(UIColor(hexString: "333333")))
             Spacer()
             
-//            VStack(spacing: 10){
-//                HStack{
-//                    Text("旅行名").font(.custom("ZenMaruGothic-Regular", size: 20.0)).foregroundStyle(Color(UIColor(hexString: "333333")))
-//                    Spacer()
-//                }
-//                
-////                TextField("旅程名を入力してください", text: $inputName)
-////                    .padding()
-////                    .font(.custom("ZenMaruGothic-Regular", size: 15.0)).foregroundStyle(Color(UIColor(hexString: "333333"))).background(Color(UIColor(hexString: "D9D9D9")))
-////                    .cornerRadius(10)
-//                
-//            }
-//            Spacer()
-            
             VStack(spacing: 10){
                 HStack{
                     Text("行き先").font(.custom("ZenMaruGothic-Regular", size: 20.0)).foregroundStyle(Color(UIColor(hexString: "333333")))

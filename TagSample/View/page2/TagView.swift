@@ -11,10 +11,7 @@ var interestTags: [String] = ["Memes", "News", "Music", "Crypto",
 "Comedy", "Technology", "Animals", "DIY", "Life Hacks",
 "Automobiles", "Fashion", "Food", "Outdoors", "Gaming",
 "Travel", "Parenting", "Gardening", "Skateboarding",
- "Witchcraft", "Love", "Relationships", "Vintage",
-"Office", "Emotional Support", "Synth", "Humor",
-"Fandom", "Events", "Work", "Halloween", "Crafts",
-"School", "College", "Dating", "Random"]
+ "Witchcraft", "Love", "Relationships"]
 
 struct Tag: Identifiable {
     var id = UUID().uuidString
@@ -28,22 +25,22 @@ struct TagView: View {
     var body: some View {
         NavigationView {
             VStack {
-                    CustomTagView(alignment: .leading, spacing: 10) {
-                        ForEach(tags.indices, id: \.self) { index in
-                            Toggle(tags[index].name, isOn: $tags[index].isSelected)
-                                .bold()
-                                .toggleStyle(.button)
-                                .buttonStyle(.bordered)
-                                .clipShape(Capsule())
-                                .foregroundColor(tags[index].isSelected ? .blue : .primary)
-                                .tint(tags[index].isSelected ? .blue : .black)
-                        }
+                CustomTagView(alignment: .leading, spacing: 10) {
+                    ForEach(tags.indices, id: \.self) { index in
+                        Toggle(tags[index].name, isOn: $tags[index].isSelected)
+                            .bold()
+                            .toggleStyle(.button)
+                            .buttonStyle(.bordered)
+                            .clipShape(Capsule())
+                            .foregroundColor(tags[index].isSelected ? .blue : .primary)
+                            .tint(tags[index].isSelected ? .blue : .black)
                     }
-                .padding(.vertical)
+                }
             }
         }
     }
 }
+
 struct CustomTagView: Layout {
     var alignment: Alignment = .leading
     var spacing: CGFloat = 10

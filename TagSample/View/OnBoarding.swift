@@ -31,7 +31,7 @@ struct OnBoarding: View {
                         PageTwoView()
                         //                        .transition(.move(edge: .leading))
                     } else {
-                        PageOneView(inputName: $inputName, inputDestination: $inputDestination)
+                        PageThreeView()
                         //                        .transition(.move(edge: .trailing))
                     }
                 }.padding().animation(.easeInOut, value: selection)
@@ -159,15 +159,3 @@ struct OnBoarding_Previews: PreviewProvider {
         OnBoarding()
     }
 }
-
-
-
-struct PageThreeView: View {
-    
-    var body: some View {
-        ZStack {  // 背景色
-            Text("Page3")
-        }
-    }
-}
-
