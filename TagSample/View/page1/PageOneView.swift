@@ -12,7 +12,7 @@ struct PageOneView: View {
     @Binding var inputDestination: String
     
     var body: some View {
-        VStack{
+        ScrollView{
 //            Color.black
             Text("行き先とそこに行きたい時間帯を入力してください").font(.custom("ZenMaruGothic-Regular", size: 20.0)).foregroundStyle(Color(UIColor(hexString: "333333")))
             Spacer()

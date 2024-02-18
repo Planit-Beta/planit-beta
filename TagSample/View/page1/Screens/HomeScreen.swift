@@ -99,7 +99,6 @@ struct ProductCardView: View {
         .frame(width: size)
 //        .padding()
 //        .background(Color.white)
-        .cornerRadius(20.0)
         
     }
 }

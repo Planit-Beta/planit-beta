@@ -162,30 +162,13 @@ struct OnBoarding_Previews: PreviewProvider {
 }
 
 
-struct PageTwoView: View {
-//    @Binding var inputName: String
-    @State private var pageTwoInputName: String = ""
+
+struct PageThreeView: View {
     
     var body: some View {
-
-        ZStack {
-            TextField("旅程名を入力してください", text: $pageTwoInputName)
-                .padding()
-                .font(.custom("ZenMaruGothic-Regular", size: 12.0)).foregroundStyle(Color(UIColor(hexString: "FFFFFF"))).background(Color(UIColor(hexString: "D9D9D9")))
-                .cornerRadius(10)
-            
+        ZStack {  // 背景色
+            Text("Page3")
         }
     }
 }
-
-
-struct PageThreeView: View {
-    var body: some View {
-
-        ZStack {  // 背景色
-            Text("Page3")
-        } // ZStack
-
-    } // body
-} // V
 
