@@ -35,36 +35,7 @@ struct OnBoarding: View {
                         //                        .transition(.move(edge: .trailing))
                     }
                 }.padding().animation(.easeInOut, value: selection)
-                
-                //            VStack{
-                //                TabView(selection: $selection) {///画面中央のメインView
-                //                    
-                //                    PageOneView()   // Viewファイル①
-                //                            .tabItem {
-                //                                Label("Page1", systemImage: "1.circle")
-                //                            }
-                //                            .tag(1)
-                //                    
-                //                    PageTwoView()   // Viewファイル②
-                //                        .tabItem {
-                //                            Label("Page2", systemImage: "2.circle")
-                //                        }
-                //                        .tag(2)
-                //                    
-                //                    PageThreeView()  // Viewファイル③
-                //                        .tabItem {
-                //                            Label("Page3", systemImage: "3.circle")
-                //                        }
-                //                        .tag(3)
-                //                    
-                //                }.disabled(true)// スワイプアクションを無効化
-                //                    .tabViewStyle(.page(indexDisplayMode: .never))// ページスタイル（インジケータ非表示）
-                //                    .animation(.easeInOut, value: selection)// 切り替え時のアニメーション
-                //                    .background(
-                //                        Color(Color(UIColor(hexString: "FFFFFF")))
-                //                    )
-                //                    .ignoresSafeArea(.container, edges: .all)
-                //            }.padding()
+
                 
                 Spacer()
                 

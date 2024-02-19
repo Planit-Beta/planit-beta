@@ -12,24 +12,49 @@ var sampleTags: [String] = ["Memes", "News", "Music", "Crypto",
 "Automobiles", "Fashion", "Food", "Outdoors", "Gaming",
 "Travel", "Parenting", "Gardening", "Skateboarding"]
 
+var sampleTags1:  [String] = ["一人で", "家族で", "友人と", "恋人と"]
+var sampleTags2:  [String] = ["まったり観光", "たくさん巡りたい"]
+var sampleTags3:  [String] = ["有名どころ", "知る人ぞ知る"]
+var sampleTags4:  [String] = ["低予算", "カジュアル", "贅沢"]
 
 struct TagForThreeView: View {
-    @State private var tags: [Tag] = sampleTags.map { Tag(name: $0) }
+    @State var tags1: [Tag] = sampleTags1.map { Tag(name: $0) }
+    @State var tags2: [Tag] = sampleTags2.map { Tag(name: $0) }
+    @State var tags3: [Tag] = sampleTags3.map { Tag(name: $0) }
+    @State var tags4: [Tag] = sampleTags4.map { Tag(name: $0) }
 
     var body: some View {
-        NavigationView {
-            VStack {
-                CustomTagView(alignment: .leading, spacing: 10) {
-                    ForEach(tags.indices, id: \.self) { index in
-                        Toggle(tags[index].name, isOn: $tags[index].isSelected)
-                            .bold()
-                            .toggleStyle(.button)
-                            .buttonStyle(.bordered)
-                            .clipShape(Capsule())
-                            .foregroundColor(tags[index].isSelected ? .blue : .primary)
-                            .tint(tags[index].isSelected ? .blue : .black)
+            VStack(spacing: 10){
+                ToggleTagView(tags: tags1)
+                ToggleTagView(tags: tags2)
+                ToggleTagView(tags: tags3)
+                ToggleTagView(tags: tags4)
+            }
+    }
+}
+
+struct ToggleTagView: View {
+    @State var tags: [Tag]
+    
+    var body: some View {
+        HStack{
+            ForEach(tags.indices, id: \.self) { index in
+                Toggle(tags[index].name, isOn: $tags[index].isSelected)
+                    .toggleStyle(.button)
+                    .buttonStyle(.bordered)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .foregroundColor(tags[index].isSelected ? .blue : .primary)
+                    .tint(tags[index].isSelected ? .blue : .black)
+                    .onChange(of: tags[index].isSelected) { newValue in
+                        if newValue {
+                            for i in tags.indices {
+                                if i != index {
+                                    tags[i].isSelected = false
+                                }
+                            }
+                            print("Tag number \(tags[index].name) selected.")
+                        }
                     }
-                }
             }
         }
     }

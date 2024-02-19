@@ -12,34 +12,36 @@ struct PageTwoView: View {
     
     var body: some View {
         ScrollView{
-            
-            Text("その他の項目を選択してください").font(.custom("ZenMaruGothic-Regular", size: 20.0)).foregroundStyle(Color(UIColor(hexString: "333333")))
-            Spacer()
-            
             VStack(spacing: 10){
-                HStack{
-                    Text("行き先").font(.custom("ZenMaruGothic-Regular", size: 20.0)).foregroundStyle(Color(UIColor(hexString: "333333")))
-                    Spacer()
+                Text("その他の項目を選択してください").font(.custom("ZenMaruGothic-Regular", size: 20.0)).foregroundStyle(Color(UIColor(hexString: "333333")))
+                Spacer()
+                
+                VStack(spacing: 10){
+                    HStack{
+                        Text("行き先").font(.custom("ZenMaruGothic-Regular", size: 20.0)).foregroundStyle(Color(UIColor(hexString: "333333")))
+                        Spacer()
+                    }
+                    
+                    CardView(image: Image("sample_\(1)"), size: 210)
                 }
                 
-                CardView(image: Image("sample_\(1)"), size: 210)
-            }
-            
-            Spacer()
-            
-            VStack(spacing: 10){
-                HStack{
-                    Text("シチュエーション")
-                        .font(.custom("ZenMaruGothic-Regular", size: 20.0))
-                        .foregroundStyle(Color(UIColor(hexString: "333333")))
-                    Spacer()
-                }
+                Spacer()
                 
-                TagView()
+                VStack(spacing: 10){
+                    HStack{
+                        Text("シチュエーション")
+                            .font(.custom("ZenMaruGothic-Regular", size: 20.0))
+                            .foregroundStyle(Color(UIColor(hexString: "333333")))
+                        Spacer()
+                    }
+                    
+                    TagForThreeView()
+                }
+                Spacer()
             }
-            Spacer()
             
-        }.padding()
+        }
+//        .padding()
     }
 }
 
