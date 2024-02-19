@@ -55,6 +55,9 @@ struct ToggleTagView: View {
                             print("Tag number \(tags[index].name) selected.")
                         }
                     }
+                if index != tags.count-1 {
+                    Spacer()
+                }
             }
         }
     }

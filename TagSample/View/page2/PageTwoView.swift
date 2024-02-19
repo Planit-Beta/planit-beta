@@ -41,7 +41,7 @@ struct PageTwoView: View {
             }
             
         }
-//        .padding()
+        .padding()
     }
 }
 

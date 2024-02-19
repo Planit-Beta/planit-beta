@@ -29,12 +29,14 @@ struct OnBoarding: View {
                         //                        .transition(.move(edge: .leading))
                     } else if selection == 2 {
                         PageTwoView()
-                        //                        .transition(.move(edge: .leading))
+                        
                     } else {
                         PageThreeView()
-                        //                        .transition(.move(edge: .trailing))
+                        
                     }
-                }.padding().animation(.easeInOut, value: selection)
+                }
+                .padding()
+                    .animation(.easeInOut, value: selection)
 
                 
                 Spacer()

@@ -51,13 +51,14 @@ struct PageThreeView: View {
                         .background(Color(UIColor(hexString: "F5F5F5")))
                         .cornerRadius(20)
                         .shadow(color: .gray, radius: 2, x: 0, y: 2)
-                }.padding()
+                }
+                .padding(.vertical)
                 
                 Spacer()
             }
             
         }
-//        .padding()
+        .padding()
     }
 }
 

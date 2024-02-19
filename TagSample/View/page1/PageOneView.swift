@@ -74,7 +74,7 @@ struct PageOneView: View {
             }
             
         }
-//        .padding()
+        .padding()
     }
 }
 
