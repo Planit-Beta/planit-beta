@@ -39,7 +39,11 @@ struct ToggleTagView: View {
     var body: some View {
         HStack{
             ForEach(tags.indices, id: \.self) { index in
-                Toggle(tags[index].name, isOn: $tags[index].isSelected)
+                Toggle(isOn: $tags[index].isSelected, label: {
+                        Text(tags[index].name).font(.custom("ZenMaruGothic-Regular", size: 14.0))
+                        .foregroundStyle(Color(UIColor(hexString: "333333")))
+                    }
+                )
                     .toggleStyle(.button)
                     .buttonStyle(.bordered)
                     .clipShape(RoundedRectangle(cornerRadius: 10))

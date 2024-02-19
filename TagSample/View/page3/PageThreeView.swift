@@ -11,7 +11,7 @@ struct PageThreeView: View {
     @State private var pageTwoInputName: String = ""
     
     var body: some View {
-        ScrollView{
+        ScrollView(showsIndicators: false){
             VStack(spacing: 10){
                 Text("こちらの内容でよろしいですか").font(.custom("ZenMaruGothic-Regular", size: 20.0)).foregroundStyle(Color(UIColor(hexString: "333333")))
                 
