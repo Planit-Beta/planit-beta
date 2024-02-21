@@ -12,69 +12,63 @@ struct PageOneView: View {
     @Binding var inputDestination: String
     
     var body: some View {
-        ScrollView(showsIndicators: false){
             VStack(spacing: 10){
-                Text("行き先とそこに行きたい時間帯を入力してください").font(.custom("ZenMaruGothic-Regular", size: 20.0)).foregroundStyle(Color(UIColor(hexString: "333333")))
-                Spacer()
-                
-                VStack(spacing: 10){
-                    HStack{
-                        Text("旅行名").font(.custom("ZenMaruGothic-Regular", size: 20.0)).foregroundStyle(Color(UIColor(hexString: "333333")))
-                        Spacer()
-                    }
+                VStack(spacing: 20){
+                    Text("場所と時間を入力してください").font(.custom("ZenMaruGothic-Regular", size: 20.0)).foregroundStyle(Color(UIColor(hexString: "333333"))).padding(.horizontal)
+                    Spacer()
                     
-                    TextField("旅程名を入力してください", text: $inputName)
-                        .padding()
-                        .font(.custom("ZenMaruGothic-Regular", size: 15.0)).foregroundStyle(Color(UIColor(hexString: "333333"))).background(Color(UIColor(hexString: "D9D9D9")))
-                        .cornerRadius(10)
-                    
-                }
-                Spacer()
-                
-                VStack(spacing: 10){
-                    HStack{
-                        Text("行き先").font(.custom("ZenMaruGothic-Regular", size: 20.0)).foregroundStyle(Color(UIColor(hexString: "333333")))
-                        Spacer()
-                    }
-                    
-                    TextField("行き先を入力してください", text: $inputDestination)
-                        .padding()
-                        .font(.custom("ZenMaruGothic-Regular", size: 15.0)).foregroundStyle(Color(UIColor(hexString: "333333"))).background(Color(UIColor(hexString: "D9D9D9")))
-                        .cornerRadius(10)
-                    
-                }
-                Spacer()
-                VStack(spacing: 10){
-                    HStack{
-                        Text("人気の行き先")
-                            .font(.custom("ZenMaruGothic-Regular", size: 20.0))
-                            .foregroundStyle(Color(UIColor(hexString: "333333")))
-                        Spacer()
-                    }
-                    
-                    ScrollView (.horizontal, showsIndicators: false) {
-                        HStack (spacing: 0) {
-                            ForEach(0 ..< 4) { i in
-                                NavigationLink(
-                                    destination: DetailScreen(),
-                                    label: {
-                                        ProductCardView(image: Image("sample_\(i+1)"), size: 210)
-                                    })
-                                .navigationBarHidden(true)
-                                .foregroundColor(.black)
-                            }
-                            .padding(.trailing)
+                    VStack(spacing: 10){
+                        HStack{
+                            Text("行き先").font(.custom("ZenMaruGothic-Regular", size: 20.0)).foregroundStyle(Color(UIColor(hexString: "333333")))
+                            Spacer()
                         }
-                    }.padding(.horizontal, -20)
+                        HStack{
+                            Text("場所").font(.custom("ZenMaruGothic-Regular", size: 15.0)).foregroundStyle(Color(UIColor(hexString: "333333")))
+                                .frame(width: 150, height: 30)
+                                .background(Color(UIColor(hexString: "F3ECEA")))
+                                .cornerRadius(15)
+                            
+                            Spacer()
+                            
+                            TextField("場所を入力", text: $inputName)
+                                .frame(width: 150, height: 30)
+                                .multilineTextAlignment(TextAlignment.center)
+                            //                            .padding(5)
+                                .font(.custom("ZenMaruGothic-Regular", size: 15.0)).foregroundStyle(Color(UIColor(hexString: "333333"))).background(Color(UIColor(hexString: "F3ECEA")))
+                                .cornerRadius(15)
+                            
+                        }
+                    }.padding(.horizontal)
+                    Spacer()
                     
-                    
-                    
-                }
-                Spacer()
+                    VStack(spacing: 10){
+                        HStack{
+                            Text("時間").font(.custom("ZenMaruGothic-Regular", size: 20.0)).foregroundStyle(Color(UIColor(hexString: "333333")))
+                            Spacer()
+                        }
+                        HStack{
+                            Text("現在時刻").font(.custom("ZenMaruGothic-Regular", size: 15.0)).foregroundStyle(Color(UIColor(hexString: "333333")))
+                                .frame(width: 150, height: 30)
+                                .background(Color(UIColor(hexString: "F3ECEA")))
+                                .cornerRadius(15)
+                            
+                            Spacer()
+                            
+                            TextField("時刻を入力", text: $inputName)
+                                .frame(width: 150, height: 30)
+                                .multilineTextAlignment(TextAlignment.center)
+                            //                            .padding(5)
+                                .font(.custom("ZenMaruGothic-Regular", size: 15.0)).foregroundStyle(Color(UIColor(hexString: "333333"))).background(Color(UIColor(hexString: "F3ECEA")))
+                                .cornerRadius(15)
+                            
+                        }
+                    }.padding(.horizontal)
+
+                    Spacer()
+                }.padding(.horizontal)
             }
             
-        }
-        .padding()
+        
     }
 }
 

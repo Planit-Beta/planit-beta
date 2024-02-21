@@ -14,7 +14,7 @@ struct OnBoarding: View {
     
     var body: some View {
         NavigationView{
-            VStack{
+            VStack(spacing: 10){
                 VStack(alignment: .leading){ ///画面上部のバー
                     Text("新しく旅程を作成する").padding().font(.custom("ZenMaruGothic-Medium", size: 20.0)).foregroundStyle(Color(UIColor(hexString: "333333")))
                     ProgressView(value: min(max(progressVal, 0.0), 100), total: 100)
@@ -23,71 +23,72 @@ struct OnBoarding: View {
                         .scaleEffect(x: 1, y: 0.5)//バーの高さ
                 }
                 
-                VStack{
-                    if selection == 1 {
-                        PageOneView(inputName: $inputName, inputDestination: $inputDestination)
-                        //                        .transition(.move(edge: .leading))
-                    } else if selection == 2 {
-                        PageTwoView()
+                Spacer()
+                
+                ScrollView(showsIndicators: false){
+                    VStack{
+                        if selection == 1 {
+                            PageOneView(inputName: $inputName, inputDestination: $inputDestination)
+                        } else if selection == 2 {
+                            PageTwoView()
+                            
+                        } else {
+                            PageThreeView()
+                            
+                        }
                         
-                    } else {
-                        PageThreeView()
-                        
+                        HStack(spacing: 50) {///画面下部の矢印ボタン
+                            Spacer()
+                            Button {
+                                backToPriveousPage()
+                                progressVal -= 50
+                                selection -= 1
+                            } label: {
+                                Image(systemName: "arrowtriangle.backward.fill")
+                                    .foregroundColor(Color(UIColor(hexString: "F8714F")))
+                                    .font(.system(size: 50))
+                                
+                            }
+                            .disabled(!isShowBackBtn)
+                            .opacity(isShowBackBtn ? 1 : 0)
+                            .animation(.easeInOut, value: getIndex())
+                            
+                            HStack(spacing: 20) {
+                                ForEach(0..<3, id: \.self) { index in
+                                    
+                                    Circle()
+                                        .fill(Color(UIColor(hexString: index == selection-1 ? "F8714F" : "D9D9D9")))
+                                        .frame(width: 12, height: 12)
+                                        .scaleEffect(index == selection-1 ? 1.2 : 1)
+                                        .animation(.easeInOut, value: selection)
+                                }
+                            }
+                            .frame(maxWidth: .infinity)
+                            
+                            
+                            Button {
+                                goToNextPage()
+                                progressVal += 50
+                                selection += 1
+                            } label: {
+                                Image(systemName: "arrowtriangle.forward.fill")
+                                    .foregroundColor(Color(UIColor(hexString: "F8714F")))
+                                    .font(.system(size: 50))
+                                
+                            }
+                            .disabled(!isShowNextBtn)
+                            .opacity(isShowNextBtn ? 1 : 0)
+                            .animation(.easeInOut, value: getIndex())
+                            Spacer()
+                        }
+                        .padding(.vertical)
                     }
-                }
-                .padding()
+                    .padding()
                     .animation(.easeInOut, value: selection)
+                }
 
                 
                 Spacer()
-                
-                VStack {///画面下部の矢印ボタン
-                    HStack(spacing: 50) {
-                        Spacer()
-                        Button {
-                            backToPriveousPage()
-                            progressVal -= 50
-                            selection -= 1
-                        } label: {
-                            Image(systemName: "arrowtriangle.backward.fill")
-                                .foregroundColor(Color(UIColor(hexString: "9C9C9C")))
-                                .font(.system(size: 50))
-                            
-                        }
-                        .disabled(!isShowBackBtn)
-                        .opacity(isShowBackBtn ? 1 : 0)
-                        .animation(.easeInOut, value: getIndex())
-                        
-                        HStack(spacing: 20) {
-                            ForEach(0..<3, id: \.self) { index in
-                                
-                                Circle()
-                                    .fill(Color(UIColor(hexString: "9C9C9C")))
-                                    .opacity(index == selection-1 ? 1 : 0.4)
-                                    .frame(width: 12, height: 12)
-                                    .scaleEffect(index == selection-1 ? 1.2 : 1)
-                                    .animation(.easeInOut, value: selection)
-                            }
-                        }
-                        .frame(maxWidth: .infinity)
-                        
-                        
-                        Button {
-                            goToNextPage()
-                            progressVal += 50
-                            selection += 1
-                        } label: {
-                            Image(systemName: "arrowtriangle.forward.fill")
-                                .foregroundColor(Color(UIColor(hexString: "9C9C9C")))
-                                .font(.system(size: 50))
-                            
-                        }
-                        .disabled(!isShowNextBtn)
-                        .opacity(isShowNextBtn ? 1 : 0)
-                        .animation(.easeInOut, value: getIndex())
-                        Spacer()
-                    }
-                }
             }
         }
     }

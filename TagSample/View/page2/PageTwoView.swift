@@ -7,24 +7,28 @@
 
 import SwiftUI
 
+var situationTags: [String] = ["一人で", "家族で", "友人と", "恋人と", "上司と", "大人数グループで"]
+
+var seasonTags:  [String] = ["春", "夏", "秋", "冬"]
+var tourTags:  [String] = ["屋内", "屋外", "歴史的建造物", "風景", "テーマパーク", "映えスポット"]
+var foodTags:  [String] = ["和風", "中華", "ラーメン", "韓国料理", "洋食", "居酒屋"]
+var snackTags:  [String] = ["コーヒー", "スイーツ", "食べ歩き"]
+
 struct PageTwoView: View {
     @State private var pageTwoInputName: String = ""
     
+    @State var situation: [Tag] = situationTags.map { Tag(name: $0) }
+    @State var season: [Tag] = seasonTags.map { Tag(name: $0) }
+    @State var tour: [Tag] = tourTags.map { Tag(name: $0) }
+    @State var food: [Tag] = foodTags.map { Tag(name: $0) }
+    @State var snack: [Tag] = snackTags.map { Tag(name: $0) }
+    
+//    @State var selectedTagList: [String] = []
+    
     var body: some View {
-        ScrollView(showsIndicators: false){
-            VStack(spacing: 10){
+        VStack(spacing: 10){
+            VStack(spacing: 20){
                 Text("その他の項目を選択してください").font(.custom("ZenMaruGothic-Regular", size: 20.0)).foregroundStyle(Color(UIColor(hexString: "333333")))
-                Spacer()
-                
-                VStack(spacing: 10){
-                    HStack{
-                        Text("行き先").font(.custom("ZenMaruGothic-Regular", size: 20.0)).foregroundStyle(Color(UIColor(hexString: "333333")))
-                        Spacer()
-                    }
-                    
-                    CardView(image: Image("sample_\(1)"), size: 210)
-                }
-                
                 Spacer()
                 
                 VStack(spacing: 10){
@@ -35,10 +39,60 @@ struct PageTwoView: View {
                         Spacer()
                     }
                     
-                    TagForThreeView()
+                    ToggleTagView(tags: situation)
                 }
                 Spacer()
-            }
+                
+                VStack(spacing: 10){
+                    HStack{
+                        Text("シチュエーション")
+                            .font(.custom("ZenMaruGothic-Regular", size: 20.0))
+                            .foregroundStyle(Color(UIColor(hexString: "333333")))
+                        Spacer()
+                    }
+                    
+                    ToggleTagView(tags: season)
+                }
+                Spacer()
+                
+                VStack(spacing: 10){
+                    HStack{
+                        Text("シチュエーション")
+                            .font(.custom("ZenMaruGothic-Regular", size: 20.0))
+                            .foregroundStyle(Color(UIColor(hexString: "333333")))
+                        Spacer()
+                    }
+                    
+                    ToggleTagView(tags: tour)
+                }
+                Spacer()
+                
+                VStack(spacing: 10){
+                    HStack{
+                        Text("シチュエーション")
+                            .font(.custom("ZenMaruGothic-Regular", size: 20.0))
+                            .foregroundStyle(Color(UIColor(hexString: "333333")))
+                        Spacer()
+                    }
+                    
+                    ToggleTagView(tags: food)
+                }
+                Spacer()
+                
+                VStack(spacing: 10){
+                    HStack{
+                        Text("シチュエーション")
+                            .font(.custom("ZenMaruGothic-Regular", size: 20.0))
+                            .foregroundStyle(Color(UIColor(hexString: "333333")))
+                        Spacer()
+                    }
+                    
+                    ToggleTagView(tags: snack)
+                }
+                Spacer()
+                
+                
+            }.padding(.horizontal)
             
         }
         .padding()

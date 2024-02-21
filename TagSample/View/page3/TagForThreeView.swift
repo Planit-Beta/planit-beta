@@ -33,38 +33,54 @@ struct TagForThreeView: View {
     }
 }
 
+extension Array {
+    func chunked(into size: Int) -> [[Element]] {
+        return stride(from: 0, to: count, by: size).map {
+            Array(self[$0 ..< Swift.min($0 + size, count)])
+        }
+    }
+}
 struct ToggleTagView: View {
     @State var tags: [Tag]
+    var chunkedTags: [[Tag]] = [[]]
+    init(tags: [Tag]) {
+        self.tags = tags
+        self.chunkedTags = tags.chunked(into: 4)
+    }
     
     var body: some View {
-        HStack{
-            ForEach(tags.indices, id: \.self) { index in
-                Toggle(isOn: $tags[index].isSelected, label: {
-                        Text(tags[index].name).font(.custom("ZenMaruGothic-Regular", size: 14.0))
-                        .foregroundStyle(Color(UIColor(hexString: "333333")))
-                    }
-                )
-                    .toggleStyle(.button)
-                    .buttonStyle(.bordered)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                    .foregroundColor(tags[index].isSelected ? .blue : .primary)
-                    .tint(tags[index].isSelected ? .blue : .black)
-                    .onChange(of: tags[index].isSelected) { newValue in
-                        if newValue {
-                            for i in tags.indices {
-                                if i != index {
-                                    tags[i].isSelected = false
+            VStack(spacing: 10){
+                ForEach(chunkedTags.indices, id: \.self) { i in
+                    HStack {
+                        ForEach(chunkedTags[i].indices, id: \.self) { j in
+                            let index = i * 4 + j
+                            Toggle(isOn: $tags[index].isSelected, label: {
+                                Text(tags[index].name).font(.custom("ZenMaruGothic-Regular", size: 14.0))
+                                    .foregroundStyle(Color(UIColor(hexString: "333333")))
+                            })
+                            .background(Color(UIColor(hexString: "F3ECEA")))
+                            .toggleStyle(.button)
+//                            .buttonStyle(.bordered)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                            .tint(Color(UIColor(hexString: "F8714F")))
+                            .onChange(of: tags[index].isSelected) { newValue in
+                                if newValue {
+                                    for i in tags.indices {
+                                        if i != index {
+                                            tags[i].isSelected = false
+                                        }
+                                    }
+                                    print("Tag number \(tags[index].name) selected.")
                                 }
                             }
-                            print("Tag number \(tags[index].name) selected.")
+                            if j != chunkedTags[i].count - 1 {
+                                Spacer()
+                            }
                         }
                     }
-                if index != tags.count-1 {
-                    Spacer()
                 }
             }
         }
-    }
 }
 
 struct TagForThreeView_Previews: PreviewProvider {
