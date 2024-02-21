@@ -23,7 +23,7 @@ struct PageTwoView: View {
     @State var food: [Tag] = foodTags.map { Tag(name: $0) }
     @State var snack: [Tag] = snackTags.map { Tag(name: $0) }
     
-//    @State var selectedTagList: [String] = []
+    
     
     var body: some View {
         VStack(spacing: 10){
@@ -39,61 +39,73 @@ struct PageTwoView: View {
                         Spacer()
                     }
                     
-                    ToggleTagView(tags: situation)
+                    ToggleTagView(tags: $situation)
                 }
                 Spacer()
                 
                 VStack(spacing: 10){
                     HStack{
-                        Text("シチュエーション")
+                        Text("季節")
                             .font(.custom("ZenMaruGothic-Regular", size: 20.0))
                             .foregroundStyle(Color(UIColor(hexString: "333333")))
                         Spacer()
                     }
                     
-                    ToggleTagView(tags: season)
+                    ToggleTagView(tags: $season)
                 }
                 Spacer()
                 
                 VStack(spacing: 10){
                     HStack{
-                        Text("シチュエーション")
+                        Text("観光")
                             .font(.custom("ZenMaruGothic-Regular", size: 20.0))
                             .foregroundStyle(Color(UIColor(hexString: "333333")))
                         Spacer()
                     }
                     
-                    ToggleTagView(tags: tour)
+                    ToggleTagView(tags: $tour)
                 }
                 Spacer()
                 
                 VStack(spacing: 10){
                     HStack{
-                        Text("シチュエーション")
+                        Text("食事(しっかり)")
                             .font(.custom("ZenMaruGothic-Regular", size: 20.0))
                             .foregroundStyle(Color(UIColor(hexString: "333333")))
                         Spacer()
                     }
                     
-                    ToggleTagView(tags: food)
+                    ToggleTagView(tags: $food)
                 }
                 Spacer()
                 
                 VStack(spacing: 10){
                     HStack{
-                        Text("シチュエーション")
+                        Text("食事(軽食)")
                             .font(.custom("ZenMaruGothic-Regular", size: 20.0))
                             .foregroundStyle(Color(UIColor(hexString: "333333")))
                         Spacer()
                     }
                     
-                    ToggleTagView(tags: snack)
+                    ToggleTagView(tags: $snack)
                 }
                 Spacer()
                 
                 
             }.padding(.horizontal)
             
+            Button {
+                print("situation: \(situation)")
+                print("season: \(season)")
+                print("tour: \(tour)")
+                print("food: \(food)")
+                print("snack: \(snack)")
+            } label: {
+                Image(systemName: "arrowtriangle.forward.fill")
+                    .foregroundColor(Color(UIColor(hexString: "F8714F")))
+                    .font(.system(size: 50))
+                
+            }
         }
         .padding()
     }
