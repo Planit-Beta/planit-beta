@@ -17,7 +17,6 @@
 		642A111D2B7F0CF1003007A1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642A11172B7F0CF1003007A1 /* ContentView.swift */; };
 		642A111E2B7F0CF1003007A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 642A11182B7F0CF1003007A1 /* Assets.xcassets */; };
 		642A111F2B7F0CF1003007A1 /* OnBoarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642A111A2B7F0CF1003007A1 /* OnBoarding.swift */; };
-		642A11202B7F0CF1003007A1 /* OffsetPageTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642A111B2B7F0CF1003007A1 /* OffsetPageTabView.swift */; };
 		642A11352B7F99E8003007A1 /* Zen_Maru_Gothic in Resources */ = {isa = PBXBuildFile; fileRef = 642A11342B7F99E8003007A1 /* Zen_Maru_Gothic */; };
 		642A113A2B8050CD003007A1 /* PageOneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642A11392B8050CD003007A1 /* PageOneView.swift */; };
 		642A113E2B805152003007A1 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642A113C2B805152003007A1 /* HomeScreen.swift */; };
@@ -58,7 +57,6 @@
 		642A11172B7F0CF1003007A1 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = "../../../../../Downloads/SwiftUI-OnBoarding-Screen-Animation-main/Shared/ContentView.swift"; sourceTree = "<group>"; };
 		642A11182B7F0CF1003007A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "../../../../../Downloads/SwiftUI-OnBoarding-Screen-Animation-main/Shared/Assets.xcassets"; sourceTree = "<group>"; };
 		642A111A2B7F0CF1003007A1 /* OnBoarding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoarding.swift; sourceTree = "<group>"; };
-		642A111B2B7F0CF1003007A1 /* OffsetPageTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffsetPageTabView.swift; sourceTree = "<group>"; };
 		642A11342B7F99E8003007A1 /* Zen_Maru_Gothic */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Zen_Maru_Gothic; path = ../../../../../Downloads/Zen_Maru_Gothic; sourceTree = "<group>"; };
 		642A11392B8050CD003007A1 /* PageOneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageOneView.swift; sourceTree = "<group>"; };
 		642A113C2B805152003007A1 /* HomeScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
@@ -159,7 +157,6 @@
 				642A11402B82383E003007A1 /* page2 */,
 				642A11382B8050A7003007A1 /* page1 */,
 				642A111A2B7F0CF1003007A1 /* OnBoarding.swift */,
-				642A111B2B7F0CF1003007A1 /* OffsetPageTabView.swift */,
 				640DF5832B85EE4C001AE2BA /* HomeView.swift */,
 			);
 			path = View;
@@ -332,7 +329,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				642A10EA2B7F06BC003007A1 /* TagSampleApp.swift in Sources */,
-				642A11202B7F0CF1003007A1 /* OffsetPageTabView.swift in Sources */,
 				642A113E2B805152003007A1 /* HomeScreen.swift in Sources */,
 				642A111F2B7F0CF1003007A1 /* OnBoarding.swift in Sources */,
 				642A113A2B8050CD003007A1 /* PageOneView.swift in Sources */,
