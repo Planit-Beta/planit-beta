@@ -94,18 +94,6 @@ struct PageTwoView: View {
                 
             }.padding(.horizontal)
             
-            Button {
-                print("situation: \(situation)")
-                print("season: \(season)")
-                print("tour: \(tour)")
-                print("food: \(food)")
-                print("snack: \(snack)")
-            } label: {
-                Image(systemName: "arrowtriangle.forward.fill")
-                    .foregroundColor(Color(UIColor(hexString: "F8714F")))
-                    .font(.system(size: 50))
-                
-            }
         }
         .padding()
     }
