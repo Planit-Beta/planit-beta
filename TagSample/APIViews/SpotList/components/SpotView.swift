@@ -27,18 +27,18 @@ struct SpotView: View {
                 HStack{
                     VStack(alignment: .leading, spacing: 5){
                         Text(spot.placeName)
-                            .font(.custom("", size: 24))
+                            .font(.custom("ZenMaruGothic-Regular", size: 24)).foregroundStyle(Color(UIColor(hexString: "333333")))
                         HStack{
                             Text("人気").font(.custom("ZenMaruGothic-Regular", size: 10.0))
                                 .padding(5)
                                 .padding(.horizontal, 10)
-                                .foregroundStyle(.black)
+                                .foregroundStyle(Color(UIColor(hexString: "333333")))
                                 .background(.orange.opacity(0.2))
                                 .clipShape(RoundedRectangle(cornerRadius: 9))
                             Text("人気").font(.custom("ZenMaruGothic-Regular", size: 10.0))
                                 .padding(5)
                                 .padding(.horizontal, 10)
-                                .foregroundStyle(.black)
+                                .foregroundStyle(Color(UIColor(hexString: "333333")))
                                 .background(.orange.opacity(0.2))
                                 .clipShape(RoundedRectangle(cornerRadius: 9))
                         }
@@ -82,6 +82,6 @@ struct SpotView: View {
     }
 }
 
-//#Preview {
-//    SpotView()
-//}
+#Preview {
+    SpotView(spot: SpotInfo(junre: "観光", location: "大阪城公園", lat: "34.6876", lon: "34.6876", time: 1.0, placeId: "ChIJVVVld8ngAGARi9mE-a6e9mc", placeName: "大阪城公園", address: "大阪市中央区大阪城１−１", photoReference: "ATplDJbJ-Cdc1QqAKg92sCZFkbi_ERec3Wxkxm7OvOZeggqdi9NjSIoaNUrura7mYnxgSk-SaYLHw1cX5j6zXXdrm_rR2prKI7q3exjaKM-fyBVCPYI9xY7NbKIZ0cB9tRJSkjBatGTdblKM2Q_UXj01MIkTMrOUIJVHlk8D-YHSelzOc666", image: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=ATplDJbJ-Cdc1QqAKg92sCZFkbi_ERec3Wxkxm7OvOZeggqdi9NjSIoaNUrura7mYnxgSk-SaYLHw1cX5j6zXXdrm_rR2prKI7q3exjaKM-fyBVCPYI9xY7NbKIZ0cB9tRJSkjBatGTdblKM2Q_UXj01MIkTMrOUIJVHlk8D-YHSelzOc666&key=AIzaSyDCG_auCKmnxlyZUSgSI3TsYUFiWqIypWk", description: "JR環状線🚃♻️「大阪城公園駅」と直結🙋\nあと、JR🚃♻️・Osaka Metro🚇️「森ノ宮駅」からや京阪🚞・Osaka Metro🚇️「天満橋駅」、Osaka Metro🚇｢谷町四丁目駅｣からなど(他の鉄道、他の駅から)も🚶💦可👌\nお城🏯の他、公園内には色々な施設が入っており特に「大阪城ホール」は一流アーティストなどの大きなイベントが開催されていることで有名ですね🎶🥰\n勿論、国内外の観光客がお城🏯目当てに押し寄せ来ますが🚙💨が、広大敷地内でグルメ🍴🍻🍜🍰🍩🍮✨・スポーツ⚾️🎾・ジョギング🏃・散歩🐶など…を楽しまれている地元の方も大勢おられます🙋\n天気の良い日🌞にはリバークルーズ🚢やお堀巡り🚢も良いですね‼️🤗"))
+}

@@ -15,6 +15,7 @@ var foodTags:  [String] = ["和風", "中華", "ラーメン", "韓国料理", "
 var snackTags:  [String] = ["コーヒー", "スイーツ", "食べ歩き"]
 
 struct PageTwoView: View {
+    @EnvironmentObject var viewModel: ViewModel
     @State private var pageTwoInputName: String = ""
     
     @State var situation: [Tag] = situationTags.map { Tag(name: $0) }
@@ -39,7 +40,7 @@ struct PageTwoView: View {
                         Spacer()
                     }
                     
-                    ToggleTagView(tags: $situation)
+                    ToggleTagView(tags: $situation, option: $viewModel.option.withWho)
                 }
                 Spacer()
                 
@@ -51,7 +52,7 @@ struct PageTwoView: View {
                         Spacer()
                     }
                     
-                    ToggleTagView(tags: $season)
+                    ToggleTagView(tags: $season,  option: $viewModel.option.season)
                 }
                 Spacer()
                 
@@ -63,7 +64,7 @@ struct PageTwoView: View {
                         Spacer()
                     }
                     
-                    ToggleTagView(tags: $tour)
+                    ToggleTagView(tags: $tour, option: $viewModel.option.detail1)
                 }
                 Spacer()
                 
@@ -75,21 +76,21 @@ struct PageTwoView: View {
                         Spacer()
                     }
                     
-                    ToggleTagView(tags: $food)
+                    ToggleTagView(tags: $food, option: $viewModel.option.foodType)
                 }
                 Spacer()
                 
-                VStack(spacing: 10){
-                    HStack{
-                        Text("食事(軽食)")
-                            .font(.custom("ZenMaruGothic-Regular", size: 20.0))
-                            .foregroundStyle(Color(UIColor(hexString: "333333")))
-                        Spacer()
-                    }
-                    
-                    ToggleTagView(tags: $snack)
-                }
-                Spacer()
+//                VStack(spacing: 10){
+//                    HStack{
+//                        Text("食事(軽食)")
+//                            .font(.custom("ZenMaruGothic-Regular", size: 20.0))
+//                            .foregroundStyle(Color(UIColor(hexString: "333333")))
+//                        Spacer()
+//                    }
+//                    
+//                    ToggleTagView(tags: $snack,  option: viewModel.option.d)
+//                }
+//                Spacer()
                 
                 
             }.padding(.horizontal)

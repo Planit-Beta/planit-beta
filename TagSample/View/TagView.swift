@@ -25,13 +25,18 @@ extension Array {
         }
     }
 }
+
 struct ToggleTagView: View {
+    @EnvironmentObject var viewModel: ViewModel
     @Binding var tags: [Tag]
-    var chunkedTags: [[Tag]] = [[]]
-    init(tags: Binding<[Tag]>) {
-            _tags = tags
-            self.chunkedTags = tags.wrappedValue.chunked(into: 4)
-        }
+    @Binding var option: String
+    var chunkedTags: [[Tag]]
+    
+    init(tags: Binding<[Tag]>, option: Binding<String>) {
+        _tags = tags
+        _option = option
+        self.chunkedTags = tags.wrappedValue.chunked(into: 4)
+    }
     
     var body: some View {
             VStack(spacing: 10){
@@ -55,6 +60,8 @@ struct ToggleTagView: View {
                                             tags[i].isSelected = false
                                         }
                                     }
+                                    option = tags[index].name
+                                    viewModel.selectedOptions.append(tags[index].name)
                                     print("Tag number \(tags[index].name) selected.")
                                 }
                             }

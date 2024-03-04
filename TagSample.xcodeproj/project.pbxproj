@@ -10,7 +10,6 @@
 		6408B0CB2B95EC0F005401F9 /* SpotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6408B0C02B95EC0F005401F9 /* SpotView.swift */; };
 		6408B0CC2B95EC0F005401F9 /* OperateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6408B0C12B95EC0F005401F9 /* OperateButton.swift */; };
 		6408B0CD2B95EC0F005401F9 /* SpotListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6408B0C22B95EC0F005401F9 /* SpotListView.swift */; };
-		6408B0CE2B95EC0F005401F9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6408B0C32B95EC0F005401F9 /* ContentView.swift */; };
 		6408B0CF2B95EC0F005401F9 /* ChatGPTAPISampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6408B0C42B95EC0F005401F9 /* ChatGPTAPISampleApp.swift */; };
 		6408B0D02B95EC0F005401F9 /* GoogleMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6408B0C62B95EC0F005401F9 /* GoogleMapModel.swift */; };
 		6408B0D12B95EC0F005401F9 /* ChatGPTResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6408B0C72B95EC0F005401F9 /* ChatGPTResponse.swift */; };
@@ -35,6 +34,9 @@
 		642A11422B823872003007A1 /* PageTwoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642A11412B823872003007A1 /* PageTwoView.swift */; };
 		642A11472B824371003007A1 /* PageThreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642A11462B824371003007A1 /* PageThreeView.swift */; };
 		642A11492B8243E6003007A1 /* TagForThreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642A11482B8243E6003007A1 /* TagForThreeView.swift */; };
+		64A520212B95EFE900BBEF51 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 64A520202B95EFE900BBEF51 /* Alamofire */; };
+		64A520232B95EFE900BBEF51 /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 64A520222B95EFE900BBEF51 /* AlamofireDynamic */; };
+		64BF23A02B95ED5300971DB3 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BF239F2B95ED5300971DB3 /* MainView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,7 +60,6 @@
 		6408B0C02B95EC0F005401F9 /* SpotView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotView.swift; sourceTree = "<group>"; };
 		6408B0C12B95EC0F005401F9 /* OperateButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperateButton.swift; sourceTree = "<group>"; };
 		6408B0C22B95EC0F005401F9 /* SpotListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotListView.swift; sourceTree = "<group>"; };
-		6408B0C32B95EC0F005401F9 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		6408B0C42B95EC0F005401F9 /* ChatGPTAPISampleApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatGPTAPISampleApp.swift; sourceTree = "<group>"; };
 		6408B0C62B95EC0F005401F9 /* GoogleMapModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapModel.swift; sourceTree = "<group>"; };
 		6408B0C72B95EC0F005401F9 /* ChatGPTResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatGPTResponse.swift; sourceTree = "<group>"; };
@@ -86,6 +87,7 @@
 		642A11412B823872003007A1 /* PageTwoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageTwoView.swift; sourceTree = "<group>"; };
 		642A11462B824371003007A1 /* PageThreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageThreeView.swift; sourceTree = "<group>"; };
 		642A11482B8243E6003007A1 /* TagForThreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagForThreeView.swift; sourceTree = "<group>"; };
+		64BF239F2B95ED5300971DB3 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64A520212B95EFE900BBEF51 /* Alamofire in Frameworks */,
+				64A520232B95EFE900BBEF51 /* AlamofireDynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,8 +122,8 @@
 			children = (
 				6408B0C52B95EC0F005401F9 /* APIsModel */,
 				6408B0C42B95EC0F005401F9 /* ChatGPTAPISampleApp.swift */,
-				6408B0C32B95EC0F005401F9 /* ContentView.swift */,
 				6408B0CA2B95EC0F005401F9 /* ProgressingView.swift */,
+				64BF239F2B95ED5300971DB3 /* MainView.swift */,
 				6408B0BE2B95EC0F005401F9 /* SpotList */,
 			);
 			path = APIViews;
@@ -278,6 +282,10 @@
 			dependencies = (
 			);
 			name = TagSample;
+			packageProductDependencies = (
+				64A520202B95EFE900BBEF51 /* Alamofire */,
+				64A520222B95EFE900BBEF51 /* AlamofireDynamic */,
+			);
 			productName = TagSample;
 			productReference = 642A10E62B7F06BC003007A1 /* TagSample.app */;
 			productType = "com.apple.product-type.application";
@@ -350,6 +358,9 @@
 				Base,
 			);
 			mainGroup = 642A10DD2B7F06BC003007A1;
+			packageReferences = (
+				64A5201F2B95EFE900BBEF51 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 642A10E72B7F06BC003007A1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -408,8 +419,8 @@
 				642A11472B824371003007A1 /* PageThreeView.swift in Sources */,
 				642A11422B823872003007A1 /* PageTwoView.swift in Sources */,
 				6408B0D22B95EC0F005401F9 /* ViewModel.swift in Sources */,
+				64BF23A02B95ED5300971DB3 /* MainView.swift in Sources */,
 				642A111D2B7F0CF1003007A1 /* ContentView.swift in Sources */,
-				6408B0CE2B95EC0F005401F9 /* ContentView.swift in Sources */,
 				6408B0CF2B95EC0F005401F9 /* ChatGPTAPISampleApp.swift in Sources */,
 				640DF5842B85EE4C001AE2BA /* HomeView.swift in Sources */,
 				642A11492B8243E6003007A1 /* TagForThreeView.swift in Sources */,
@@ -746,6 +757,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		64A5201F2B95EFE900BBEF51 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		64A520202B95EFE900BBEF51 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 64A5201F2B95EFE900BBEF51 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		64A520222B95EFE900BBEF51 /* AlamofireDynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 64A5201F2B95EFE900BBEF51 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = AlamofireDynamic;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 642A10DE2B7F06BC003007A1 /* Project object */;
 }

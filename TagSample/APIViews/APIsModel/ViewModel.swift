@@ -14,6 +14,17 @@ struct Message: Hashable {
     }
 }
 
+struct Option: Codable {
+    var start: String
+    var time: String
+    var withWho: String
+    var detail1: String //緯度
+    var detail2: String //緯度
+    var detail3: String //緯度
+    var foodType: String //経度
+    var season: String
+}
+
 //protocol ViewModelProtocol: ObservableObject {
 //    var messages: [Message] { get }
 //    var isAsking: Bool { get set }
@@ -40,6 +51,10 @@ final class ViewModel: ObservableObject {
     @Published public var SpotInfos: [SpotInfo] = []
     
     @Published public var isShowModal: Bool = false
+    
+    @Published public var option: Option = Option(start: "", time: "0", withWho: "", detail1: "", detail2: "インスタ映え", detail3: "人気", foodType: "", season: "")
+    
+    @Published public var selectedOptions: [String] = ["インスタ映え", "人気"]
     
     
     private var token: String = ""
