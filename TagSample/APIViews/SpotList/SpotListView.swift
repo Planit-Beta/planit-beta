@@ -33,30 +33,30 @@ struct SpotListView: View {
                     Spacer()
                 }
                 HStack{ ///　タグ４つ
-                    Text("友人と").font(.custom("ZenMaruGothic-Regular", size: 14.0))
+                    Text(viewModel.option.withWho).font(.custom("ZenMaruGothic-Regular", size: 14.0))
+                        .padding(7)
+                        .padding(.horizontal, 10)
+                        .foregroundStyle(Color(UIColor(hexString: "333333")))
+                        .background(Color(UIColor(hexString: "F3ECEA")))
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                    Text(viewModel.option.season).font(.custom("ZenMaruGothic-Regular", size: 14.0))
                         .padding(5)
                         .padding(.horizontal, 10)
-                        .foregroundStyle(.black)
-                        .background(.orange.opacity(0.2))
-                        .clipShape(RoundedRectangle(cornerRadius: 9))
-                    Text("春").font(.custom("ZenMaruGothic-Regular", size: 14.0))
+                        .foregroundStyle(Color(UIColor(hexString: "333333")))
+                        .background(Color(UIColor(hexString: "F3ECEA")))
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                    Text(viewModel.option.detail1).font(.custom("ZenMaruGothic-Regular", size: 14.0))
                         .padding(5)
                         .padding(.horizontal, 10)
-                        .foregroundStyle(.black)
-                        .background(.orange.opacity(0.2))
-                        .clipShape(RoundedRectangle(cornerRadius: 9))
-                    Text("映え").font(.custom("ZenMaruGothic-Regular", size: 14.0))
+                        .foregroundStyle(Color(UIColor(hexString: "333333")))
+                        .background(Color(UIColor(hexString: "F3ECEA")))
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                    Text(viewModel.option.foodType).font(.custom("ZenMaruGothic-Regular", size: 14.0))
                         .padding(5)
                         .padding(.horizontal, 10)
-                        .foregroundStyle(.black)
-                        .background(.orange.opacity(0.2))
-                        .clipShape(RoundedRectangle(cornerRadius: 9))
-                    Text("歴史的建造物").font(.custom("ZenMaruGothic-Regular", size: 14.0))
-                        .padding(5)
-                        .padding(.horizontal, 10)
-                        .foregroundStyle(.black)
-                        .background(.orange.opacity(0.2))
-                        .clipShape(RoundedRectangle(cornerRadius: 9))
+                        .foregroundStyle(Color(UIColor(hexString: "333333")))
+                        .background(Color(UIColor(hexString: "F3ECEA")).opacity(0.2))
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
                     Spacer()
                 }
                 OperateButton() /// ボタン３つ
@@ -66,11 +66,6 @@ struct SpotListView: View {
                 ForEach(viewModel.SpotInfos, id: \.address) { info in
                     SpotView(spot: info)
                 }
-//                SpotView(spot: spotInfos[0])
-//                SpotView()
-//                SpotView()
-//                SpotView()
-//                SpotView()
             }.padding().padding(.bottom, 70)
             
             
@@ -79,5 +74,5 @@ struct SpotListView: View {
 }
 
 #Preview {
-    SpotListView()
+    SpotListView().environmentObject(ViewModel())
 }

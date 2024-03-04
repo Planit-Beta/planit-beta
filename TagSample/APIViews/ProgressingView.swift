@@ -16,7 +16,7 @@ struct ProgressingView: View {
     var body: some View {
         NavigationView{
             ZStack{
-                Color.orange.ignoresSafeArea()
+                Color(UIColor(hexString: "F8714F")).ignoresSafeArea()
                 
                 Circle().frame(width: 780).offset(CGSize(width: 0, height: -UIScreen.main.bounds.width/2 - 20)).foregroundColor(.white)
                 
@@ -31,7 +31,7 @@ struct ProgressingView: View {
                     ProgressView(value: progressVal, total: 100)
                         .animation(.easeInOut, value: progressVal)//バーのアニメーション
                         .tint(Color(.white))//バーの色
-                        .background(.orange)
+                        .background(Color(UIColor(hexString: "F8714F")))
                         .scaleEffect(x: 0.3, y: 2.5)//バーの高さ
                         .onReceive(timer, perform: { _ in
                             if progressVal < 100 {

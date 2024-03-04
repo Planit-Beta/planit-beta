@@ -14,7 +14,7 @@ struct SpotView: View {
         HStack(alignment: .top, spacing: 0){
             VStack{
                 Circle()
-                    .fill(.orange)
+                    .fill(Color(UIColor(hexString: "F8714F")))
                     .frame(width: 48, height: 48)
                     .padding(0)
                     .background(.white.shadow(.drop(color: .black.opacity(0.1), radius: 3)), in: .circle)
@@ -29,18 +29,18 @@ struct SpotView: View {
                         Text(spot.placeName)
                             .font(.custom("ZenMaruGothic-Regular", size: 24)).foregroundStyle(Color(UIColor(hexString: "333333")))
                         HStack{
-                            Text("人気").font(.custom("ZenMaruGothic-Regular", size: 10.0))
+                            Text("人気").font(.custom("ZenMaruGothic-Regular", size: 14.0))
                                 .padding(5)
                                 .padding(.horizontal, 10)
                                 .foregroundStyle(Color(UIColor(hexString: "333333")))
-                                .background(.orange.opacity(0.2))
-                                .clipShape(RoundedRectangle(cornerRadius: 9))
-                            Text("人気").font(.custom("ZenMaruGothic-Regular", size: 10.0))
+                                .background(Color(UIColor(hexString: "F3ECEA")))
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                            Text("人気").font(.custom("ZenMaruGothic-Regular", size: 14.0))
                                 .padding(5)
                                 .padding(.horizontal, 10)
                                 .foregroundStyle(Color(UIColor(hexString: "333333")))
-                                .background(.orange.opacity(0.2))
-                                .clipShape(RoundedRectangle(cornerRadius: 9))
+                                .background(Color(UIColor(hexString: "F3ECEA")))
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
                         }
                         Text(spot.description)
                             .font(.custom("", size: 10))
