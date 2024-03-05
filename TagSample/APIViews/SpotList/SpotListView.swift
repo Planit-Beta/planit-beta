@@ -16,7 +16,7 @@ struct SpotListView: View {
                 .ignoresSafeArea()
             ScrollView{
                 AsyncImage(url: URL(string: viewModel.SpotInfos[0].image)) { image in ///メイン画像
-                    image.resizable().scaledToFill().frame(width: UIScreen.main.bounds.width, height: 240)
+                    image.resizable().scaledToFill().frame(width: UIScreen.main.bounds.width, height: 300)
                     
                 } placeholder: {
                     ProgressView()

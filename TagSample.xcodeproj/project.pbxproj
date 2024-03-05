@@ -27,7 +27,6 @@
 		642A111D2B7F0CF1003007A1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642A11172B7F0CF1003007A1 /* ContentView.swift */; };
 		642A111E2B7F0CF1003007A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 642A11182B7F0CF1003007A1 /* Assets.xcassets */; };
 		642A111F2B7F0CF1003007A1 /* OnBoarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642A111A2B7F0CF1003007A1 /* OnBoarding.swift */; };
-		642A11352B7F99E8003007A1 /* Zen_Maru_Gothic in Resources */ = {isa = PBXBuildFile; fileRef = 642A11342B7F99E8003007A1 /* Zen_Maru_Gothic */; };
 		642A113A2B8050CD003007A1 /* PageOneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642A11392B8050CD003007A1 /* PageOneView.swift */; };
 		642A113E2B805152003007A1 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642A113C2B805152003007A1 /* HomeScreen.swift */; };
 		642A113F2B805152003007A1 /* DetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642A113D2B805152003007A1 /* DetailScreen.swift */; };
@@ -35,6 +34,9 @@
 		642A11472B824371003007A1 /* PageThreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642A11462B824371003007A1 /* PageThreeView.swift */; };
 		642A11492B8243E6003007A1 /* TagForThreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642A11482B8243E6003007A1 /* TagForThreeView.swift */; };
 		6473C2E22B976C3400E3535A /* OptionTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6473C2E12B976C3400E3535A /* OptionTagView.swift */; };
+		6473C2E62B977E7200E3535A /* Zen_Maru_Gothic in Resources */ = {isa = PBXBuildFile; fileRef = 6473C2E52B977E7200E3535A /* Zen_Maru_Gothic */; };
+		6473C2E72B977E7200E3535A /* Zen_Maru_Gothic in Resources */ = {isa = PBXBuildFile; fileRef = 6473C2E52B977E7200E3535A /* Zen_Maru_Gothic */; };
+		6473C2E82B977E7200E3535A /* Zen_Maru_Gothic in Resources */ = {isa = PBXBuildFile; fileRef = 6473C2E52B977E7200E3535A /* Zen_Maru_Gothic */; };
 		64A520212B95EFE900BBEF51 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 64A520202B95EFE900BBEF51 /* Alamofire */; };
 		64A520232B95EFE900BBEF51 /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 64A520222B95EFE900BBEF51 /* AlamofireDynamic */; };
 		64BF23A02B95ED5300971DB3 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BF239F2B95ED5300971DB3 /* MainView.swift */; };
@@ -81,7 +83,6 @@
 		642A11172B7F0CF1003007A1 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = "../../../../../Downloads/SwiftUI-OnBoarding-Screen-Animation-main/Shared/ContentView.swift"; sourceTree = "<group>"; };
 		642A11182B7F0CF1003007A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "../../../../../Downloads/SwiftUI-OnBoarding-Screen-Animation-main/Shared/Assets.xcassets"; sourceTree = "<group>"; };
 		642A111A2B7F0CF1003007A1 /* OnBoarding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoarding.swift; sourceTree = "<group>"; };
-		642A11342B7F99E8003007A1 /* Zen_Maru_Gothic */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Zen_Maru_Gothic; path = ../../../../../Downloads/Zen_Maru_Gothic; sourceTree = "<group>"; };
 		642A11392B8050CD003007A1 /* PageOneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageOneView.swift; sourceTree = "<group>"; };
 		642A113C2B805152003007A1 /* HomeScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		642A113D2B805152003007A1 /* DetailScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailScreen.swift; sourceTree = "<group>"; };
@@ -89,6 +90,7 @@
 		642A11462B824371003007A1 /* PageThreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageThreeView.swift; sourceTree = "<group>"; };
 		642A11482B8243E6003007A1 /* TagForThreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagForThreeView.swift; sourceTree = "<group>"; };
 		6473C2E12B976C3400E3535A /* OptionTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionTagView.swift; sourceTree = "<group>"; };
+		6473C2E52B977E7200E3535A /* Zen_Maru_Gothic */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Zen_Maru_Gothic; path = ../../../../../Downloads/Zen_Maru_Gothic; sourceTree = "<group>"; };
 		64BF239F2B95ED5300971DB3 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -186,10 +188,10 @@
 				642A10E92B7F06BC003007A1 /* TagSampleApp.swift */,
 				6408B0D52B95EC36005401F9 /* .gitignore */,
 				642A11182B7F0CF1003007A1 /* Assets.xcassets */,
+				6473C2E52B977E7200E3535A /* Zen_Maru_Gothic */,
 				642A11172B7F0CF1003007A1 /* ContentView.swift */,
 				6408B0C92B95EC0F005401F9 /* API-TOKEN.csv */,
 				6408B0BD2B95EBCA005401F9 /* APIViews */,
-				642A11342B7F99E8003007A1 /* Zen_Maru_Gothic */,
 				642A11192B7F0CF1003007A1 /* View */,
 				642A10EF2B7F06BD003007A1 /* Preview Content */,
 			);
@@ -380,9 +382,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6473C2E62B977E7200E3535A /* Zen_Maru_Gothic in Resources */,
 				6408B0D62B95EC36005401F9 /* .gitignore in Resources */,
 				642A10F12B7F06BD003007A1 /* Preview Assets.xcassets in Resources */,
-				642A11352B7F99E8003007A1 /* Zen_Maru_Gothic in Resources */,
 				642A111E2B7F0CF1003007A1 /* Assets.xcassets in Resources */,
 				6408B0D32B95EC0F005401F9 /* API-TOKEN.csv in Resources */,
 			);
@@ -392,6 +394,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6473C2E72B977E7200E3535A /* Zen_Maru_Gothic in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,6 +402,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6473C2E82B977E7200E3535A /* Zen_Maru_Gothic in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
