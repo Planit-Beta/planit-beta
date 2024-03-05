@@ -14,7 +14,7 @@ struct OptionTagView: View {
             .padding(7)
             .padding(.horizontal, 7)
             .foregroundStyle(Color(UIColor(hexString: "333333")))
-            .background(Color(UIColor(hexString: "F3ECEA")))
+            .background(Color(UIColor(hexString: "FFFFFF")))
             .clipShape(RoundedRectangle(cornerRadius: 10))
     }
 }

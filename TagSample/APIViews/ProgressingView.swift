@@ -18,7 +18,7 @@ struct ProgressingView: View {
             ZStack{
                 Color(UIColor(hexString: "F8714F")).ignoresSafeArea()
                 
-                Circle().frame(width: 780).offset(CGSize(width: 0, height: -UIScreen.main.bounds.width/2 - 20)).foregroundColor(.white)
+                Circle().frame(width: 780).offset(CGSize(width: 0, height: -UIScreen.main.bounds.width/2 - 20)).foregroundColor(Color(UIColor(hexString: "FDF5F3")))
                 
                 Image(decorative: "loadingImg")
                     .resizable()

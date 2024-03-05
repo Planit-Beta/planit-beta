@@ -47,11 +47,10 @@ struct ToggleTagView: View {
                             let index = i * 4 + j
                             Toggle(isOn: $tags[index].isSelected, label: {
                                 Text(tags[index].name).font(.custom("ZenMaruGothic-Regular", size: 14.0))
-                                    .foregroundStyle(Color(UIColor(hexString: "333333")))
+                                    .foregroundStyle(Color(UIColor(hexString: tags[index].isSelected ? "FFFFFF" : "333333")))
                             })
-                            .background(Color(UIColor(hexString: "F3ECEA")))
+                            .background(Color(UIColor(hexString: tags[index].isSelected ?  "F8714F" : "FFFFFF")))
                             .toggleStyle(.button)
-//                            .buttonStyle(.bordered)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                             .tint(Color(UIColor(hexString: "F8714F")))
                             .onChange(of: tags[index].isSelected) { newValue in
@@ -93,13 +92,10 @@ struct selectedTagView: View {
                                 Text(viewModel.selectedOptions[tagIndex]).font(.custom("ZenMaruGothic-Regular", size: 14.0))
                                     .foregroundStyle(Color(UIColor(hexString: "333333")))
                                 })
-                                .background(Color(UIColor(hexString: "F3ECEA")))
+                                .background(Color(UIColor(hexString: "FFFFFF")))
                                 .toggleStyle(.button)
                                 .clipShape(RoundedRectangle(cornerRadius: 10))
-                                .tint(Color(UIColor(hexString: "F8714F")))
-//                            if tagIndex%4 == 0{
-//                                Spacer()
-//                            }
+                                .disabled(true)
                             
                                 if tagIndex != viewModel.selectedOptions.count - 1 {
                                     Spacer()

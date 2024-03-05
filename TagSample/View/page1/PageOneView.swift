@@ -26,7 +26,7 @@ struct PageOneView: View {
                         HStack{
                             Text("場所").font(.custom("ZenMaruGothic-Regular", size: 15.0)).foregroundStyle(Color(UIColor(hexString: "333333")))
                                 .frame(width: 150, height: 30)
-                                .background(Color(UIColor(hexString: "F3ECEA")))
+                                .background(Color(UIColor(hexString: "FFFFFF")))
                                 .cornerRadius(15)
                             
                             Spacer()
@@ -35,7 +35,7 @@ struct PageOneView: View {
                                 .frame(width: 150, height: 30)
                                 .multilineTextAlignment(TextAlignment.center)
                             //                            .padding(5)
-                                .font(.custom("ZenMaruGothic-Regular", size: 15.0)).foregroundStyle(Color(UIColor(hexString: "333333"))).background(Color(UIColor(hexString: "F3ECEA")))
+                                .font(.custom("ZenMaruGothic-Regular", size: 15.0)).foregroundStyle(Color(UIColor(hexString: "333333"))).background(Color(UIColor(hexString: "FFFFFF")))
                                 .cornerRadius(15)
                             
                         }
@@ -50,7 +50,7 @@ struct PageOneView: View {
                         HStack{
                             Text("現在時刻").font(.custom("ZenMaruGothic-Regular", size: 15.0)).foregroundStyle(Color(UIColor(hexString: "333333")))
                                 .frame(width: 150, height: 30)
-                                .background(Color(UIColor(hexString: "F3ECEA")))
+                                .background(Color(UIColor(hexString: "FFFFFF")))
                                 .cornerRadius(15)
                             
                             Spacer()
@@ -59,7 +59,7 @@ struct PageOneView: View {
                                 .frame(width: 150, height: 30)
                                 .multilineTextAlignment(TextAlignment.center)
                             //                            .padding(5)
-                                .font(.custom("ZenMaruGothic-Regular", size: 15.0)).foregroundStyle(Color(UIColor(hexString: "333333"))).background(Color(UIColor(hexString: "F3ECEA")))
+                                .font(.custom("ZenMaruGothic-Regular", size: 15.0)).foregroundStyle(Color(UIColor(hexString: "333333"))).background(Color(UIColor(hexString: "FFFFFF")))
                                 .cornerRadius(15)
                             
                         }
