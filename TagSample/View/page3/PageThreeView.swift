@@ -51,7 +51,7 @@ struct PageThreeView: View {
                                 .foregroundStyle(Color(UIColor(hexString: "333333")))
                             Spacer()
                         }
-                        ToggleTagView(tags: $situation, option: $viewModel.option.start)
+                        selectedTagView()
                     }
                     
                     Spacer()

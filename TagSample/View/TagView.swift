@@ -82,24 +82,27 @@ struct selectedTagView: View {
     
     @State var isOn: Bool = false
     
-    var situationTags: [String] = ["一人で", "家族で", "友人と", "恋人と", "上司と", "大人数グループで"]
+//    var situationTags: [String] = ["一人で", "家族で", "友人と", "恋人と", "上司と", "大人数グループで"]
     
     var body: some View {
         VStack(spacing: 10){
-            ForEach(0..<situationTags.count, id: \.self) { index in
+            ForEach(0..<viewModel.selectedOptions.count, id: \.self) { index in
                 if index % 4 == 0 {
                     HStack {
-                        ForEach(index..<min(index + 4, situationTags.count), id: \.self) { tagIndex in
+                        ForEach(index..<min(index + 4, viewModel.selectedOptions.count), id: \.self) { tagIndex in
                             Toggle(isOn: $isOn, label: {
-                                Text(situationTags[tagIndex]).font(.custom("ZenMaruGothic-Regular", size: 14.0))
+                                Text(viewModel.selectedOptions[tagIndex]).font(.custom("ZenMaruGothic-Regular", size: 14.0))
                                     .foregroundStyle(Color(UIColor(hexString: "333333")))
                                 })
                                 .background(Color(UIColor(hexString: "F3ECEA")))
                                 .toggleStyle(.button)
                                 .clipShape(RoundedRectangle(cornerRadius: 10))
                                 .tint(Color(UIColor(hexString: "F8714F")))
+//                            if tagIndex%4 == 0{
+//                                Spacer()
+//                            }
                             
-                                if tagIndex != situationTags.count - 1 {
+                                if tagIndex != viewModel.selectedOptions.count - 1 {
                                     Spacer()
                                 }
                             }
