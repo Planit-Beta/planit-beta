@@ -30,6 +30,7 @@ struct ToggleTagView: View {
     @EnvironmentObject var viewModel: ViewModel
     @Binding var tags: [Tag]
     @Binding var option: String
+//    var index: Int
     var chunkedTags: [[Tag]]
     
     init(tags: Binding<[Tag]>, option: Binding<String>) {
@@ -81,8 +82,6 @@ struct selectedTagView: View {
     @EnvironmentObject var viewModel: ViewModel
     
     @State var isOn: Bool = false
-    
-//    var situationTags: [String] = ["一人で", "家族で", "友人と", "恋人と", "上司と", "大人数グループで"]
     
     var body: some View {
         VStack(spacing: 10){

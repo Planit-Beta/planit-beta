@@ -34,6 +34,7 @@
 		642A11422B823872003007A1 /* PageTwoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642A11412B823872003007A1 /* PageTwoView.swift */; };
 		642A11472B824371003007A1 /* PageThreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642A11462B824371003007A1 /* PageThreeView.swift */; };
 		642A11492B8243E6003007A1 /* TagForThreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642A11482B8243E6003007A1 /* TagForThreeView.swift */; };
+		6473C2E22B976C3400E3535A /* OptionTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6473C2E12B976C3400E3535A /* OptionTagView.swift */; };
 		64A520212B95EFE900BBEF51 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 64A520202B95EFE900BBEF51 /* Alamofire */; };
 		64A520232B95EFE900BBEF51 /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 64A520222B95EFE900BBEF51 /* AlamofireDynamic */; };
 		64BF23A02B95ED5300971DB3 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BF239F2B95ED5300971DB3 /* MainView.swift */; };
@@ -87,6 +88,7 @@
 		642A11412B823872003007A1 /* PageTwoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageTwoView.swift; sourceTree = "<group>"; };
 		642A11462B824371003007A1 /* PageThreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageThreeView.swift; sourceTree = "<group>"; };
 		642A11482B8243E6003007A1 /* TagForThreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagForThreeView.swift; sourceTree = "<group>"; };
+		6473C2E12B976C3400E3535A /* OptionTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionTagView.swift; sourceTree = "<group>"; };
 		64BF239F2B95ED5300971DB3 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -143,6 +145,7 @@
 			children = (
 				6408B0C02B95EC0F005401F9 /* SpotView.swift */,
 				6408B0C12B95EC0F005401F9 /* OperateButton.swift */,
+				6473C2E12B976C3400E3535A /* OptionTagView.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -417,6 +420,7 @@
 				642A113A2B8050CD003007A1 /* PageOneView.swift in Sources */,
 				642A113F2B805152003007A1 /* DetailScreen.swift in Sources */,
 				642A11472B824371003007A1 /* PageThreeView.swift in Sources */,
+				6473C2E22B976C3400E3535A /* OptionTagView.swift in Sources */,
 				642A11422B823872003007A1 /* PageTwoView.swift in Sources */,
 				6408B0D22B95EC0F005401F9 /* ViewModel.swift in Sources */,
 				64BF23A02B95ED5300971DB3 /* MainView.swift in Sources */,

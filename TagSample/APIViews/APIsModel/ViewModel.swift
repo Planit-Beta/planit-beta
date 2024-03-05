@@ -147,7 +147,6 @@ extension ViewModel {
                     return
                 }
                 self.responseSuccess(data: res)
-//                print(res.choices[0].message)
                 
                 if let jsonData = res.choices[0].message.content.data(using: .utf8) {
                     do {

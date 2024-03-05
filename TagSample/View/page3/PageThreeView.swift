@@ -36,7 +36,7 @@ struct PageThreeView: View {
                                 .font(.custom("ZenMaruGothic-Regular", size: 20.0))
                                 .opacity(0.5)
                                 .foregroundStyle(Color(UIColor(hexString: "333333")))
-                            Text("現在時刻から4時間-6時間")
+                            Text("現在時刻から\(viewModel.option.time)時間")
                                 .font(.custom("ZenMaruGothic-Regular", size: 20.0))
                                 .foregroundStyle(Color(UIColor(hexString: "333333")))
                             Spacer()
@@ -78,7 +78,6 @@ struct PageThreeView: View {
                     label: { EmptyView() }
                 ).hidden()
             }.padding()
-//        }.navigationBarHidden(true)
     }
 }
 
