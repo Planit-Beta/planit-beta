@@ -75,9 +75,45 @@ struct ToggleTagView: View {
         }
 }
 
-//struct TagView_Previews: PreviewProvider {
-//    static var previews: some View {
-////        PageTwoView(inputName: .constant("京都旅行"), inputDestination:.constant("清水寺"))
+
+
+struct selectedTagView: View {
+    @EnvironmentObject var viewModel: ViewModel
+    
+    @State var isOn: Bool = false
+    
+    var situationTags: [String] = ["一人で", "家族で", "友人と", "恋人と", "上司と", "大人数グループで"]
+    
+    var body: some View {
+        VStack(spacing: 10){
+            ForEach(0..<situationTags.count, id: \.self) { index in
+                if index % 4 == 0 {
+                    HStack {
+                        ForEach(index..<min(index + 4, situationTags.count), id: \.self) { tagIndex in
+                            Toggle(isOn: $isOn, label: {
+                                Text(situationTags[tagIndex]).font(.custom("ZenMaruGothic-Regular", size: 14.0))
+                                    .foregroundStyle(Color(UIColor(hexString: "333333")))
+                                })
+                                .background(Color(UIColor(hexString: "F3ECEA")))
+                                .toggleStyle(.button)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                .tint(Color(UIColor(hexString: "F8714F")))
+                            
+                                if tagIndex != situationTags.count - 1 {
+                                    Spacer()
+                                }
+                            }
+                        }
+                    }
+                }
+        }
+    }
+}
+
+struct TagView_Previews: PreviewProvider {
+    static var previews: some View {
+//        PageTwoView(inputName: .constant("京都旅行"), inputDestination:.constant("清水寺"))
 //        TagView()
-//    }
-//}
+        selectedTagView()
+    }
+}
