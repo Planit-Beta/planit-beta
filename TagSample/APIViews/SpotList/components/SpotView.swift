@@ -43,7 +43,7 @@ struct SpotView: View {
                                 .clipShape(RoundedRectangle(cornerRadius: 10))
                         }
                         Text(spot.description)
-                            .font(.custom("", size: 10))
+                            .font(.custom("ZenMaruGothic-Regular", size: 10))
                     }
                     
                     Spacer()

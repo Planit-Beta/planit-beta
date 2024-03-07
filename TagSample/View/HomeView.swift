@@ -8,86 +8,69 @@
 import SwiftUI
 
 struct HomeView: View {
-    @Binding var inputName: String
-    @Binding var inputDestination: String
-    
     var body: some View {
-            VStack(spacing: 10){
-                VStack(spacing: 10){
-                    Text("場所と時間を入力してください").font(.custom("ZenMaruGothic-Regular", size: 20.0)).foregroundStyle(Color(UIColor(hexString: "333333"))).padding(.horizontal)
-                    Spacer()
-                    
-                    VStack(spacing: 10){
-                        HStack{
-                            Text("旅行名").font(.custom("ZenMaruGothic-Regular", size: 20.0)).foregroundStyle(Color(UIColor(hexString: "333333")))
+        NavigationView {
+            ZStack{
+                Color(UIColor(hexString: "FDF5F3"))
+                    .ignoresSafeArea()
+                VStack(){
+                    VStack{
+                        HStack(){
+                            Text("かわすけ").font(.custom("ZenMaruGothic-Regular", size: 20.0)).foregroundStyle(Color(UIColor(hexString: "333333")))
                             Spacer()
                         }
-                        
-                        TextField("旅程名を入力してください", text: $inputName)
-                            .padding()
-                            .font(.custom("ZenMaruGothic-Regular", size: 15.0)).foregroundStyle(Color(UIColor(hexString: "333333"))).background(Color(UIColor(hexString: "D9D9D9")))
-                            .cornerRadius(10)
-                        
-                    }.padding(.horizontal)
-                    Spacer()
-                    
-                    VStack(spacing: 10){
                         HStack{
-                            Text("行き先").font(.custom("ZenMaruGothic-Regular", size: 20.0)).foregroundStyle(Color(UIColor(hexString: "333333")))
+                            Text("user-e-mail-address@sample.")
+                                .font(.custom("ZenMaruGothic-Regular", size: 11.0)).foregroundStyle(Color(UIColor(hexString: "333333")).opacity(0.5))
                             Spacer()
                         }
-                        
-                        TextField("行き先を入力してください", text: $inputDestination)
-                            .padding()
-                            .font(.custom("ZenMaruGothic-Regular", size: 15.0)).foregroundStyle(Color(UIColor(hexString: "333333"))).background(Color(UIColor(hexString: "D9D9D9")))
-                            .cornerRadius(10)
-                        
                     }.padding(.horizontal)
-                    Spacer()
-                }.padding(.horizontal)
-//                Spacer()
-                
-                VStack(spacing: 10){
-                    HStack{
-                        Text("人気の行き先")
-                            .font(.custom("ZenMaruGothic-Regular", size: 20.0))
-                            .foregroundStyle(Color(UIColor(hexString: "333333")))
-                            .padding(.horizontal).padding(.horizontal)
-                        Spacer()
-                    }
-                    
-                    ScrollView (.horizontal, showsIndicators: false) {
-                        HStack (spacing: 0) {
-                            ForEach(0 ..< 4) { i in
-                                let paddingValue: CGFloat = i == 0 ? 32 : 0
-                                NavigationLink(
-                                    destination: DetailScreen(),
-                                    label: {
-                                        ProductCardView(image: Image("sample_\(i+1)"), size: 210)
-                                    })
-                                .navigationBarHidden(true)
-                                .foregroundColor(.black)
-                                .padding(.leading, paddingValue)
-                            }
-                            .padding(.trailing)
+                     .overlay(
+                        HStack{
+                            Spacer()
+                            Image(decorative: "sample_1")
+                                .resizable()
+                                .scaledToFit()
+                                .clipShape(Circle())
                         }
+                     ).padding(.horizontal)
+                    
+                    Spacer()
+                    
+                    
+                    NavigationLink {
+                        OnBoarding()
+                    } label: {
+                        Text("新しく旅程を生成する")
+                            .font(.custom("ZenMaruGothic-Medium", size: 24.0))
+                            .foregroundStyle(Color(UIColor(hexString: "FFFFFF")))
+                            .frame(width: 320, height: 80)
+                            .background(Color(UIColor(hexString: "F8714F")))
+                            .cornerRadius(20)
+                            .shadow(color: .gray, radius: 2, x: 0, y: 2)
                     }
                     
+                    Spacer()
                     
-                    
+                    VStack{
+                        HStack(){
+                            Text("自分の旅程").font(.custom("ZenMaruGothic-Regular", size: 20.0)).foregroundStyle(Color(UIColor(hexString: "333333")))
+                            Spacer()
+                        }.padding(.horizontal).padding(.horizontal)
+                        HomeScreen()
+                    }
+                    Spacer()
                 }
-                Spacer()
             }
-            
-        
+        }
     }
 }
 
 
-struct HomeView_Preview: PreviewProvider {
-    static var previews: some View {
-//        OnBoarding()
-        HomeView(inputName: .constant("京都旅行"), inputDestination:.constant("清水寺"))
-    }
-}
+//struct HomeView_Preview: PreviewProvider {
+//    static var previews: some View {
+////        OnBoarding()
+//        HomeView(inputName: .constant("京都旅行"), inputDestination:.constant("清水寺"))
+//    }
+//}
 

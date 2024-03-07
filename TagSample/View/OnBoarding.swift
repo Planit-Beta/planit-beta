@@ -16,7 +16,7 @@ struct OnBoarding: View {
         NavigationView{
             ZStack{
                 Color(UIColor(hexString: "FDF5F3"))
-                                 .ignoresSafeArea()
+                    .ignoresSafeArea()
                 VStack(spacing: 10){
                     VStack(alignment: .leading){ ///画面上部のバー
                         Text("新しく旅程を作成する").padding().font(.custom("ZenMaruGothic-Medium", size: 20.0)).foregroundStyle(Color(UIColor(hexString: "333333")))
@@ -96,7 +96,7 @@ struct OnBoarding: View {
                     Spacer()
                 }
             }
-        }
+        }.navigationBarHidden(true).navigationBarBackButtonHidden(true)
     }
     
     

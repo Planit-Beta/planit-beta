@@ -27,7 +27,7 @@ struct ProgressingView: View {
                 
                 VStack(spacing: 30){
                     Spacer()
-                    Text("旅程を生成しています…").foregroundStyle(.white).font(.custom("", size: 20))
+                    Text("旅程を生成しています…").foregroundStyle(.white).font(.custom("ZenMaruGothic-Regular", size: 20))
                     ProgressView(value: progressVal, total: 100)
                         .animation(.easeInOut, value: progressVal)//バーのアニメーション
                         .tint(Color(.white))//バーの色

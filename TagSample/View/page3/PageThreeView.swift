@@ -14,7 +14,6 @@ struct PageThreeView: View {
     @State var situation: [Tag] = situationTags.map { Tag(name: $0) }
     
     var body: some View {
-//        NavigationView {
             VStack(spacing: 10){
                 VStack(spacing: 20){
                     Text("その他の項目を選択してください").font(.custom("ZenMaruGothic-Regular", size: 20.0)).foregroundStyle(Color(UIColor(hexString: "333333")))
@@ -57,7 +56,7 @@ struct PageThreeView: View {
                     Spacer()
                     
                     Button {
-                        viewModel.askChatGPT(text: "# 作成項目 (\(viewModel.option.start)を出発に\(viewModel.option.time)時間分の予定を生成します。\(viewModel.option.detail1)を\(viewModel.option.withWho)過ごし、\(viewModel.option.detail2)や\(viewModel.option.detail3)スポットにも周りたいです。以下の条件を考慮し、行き先を選び、その行き先と食事を含んだ楽しめる予定を提案してください。予定の中でそこで過ごす時間も書いてください。なお、食事は昼食、夕食それぞれに関して、\(viewModel.option.foodType)を中心に選んでください。必ず出力形式を守り、レスポンスを返してくださいとして返してください。 ## 旅程の定義 - ジャンル 観光か食事（昼食、夕食）か  - 場所 場所名、食事ならどこ周辺で食べるべきかだけ  - 緯度 場所で出力したところの緯度  - 経度 場所で出力したところの経度  - 時間 何時間過ごすのか")
+                        viewModel.askChatGPT(text: "# 作成項目 (\(viewModel.option.start)を出発に\(viewModel.option.time)時間分の予定を生成します。\(viewModel.option.detail1)を\(viewModel.option.withWho)過ごし、\(viewModel.option.detail2)や\(viewModel.option.detail3)スポットにも周りたいです。以下の条件を考慮し、行き先を選び、その行き先と食事を含んだ楽しめる予定を提案してください。予定の中でそこで過ごす時間も書いてください。なお、食事は昼食、夕食それぞれに関して、\(viewModel.option.foodType)を中心に選んでください。必ず出力形式を守り、レスポンスを返してくださいとして返してください。 ## 旅程の定義 - ジャンル 観光か食事か  - 場所 場所名、食事ならどこ周辺で食べるべきかだけ  - 緯度 場所で出力したところの緯度  - 経度 場所で出力したところの経度  - 時間 何時間過ごすのか")
                     } label: {
                         Text("旅程を生成する")
                             .font(.custom("ZenMaruGothic-Medium", size: 24.0))
@@ -78,7 +77,7 @@ struct PageThreeView: View {
                     label: { EmptyView() }
                 ).hidden()
             }.padding()
-    }
+        }
 }
 
 
