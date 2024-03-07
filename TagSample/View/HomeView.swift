@@ -46,6 +46,7 @@ struct HomeView: View {
                     Spacer()
                 }.padding(.horizontal)
 //                Spacer()
+                
                 VStack(spacing: 10){
                     HStack{
                         Text("人気の行き先")

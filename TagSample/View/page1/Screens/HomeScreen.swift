@@ -26,7 +26,7 @@ struct HomeScreen: View {
                                     NavigationLink(
                                         destination: DetailScreen(),
                                         label: {
-                                            ProductCardView(image: Image("sample_\(i+1)"), size: 210)
+                                            ProductCardView(image: Image("sample_\(i+1)"), size: 250)
                                         })
                                         .navigationBarHidden(true)
                                         .foregroundColor(.black)
@@ -59,42 +59,44 @@ struct ProductCardView: View {
         VStack {
             image
                 .resizable()
-                .frame(width: size, height: 210 * (size/210))
+                .scaledToFill()
+                .frame(width: size, height: 400)
                 .cornerRadius(20.0)
                 .overlay(
-                    VStack{
-                        HStack{
-                            Spacer()
-                            Text("清水寺")
-                                .font(.custom("ZenMaruGothic-Regular", size: 24.0))
-                                .foregroundStyle(Color(UIColor(hexString: "333333")))
-                        }
-                        HStack(spacing: 5){
-                            Spacer()
-                            ZStack{
+                    LinearGradient(gradient: Gradient(colors: [.clear, .clear, .white.opacity(0.3), .white.opacity(0.7), .white.opacity(0.95)]), startPoint: .top, endPoint: .bottom)
+                )
+                .overlay(
+                    ZStack(){
+                        VStack{
+                            HStack{
+                                Spacer()
+                                Text("京都")
+                                    .font(.custom("ZenMaruGothic-Regular", size: 24.0))
+                                    .foregroundStyle(Color(UIColor(hexString: "333333")))
+                            }
+                            HStack(spacing: 10){
+                                Spacer()
                                 Text("季節")
                                     .font(.custom("ZenMaruGothic-Regular", size: 12.0))
                                     .foregroundStyle(Color(UIColor(hexString: "F4F4F4")))
                                     .padding(.horizontal, 12)
-                                    .padding(.vertical, 2)
-                            }.background(Color(UIColor(hexString: "4A4A4A"))).cornerRadius(12)
-                            
-                            ZStack{
+                                    .padding(.vertical, 5)
+                                    .background(Color(UIColor(hexString: "F8714F"))).cornerRadius(12)
+                                
                                 Text("所要時間")
                                     .font(.custom("ZenMaruGothic-Regular", size: 12.0))
                                     .foregroundStyle(Color(UIColor(hexString: "F4F4F4")))
                                     .padding(.horizontal, 12)
-                                    .padding(.vertical, 2)
-                            }.background(Color(UIColor(hexString: "4A4A4A"))).cornerRadius(12)
-                        }
-                    }.padding()
+                                    .padding(.vertical, 5)
+                                    .background(Color(UIColor(hexString: "F8714F"))).cornerRadius(12)
+                                
+                            }
+                        }.padding()
+                    }
+                    
                     ,alignment: .bottomTrailing
                 )
             
-            Text("日本の観光名所である京都内でも特に人気が高い清水寺。「音羽の滝」から流れ出る清らかな水にちなんで、清水寺という名前が付いています。清水寺が誕生したのは今から1,200年以上前の平安時代。810年に天皇公認のお寺になるなど、長きにわたって発展してきました。")
-                .multilineTextAlignment(.leading)
-                .font(.custom("ZenMaruGothic-Regular", size: 10.0))
-                .foregroundStyle(Color(UIColor(hexString: "333333")))
         }
         .frame(width: size)
 //        .padding()
