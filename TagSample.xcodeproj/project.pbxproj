@@ -204,6 +204,8 @@
 				642A11182B7F0CF1003007A1 /* Assets.xcassets */,
 				6473C2F52B99630500E3535A /* Zen_Maru_Gothic */,
 				642A11172B7F0CF1003007A1 /* ContentView.swift */,
+				642A113B2B805152003007A1 /* Screens */,
+				640DF5832B85EE4C001AE2BA /* HomeView.swift */,
 				6408B0C92B95EC0F005401F9 /* API-TOKEN.csv */,
 				6408B0BD2B95EBCA005401F9 /* APIViews */,
 				642A11192B7F0CF1003007A1 /* View */,
@@ -245,7 +247,6 @@
 				642A11402B82383E003007A1 /* page2 */,
 				642A11382B8050A7003007A1 /* page1 */,
 				642A111A2B7F0CF1003007A1 /* OnBoarding.swift */,
-				640DF5832B85EE4C001AE2BA /* HomeView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -253,7 +254,6 @@
 		642A11382B8050A7003007A1 /* page1 */ = {
 			isa = PBXGroup;
 			children = (
-				642A113B2B805152003007A1 /* Screens */,
 				642A11392B8050CD003007A1 /* PageOneView.swift */,
 			);
 			path = page1;
