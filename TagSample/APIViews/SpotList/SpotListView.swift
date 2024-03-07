@@ -49,7 +49,13 @@ struct SpotListView: View {
                     ForEach(viewModel.SpotInfos, id: \.address) { info in
                         SpotView(spot: info)
                     }
-                }.padding().padding(.bottom, 70)
+                }.padding()
+                
+                HStack{ ///確定ボタン
+                    Spacer()
+                    SaveButtonView(action: {})
+                    Spacer()
+                }.padding(.top, 50).padding(.bottom, 70)
                 
                 
             }.ignoresSafeArea().navigationBarBackButtonHidden(true)
