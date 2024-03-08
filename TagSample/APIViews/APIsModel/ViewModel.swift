@@ -25,17 +25,6 @@ struct Option: Codable {
     var season: String
 }
 
-//protocol ViewModelProtocol: ObservableObject {
-//    var messages: [Message] { get }
-//    var isAsking: Bool { get set }
-//    var showAlert: Bool { get set }
-//    var errorText: String { get }
-//    func askChatGPT(text: String)
-//    var visitSpots: [Spot] { get }
-//    var foodType: String {get}
-//    var isShowModal: Bool { get set }
-//}
-
 final class ViewModel: ObservableObject {
     let searchPlace = SearchPlace()
     

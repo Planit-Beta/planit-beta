@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct HomeView: View {
+    @State var isActive: Bool = false
+    @EnvironmentObject var envData: EnvironmentData
+    
     var body: some View {
         NavigationView {
             ZStack{
@@ -37,9 +40,9 @@ struct HomeView: View {
                     
                     Spacer()
                     
-                    
-                    NavigationLink {
-                        OnBoarding()
+                    Button {
+                        isActive = true
+                        envData.isNavigationActive = $isActive
                     } label: {
                         Text("新しく旅程を生成する")
                             .font(.custom("ZenMaruGothic-Medium", size: 24.0))
@@ -48,6 +51,10 @@ struct HomeView: View {
                             .background(Color(UIColor(hexString: "F8714F")))
                             .cornerRadius(20)
                             .shadow(color: .gray, radius: 2, x: 0, y: 2)
+                    }
+                    
+                    NavigationLink(destination: OnBoarding(), isActive: $isActive) {
+                        EmptyView()
                     }
                     
                     Spacer()

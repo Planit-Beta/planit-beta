@@ -40,6 +40,7 @@
 		6473C2FF2B99630500E3535A /* ZenMaruGothic-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6473C2F92B99630500E3535A /* ZenMaruGothic-Black.ttf */; };
 		6473C3002B99630500E3535A /* ZenMaruGothic-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6473C2FA2B99630500E3535A /* ZenMaruGothic-Regular.ttf */; };
 		6473C3012B99630500E3535A /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6473C2FB2B99630500E3535A /* OFL.txt */; };
+		648198602B9AA61A003E15C4 /* EnvironmentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6481985F2B9AA61A003E15C4 /* EnvironmentData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +109,7 @@
 		6473C2F92B99630500E3535A /* ZenMaruGothic-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ZenMaruGothic-Black.ttf"; sourceTree = "<group>"; };
 		6473C2FA2B99630500E3535A /* ZenMaruGothic-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ZenMaruGothic-Regular.ttf"; sourceTree = "<group>"; };
 		6473C2FB2B99630500E3535A /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
+		6481985F2B9AA61A003E15C4 /* EnvironmentData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +206,7 @@
 				642A11182B7F0CF1003007A1 /* Assets.xcassets */,
 				6473C2F52B99630500E3535A /* Zen_Maru_Gothic */,
 				642A11172B7F0CF1003007A1 /* ContentView.swift */,
+				6481985F2B9AA61A003E15C4 /* EnvironmentData.swift */,
 				642A113B2B805152003007A1 /* Screens */,
 				640DF5832B85EE4C001AE2BA /* HomeView.swift */,
 				6408B0C92B95EC0F005401F9 /* API-TOKEN.csv */,
@@ -450,6 +453,7 @@
 				642A113E2B805152003007A1 /* HomeScreen.swift in Sources */,
 				6408B0CB2B95EC0F005401F9 /* SpotView.swift in Sources */,
 				6408B0CC2B95EC0F005401F9 /* OperateButton.swift in Sources */,
+				648198602B9AA61A003E15C4 /* EnvironmentData.swift in Sources */,
 				642A111F2B7F0CF1003007A1 /* OnBoarding.swift in Sources */,
 				642A113A2B8050CD003007A1 /* PageOneView.swift in Sources */,
 				642A113F2B805152003007A1 /* DetailScreen.swift in Sources */,

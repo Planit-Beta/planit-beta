@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SpotListView: View {
     @EnvironmentObject var viewModel: ViewModel
+    @EnvironmentObject var envData: EnvironmentData
 
     var body: some View {
         ZStack{
@@ -53,7 +54,7 @@ struct SpotListView: View {
                 
                 HStack{ ///確定ボタン
                     Spacer()
-                    SaveButtonView(action: {})
+                    SaveButtonView(action: {envData.isNavigationActive.wrappedValue = false})
                     Spacer()
                 }.padding(.top, 50).padding(.bottom, 70)
                 

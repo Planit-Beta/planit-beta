@@ -14,6 +14,7 @@ struct Comment: Codable {
     var email: String
     var body: String
 }
+
 struct PlaceResponse: Codable {
     let htmlAttributions: [String]
     let results: [Place]
@@ -26,7 +27,6 @@ struct Place: Codable, Identifiable {
     let types: [String]
     let vicinity: String
 }
-
 
 struct Root: Codable {
     let result: PlaceDetail
