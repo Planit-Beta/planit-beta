@@ -56,7 +56,7 @@ struct PageThreeView: View {
                     Spacer()
                     
                     Button {
-                        viewModel.askChatGPT(text: "# 作成項目 (\(viewModel.option.start)を出発に\(viewModel.option.time)時間分の予定を生成します。\(viewModel.option.detail1)を\(viewModel.option.withWho)過ごし、\(viewModel.option.detail2)や\(viewModel.option.detail3)スポットにも周りたいです。以下の条件を考慮し、行き先を選び、その行き先と食事を含んだ楽しめる予定を提案してください。予定の中でそこで過ごす時間も書いてください。なお、食事は昼食、夕食それぞれに関して、\(viewModel.option.foodType)を中心に選んでください。必ず出力形式を守り、レスポンスを返してくださいとして返してください。 ## 旅程の定義 - ジャンル 観光か食事か  - 場所 場所名、食事ならどこ周辺で食べるべきかだけ  - 緯度 場所で出力したところの緯度  - 経度 場所で出力したところの経度  - 時間 何時間過ごすのか")
+                        viewModel.askChatGPT(text: "##作成要件\n・\(viewModel.option.time)時間分のスケジュールを[junre](例:観光、移動、食事)/[time](例:8:00-9:30)/[location](地名、店名など)/[other](入場料、予算、移動手段など)/[description](30字以内の簡単な解説)/[lat](locationの緯度)/[lon](locationの経度)の各項目についてJSON形式で日本語で出力。\n・観光地の地理的な位置関係も考慮して、移動時間もアクティビティとして出力する。\n・食事のスケジュールは、具体的な店名を提案する \n・スケジュールのポイントについて解説を出力する。\n・解説、予算、入場料、移動手段や移動時間について不確かな情報は出力しない。\n・正確な場所や営業時間、入場料などの詳細が不明な場合は、web検索して正確で具体的な情報を出力する \n・観光地や店の緯度経度を出力する \n\n#作成項目 (\(viewModel.option.start)を出発に\(viewModel.option.time)時間分の予定を生成します。\(viewModel.option.detail1)を\(viewModel.option.withWho)過ごし、\(viewModel.option.detail2)や\(viewModel.option.detail3)スポットにも周りたいです。以下の条件を考慮し、行き先を選び、その行き先と食事を含んだ楽しめる予定を提案してください。予定の中でそこで過ごす時間も書いてください。なお、食事は昼食、夕食それぞれに関して、\(viewModel.option.foodType)を中心に選んでください。")
                     } label: {
                         Text("旅程を生成する")
                             .font(.custom("ZenMaruGothic-Medium", size: 24.0))

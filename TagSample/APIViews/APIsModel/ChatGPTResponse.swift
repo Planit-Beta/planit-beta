@@ -15,31 +15,27 @@ struct VisitSpots:Codable{
 struct Spot: Codable{
     let junre: String
     let location: String
+    let time: String
     let lat: String //緯度
     let lon: String //経度
-    let time: Double
-    
-//    enum CodingKeys: String, CodingKey {
-//        case junre = "ジャンル"
-//        case location = "場所"
-//        case time = "時間"
-//    }
+    let other: String
+    let description: String
 }
 
 struct SpotInfo: Decodable{
     let junre: String
+    let time: String
     let location: String
     let lat: String //緯度
     let lon: String //経度
-    let time: Double
+    let other: String
+    let description: String
     
     let placeId: String
     let placeName: String
     let address: String
     let photoReference: String
     let image: String
-    
-    let description: String
     
 }
 

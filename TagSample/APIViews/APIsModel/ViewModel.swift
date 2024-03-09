@@ -49,7 +49,7 @@ final class ViewModel: ObservableObject {
     private var token: String = ""
     
     private let setting: Message? = Message(
-        content: "#出力形式データは次の形式で返してください。{ \"out\":[ {\"junre\": 文字列, \"location\": 文字列, \"lat\": 文字列, \"lon\": 文字列, \"time\": 数字}, {\"junre\": 文字列, \"location\": 文字列, \"lat\": 文字列, \"lon\": 文字列, \"time\": 数字}, {\"junre\": 文字列, \"location\": 文字列, \"lat\": 文字列, \"lon\": 文字列, \"time\": 数字}, ...]}",
+        content: "#出力形式{ \"out\":[ {\"junre\": 文字列, \"time\": 文字列, \"location\": 文字列, \"other\": 文字列, \"description\": 文字列, \"lat\": 文字列, \"lon\": 文字列}, {\"junre\": 文字列, \"time\": 文字列, \"location\": 文字列, \"other\": 文字列, \"description\": 文字列, \"lat\": 文字列, \"lon\": 文字列} ,{\"junre\": 文字列, \"time\": 文字列,  \"location\": 文字列, \"other\": 文字列, \"description\": 文字列, \"lat\": 文字列, \"lon\": 文字列}, ...]}",
         role: .system
     )
     
@@ -146,13 +146,13 @@ extension ViewModel {
                             if $0.junre == "観光" {
                                 self.searchPlace.get_placeID(place_name: $0.location, latitude: $0.lat, longitude: $0.lon)
                                 sleep(3)
-                                let spot = SpotInfo(junre: $0.junre, location: $0.location, lat: $0.lat, lon: $0.lat, time: $0.time, placeId: self.searchPlace.placeId, placeName: self.searchPlace.placeName, address: self.searchPlace.address, photoReference: self.searchPlace.photoReference, image: self.searchPlace.image, description: self.searchPlace.description)
+                                let spot = SpotInfo(junre: $0.junre, time: $0.time, location: $0.location, lat: $0.lat, lon: $0.lon, other: $0.other, description: $0.description, placeId: self.searchPlace.placeId, placeName: self.searchPlace.placeName, address: self.searchPlace.address, photoReference: self.searchPlace.photoReference, image: self.searchPlace.image)
                                 self.SpotInfos.append(spot)
                             }
                                 else if $0.junre.contains("食") {
                                 self.searchPlace.get_placeID(place_name: foodType, latitude: $0.lat, longitude: $0.lon)
                                 sleep(3)
-                                    let spot = SpotInfo(junre: $0.junre, location: $0.location, lat: $0.lat, lon: $0.lat, time: $0.time, placeId: self.searchPlace.placeId, placeName: self.searchPlace.placeName, address: self.searchPlace.address, photoReference: self.searchPlace.photoReference, image: self.searchPlace.image, description: self.searchPlace.description)
+                                    let spot = SpotInfo(junre: $0.junre, time: $0.time, location: $0.location, lat: $0.lat, lon: $0.lon, other: $0.other, description: $0.description, placeId: self.searchPlace.placeId, placeName: self.searchPlace.placeName, address: self.searchPlace.address, photoReference: self.searchPlace.photoReference, image: self.searchPlace.image)
                                     self.SpotInfos.append(spot)
                                     print(self.SpotInfos)
                             }
