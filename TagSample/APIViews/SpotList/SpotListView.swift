@@ -33,7 +33,7 @@ struct SpotListView: View {
                 
                 VStack(spacing: 30){
                     HStack{ ///日付
-                        Text("2024.02.18").font(.custom("", size: 32))
+                        Text("2024.02.18").font(.custom("ZenMaruGothic-Medium", size: 32))
                         Spacer()
                     }
                     HStack{ ///　タグ４つ
