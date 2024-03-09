@@ -41,6 +41,7 @@
 		6473C3002B99630500E3535A /* ZenMaruGothic-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6473C2FA2B99630500E3535A /* ZenMaruGothic-Regular.ttf */; };
 		6473C3012B99630500E3535A /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6473C2FB2B99630500E3535A /* OFL.txt */; };
 		648198602B9AA61A003E15C4 /* EnvironmentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6481985F2B9AA61A003E15C4 /* EnvironmentData.swift */; };
+		648198622B9CAE61003E15C4 /* TransportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648198612B9CAE61003E15C4 /* TransportView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +111,7 @@
 		6473C2FA2B99630500E3535A /* ZenMaruGothic-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ZenMaruGothic-Regular.ttf"; sourceTree = "<group>"; };
 		6473C2FB2B99630500E3535A /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
 		6481985F2B9AA61A003E15C4 /* EnvironmentData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentData.swift; sourceTree = "<group>"; };
+		648198612B9CAE61003E15C4 /* TransportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +166,7 @@
 				6408B0C12B95EC0F005401F9 /* OperateButton.swift */,
 				6473C2E12B976C3400E3535A /* OptionTagView.swift */,
 				6473C2F32B9949E500E3535A /* SaveButtonView.swift */,
+				648198612B9CAE61003E15C4 /* TransportView.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -447,6 +450,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6408B0D12B95EC0F005401F9 /* ChatGPTResponse.swift in Sources */,
+				648198622B9CAE61003E15C4 /* TransportView.swift in Sources */,
 				6408B0CD2B95EC0F005401F9 /* SpotListView.swift in Sources */,
 				6408B0D42B95EC0F005401F9 /* ProgressingView.swift in Sources */,
 				642A10EA2B7F06BC003007A1 /* TagSampleApp.swift in Sources */,

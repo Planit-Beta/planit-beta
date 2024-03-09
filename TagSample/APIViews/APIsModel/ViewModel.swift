@@ -148,13 +148,16 @@ extension ViewModel {
                                 sleep(3)
                                 let spot = SpotInfo(junre: $0.junre, time: $0.time, location: $0.location, lat: $0.lat, lon: $0.lon, other: $0.other, description: $0.description, placeId: self.searchPlace.placeId, placeName: self.searchPlace.placeName, address: self.searchPlace.address, photoReference: self.searchPlace.photoReference, image: self.searchPlace.image)
                                 self.SpotInfos.append(spot)
-                            }
-                                else if $0.junre.contains("食") {
+                            } else if $0.junre.contains("食") {
                                 self.searchPlace.get_placeID(place_name: foodType, latitude: $0.lat, longitude: $0.lon)
                                 sleep(3)
                                     let spot = SpotInfo(junre: $0.junre, time: $0.time, location: $0.location, lat: $0.lat, lon: $0.lon, other: $0.other, description: $0.description, placeId: self.searchPlace.placeId, placeName: self.searchPlace.placeName, address: self.searchPlace.address, photoReference: self.searchPlace.photoReference, image: self.searchPlace.image)
                                     self.SpotInfos.append(spot)
                                     print(self.SpotInfos)
+                            } else {
+                                let spot = SpotInfo(junre: $0.junre, time: $0.time, location: $0.location, lat: $0.lat, lon: $0.lon, other: $0.other, description: $0.description, placeId: "", placeName: "", address: "", photoReference: "", image: "")
+                                self.SpotInfos.append(spot)
+//                                print(self.SpotInfos)
                             }
                         }
                         
