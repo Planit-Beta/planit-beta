@@ -72,6 +72,15 @@ class SearchPlace:ObservableObject{
         self.radius = "100"//めーとる
     }
     
+    func reset() {
+        placeId = ""
+        placeName = ""
+        address = ""
+        photoReference = ""
+        image = ""
+        description = ""
+    }
+    
     func loadCSV(fileName: String) -> [String] {
         var csvArray: [String] = []
         let csvBundle = Bundle.main.path(forResource: fileName, ofType: "csv")!
@@ -90,8 +99,6 @@ class SearchPlace:ObservableObject{
         var urlComponents = URLComponents(string: "https://maps.googleapis.com/maps/api/place/nearbysearch/json")!
         
         let location = "\(latitude),\(longitude)"
-//        print(location)
-//        print(place_name)
         
         urlComponents.queryItems = [
             URLQueryItem(name: "language", value: "ja"),
@@ -101,7 +108,6 @@ class SearchPlace:ObservableObject{
             URLQueryItem(name: "key", value: api_key)
         ]
         let request = URLRequest(url: urlComponents.url!)
-//        print(request)
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
@@ -147,8 +153,6 @@ class SearchPlace:ObservableObject{
     func place_detail(place_id:String ,fields:String){
         var urlComponents = URLComponents(string: "https://maps.googleapis.com/maps/api/place/details/json")!
         
-//        print("place-ID: \(self.placeId)")
-        
         urlComponents.queryItems = [
             URLQueryItem(name: "language", value: "ja"),
             URLQueryItem(name: "place_id", value: place_id),
@@ -179,10 +183,6 @@ class SearchPlace:ObservableObject{
                 if let photos = placeDetail.photos {
                     self.photoReference = photos[0].photoReference
                     self.place_image(photoReference: photos[0].photoReference)
-//                    for photo in photos {
-//                        let photoReference = photo.photoReference
-//                        print("Photo Reference: \(photoReference)")
-//                    }
                 }
                 
                 
@@ -190,21 +190,21 @@ class SearchPlace:ObservableObject{
                 print("Place Name: \(placeName)")
                 self.placeName = placeDetail.name
                 
-                if let reviews = placeDetail.reviews { ///レビュー情報
-                    self.description = reviews[0].text
-                    print(self.description)
-//                    for review in reviews {
-//                       let authorName = review.authorName
-//                       let rating = review.rating
-//                       let relativeTime = review.relativeTimeDescription
-//                       let text = review.text
-//
-//                       print("authorName \(authorName), Rating: \(rating), Time: \(relativeTime)")
-//                       print("Text: \(text)")
-//                       
-//                       print("--------------------")
-//                   }
-               }
+//                if let reviews = placeDetail.reviews { ///レビュー情報
+//                    self.description = reviews[0].text
+//                    print(self.description)
+////                    for review in reviews {
+////                       let authorName = review.authorName
+////                       let rating = review.rating
+////                       let relativeTime = review.relativeTimeDescription
+////                       let text = review.text
+////
+////                       print("authorName \(authorName), Rating: \(rating), Time: \(relativeTime)")
+////                       print("Text: \(text)")
+////                       
+////                       print("--------------------")
+////                   }
+//               }
                 
 //                if let reviews = placeDetail.reviews { ///レビュー情報
 //                   for review in reviews {
@@ -246,25 +246,25 @@ class SearchPlace:ObservableObject{
         
         
         
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let error = error {
-                print("Error: \(error.localizedDescription)")
-                return
-            }
-            
-            guard let data = data else {
-                print("Invalid data")
-                return
-            }
-            
-            print(data)
-            if let image = UIImage(data: data) {
-                        // ここでがぞうしょり〜〜
-                        print("Fetched photo successfully")
-                    } else {
-                        print("Invalid photo data")
-                    }
-        }.resume()
+//        URLSession.shared.dataTask(with: request) { (data, response, error) in
+//            if let error = error {
+//                print("Error: \(error.localizedDescription)")
+//                return
+//            }
+//            
+//            guard let data = data else {
+//                print("Invalid data")
+//                return
+//            }
+//            
+//            print(data)
+//            if let image = UIImage(data: data) {
+//                        // ここでがぞうしょり〜〜
+//                        print("Fetched photo successfully")
+//                    } else {
+//                        print("Invalid photo data")
+//                    }
+//        }.resume()
         
     }
 }

@@ -16,7 +16,7 @@ struct SpotListView: View {
             Color(UIColor(hexString: "FDF5F3"))
                 .ignoresSafeArea()
             ScrollView{
-                AsyncImage(url: URL(string: viewModel.SpotInfos[0].image)) { image in ///メイン画像
+                AsyncImage(url: URL(string: viewModel.SpotInfos[0].image == "" ? viewModel.SpotInfos[1].image : viewModel.SpotInfos[0].image)) { image in ///メイン画像
                     image.resizable().scaledToFill().frame(width: UIScreen.main.bounds.width, height: 300)
                     
                 } placeholder: {
@@ -47,9 +47,12 @@ struct SpotListView: View {
                 }.padding().padding(.horizontal)
                 
                 VStack(spacing: 30){ ///旅程リスト
-                    ForEach(viewModel.SpotInfos, id: \.address) { info in
-                        if info.junre.contains("移動"){
-                            TransportView(spot: info)
+                    ForEach(viewModel.SpotInfos, id: \.time) { info in
+                        
+                        if info.junre.contains("移動") {
+                            TransportView(spot: info).onAppear(perform: {
+                                print("info: \(info)")
+                            })
                         } else {
                             SpotView(spot: info)
                         }
