@@ -153,8 +153,8 @@
 		6408B0BE2B95EC0F005401F9 /* SpotList */ = {
 			isa = PBXGroup;
 			children = (
-				6408B0BF2B95EC0F005401F9 /* components */,
 				6408B0C22B95EC0F005401F9 /* SpotListView.swift */,
+				6408B0BF2B95EC0F005401F9 /* components */,
 			);
 			path = SpotList;
 			sourceTree = "<group>";

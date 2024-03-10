@@ -48,7 +48,7 @@ struct SpotListView: View {
                 
                 VStack(spacing: 30){ ///旅程リスト
                     ForEach(viewModel.SpotInfos, id: \.address) { info in
-                        if info.junre == "移動"{
+                        if info.junre.contains("移動"){
                             TransportView(spot: info)
                         } else {
                             SpotView(spot: info)

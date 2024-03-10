@@ -26,7 +26,7 @@ struct SpotView: View {
             VStack(alignment: .leading, spacing: 8){
                 HStack{
                     VStack(alignment: .leading, spacing: 5){
-                        Text(spot.placeName)
+                        Text(spot.location)
                             .font(.custom("ZenMaruGothic-Regular", size: 24)).foregroundStyle(Color(UIColor(hexString: "333333")))
                         
                         HStack{
