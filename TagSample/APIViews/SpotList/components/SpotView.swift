@@ -10,6 +10,9 @@ import SwiftUI
 struct SpotView: View {
     var spot: SpotInfo
     
+    let sampleImage: [String] = ["https://images.unsplash.com/photo-1493780474015-ba834fd0ce2f?q=80&w=2642&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "https://images.unsplash.com/photo-1505069446780-4ef442b5207f?q=80&w=2253&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "https://plus.unsplash.com/premium_photo-1661371927364-e3aec9079c66?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "https://images.unsplash.com/photo-1522623349500-de37a56ea2a5?q=80&w=2674&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    ]
+    
     var body: some View {
         HStack(alignment: .top, spacing: 0){
             VStack{
@@ -53,7 +56,7 @@ struct SpotView: View {
                     Spacer()
                     
                     VStack{
-                        AsyncImage(url: URL(string: spot.image)) { image in
+                        AsyncImage(url: URL(string: spot.image == "" ? sampleImage.randomElement()! : spot.image)) { image in
                                 image.resizable()
                                 
                             } placeholder: {
