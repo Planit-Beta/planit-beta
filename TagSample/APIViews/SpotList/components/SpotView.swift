@@ -7,11 +7,12 @@
 
 import SwiftUI
 
+let sampleImage: [String] = ["https://images.unsplash.com/photo-1493780474015-ba834fd0ce2f?q=80&w=2642&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "https://images.unsplash.com/photo-1505069446780-4ef442b5207f?q=80&w=2253&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "https://plus.unsplash.com/premium_photo-1661371927364-e3aec9079c66?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "https://images.unsplash.com/photo-1522623349500-de37a56ea2a5?q=80&w=2674&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+]
+
 struct SpotView: View {
     var spot: SpotInfo
-    
-    let sampleImage: [String] = ["https://images.unsplash.com/photo-1493780474015-ba834fd0ce2f?q=80&w=2642&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "https://images.unsplash.com/photo-1505069446780-4ef442b5207f?q=80&w=2253&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "https://plus.unsplash.com/premium_photo-1661371927364-e3aec9079c66?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "https://images.unsplash.com/photo-1522623349500-de37a56ea2a5?q=80&w=2674&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-    ]
+    var sampleImage: [String]
     
     var body: some View {
         HStack(alignment: .top, spacing: 0){
@@ -33,7 +34,7 @@ struct SpotView: View {
                             .font(.custom("ZenMaruGothic-Regular", size: 24)).foregroundStyle(Color(UIColor(hexString: "333333")))
                         
                         HStack{
-                            Text("人気").font(.custom("ZenMaruGothic-Regular", size: 14.0))
+                            Text(spot.junre).font(.custom("ZenMaruGothic-Regular", size: 14.0))
                                 .padding(5)
                                 .padding(.horizontal, 10)
                                 .foregroundStyle(Color(UIColor(hexString: "333333")))
@@ -95,5 +96,5 @@ struct SpotView: View {
 }
 
 #Preview {
-    SpotView(spot: SpotInfo(junre: "食事", time: "11:30-13:00", location: "うどん 釜たか", lat: "34.674473", lon: "135.496462", other: "予算: 1000円程度", description: "大阪で評判の美味しいうどん専門店", placeId: "ChIJybE9OAXnAGARqzRawgI5pRE", placeName: "和顔", address: "大阪市西区北堀江１丁目６−１２ 四ッ橋中央ビル 1F", photoReference: "ATplDJbSQchChRseO69RZjJfmMDuaz799wxingOxeGzP7KltsviOotFq6L6XOrSeeH1Gd9VVtduOHu0X32RoMX3-48i-PdJQlZVVnbjBrbMYaiTjljT_DCxF52W9aqfQTgB7JdkriDL7A7qLfft11KQ7tbvG4lOBuuQD3MbLuRzcyzrt-ZXp", image: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=ATplDJbSQchChRseO69RZjJfmMDuaz799wxingOxeGzP7KltsviOotFq6L6XOrSeeH1Gd9VVtduOHu0X32RoMX3-48i-PdJQlZVVnbjBrbMYaiTjljT_DCxF52W9aqfQTgB7JdkriDL7A7qLfft11KQ7tbvG4lOBuuQD3MbLuRzcyzrt-ZXp&key=AIzaSyDCG_auCKmnxlyZUSgSI3TsYUFiWqIypWk"))
+    SpotView(spot: SpotInfo(junre: "食事", time: "11:30-13:00", location: "うどん 釜たか島や", lat: "34.674473", lon: "135.496462", other: "予算: 1000円程度", description: "大阪で評判の美味しいうどん専門店", placeId: "ChIJybE9OAXnAGARqzRawgI5pRE", placeName: "和顔", address: "大阪市西区北堀江１丁目６−１２ 四ッ橋中央ビル 1F", photoReference: "ATplDJbSQchChRseO69RZjJfmMDuaz799wxingOxeGzP7KltsviOotFq6L6XOrSeeH1Gd9VVtduOHu0X32RoMX3-48i-PdJQlZVVnbjBrbMYaiTjljT_DCxF52W9aqfQTgB7JdkriDL7A7qLfft11KQ7tbvG4lOBuuQD3MbLuRzcyzrt-ZXp", image: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=ATplDJbSQchChRseO69RZjJfmMDuaz799wxingOxeGzP7KltsviOotFq6L6XOrSeeH1Gd9VVtduOHu0X32RoMX3-48i-PdJQlZVVnbjBrbMYaiTjljT_DCxF52W9aqfQTgB7JdkriDL7A7qLfft11KQ7tbvG4lOBuuQD3MbLuRzcyzrt-ZXp&key=AIzaSyDCG_auCKmnxlyZUSgSI3TsYUFiWqIypWk"), sampleImage: sampleImage)
 }

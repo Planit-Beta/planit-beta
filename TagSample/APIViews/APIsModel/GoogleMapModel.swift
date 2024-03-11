@@ -69,7 +69,7 @@ class SearchPlace:ObservableObject{
         _APIArray = State(initialValue: self.csvArray[1].components(separatedBy: ","))
 //        print(APIArray[1])
         self.api_key = APIArray[1]
-        self.radius = "100"//めーとる
+        self.radius = "1000"//めーとる
     }
     
     func reset() {

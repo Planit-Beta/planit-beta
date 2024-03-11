@@ -47,7 +47,7 @@ struct DetailScreen: View {
                 
                 VStack(spacing: 30){ ///旅程リスト
                     ForEach(spotInfo, id: \.address) { info in
-                        SpotView(spot: info)
+                        SpotView(spot: info, sampleImage: [""])
                     }
                 }.padding().padding(.bottom, 70)
                 

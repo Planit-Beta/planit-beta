@@ -85,7 +85,7 @@ final class ViewModel: ObservableObject {
     private func responseSuccess(data: ChatGPTResponse) {
         guard let message = data.choices.first?.message else { return }
         add(text: message.content, role: .assistant)
-        sleep(5)
+        sleep(10)
 //        isAsking = false
         isShowModal = true
     }
