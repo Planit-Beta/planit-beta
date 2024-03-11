@@ -11,6 +11,15 @@ struct SpotListView: View {
     @EnvironmentObject var viewModel: ViewModel
     @EnvironmentObject var envData: EnvironmentData
     
+    @State var nowDate = Date()
+    @State var dateText = ""
+    private let dateFormatter = DateFormatter()
+    
+    init() {
+        dateFormatter.dateFormat = "YYYY.MM.dd"
+        dateFormatter.locale = Locale(identifier: "ja_jp")
+    }
+    
     let sampleImage: [String] = ["https://images.unsplash.com/photo-1493780474015-ba834fd0ce2f?q=80&w=2642&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "https://images.unsplash.com/photo-1505069446780-4ef442b5207f?q=80&w=2253&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "https://plus.unsplash.com/premium_photo-1661371927364-e3aec9079c66?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "https://images.unsplash.com/photo-1522623349500-de37a56ea2a5?q=80&w=2674&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     ]
 
@@ -36,7 +45,7 @@ struct SpotListView: View {
                 
                 VStack(spacing: 30){
                     HStack{ ///日付
-                        Text("2024.02.18").font(.custom("ZenMaruGothic-Medium", size: 32))
+                        Text(dateText).font(.custom("ZenMaruGothic-Medium", size: 32))
                         Spacer()
                     }
                     HStack{ ///　タグ４つ
@@ -71,6 +80,9 @@ struct SpotListView: View {
                 
                 
             }.ignoresSafeArea().navigationBarBackButtonHidden(true)
+        }.onAppear {
+            self.nowDate = Date()
+            dateText = (dateFormatter.string(from: nowDate))
         }
     }
 }
