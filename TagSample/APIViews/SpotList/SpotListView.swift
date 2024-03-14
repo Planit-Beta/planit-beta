@@ -31,21 +31,22 @@ struct SpotListView: View {
             Color(UIColor(hexString: "FDF5F3"))
                 .ignoresSafeArea()
             ScrollView{
-                
-                AsyncImage(url: URL(string: (viewModel.SpotInfos[0].image == "" && viewModel.SpotInfos[1].image == "") ? sampleImage[0] : (viewModel.SpotInfos[0].image == "") ? viewModel.SpotInfos[1].image : viewModel.SpotInfos[0].image)) { image in ///メイン画像
-                    image.resizable().scaledToFill().frame(width: UIScreen.main.bounds.width, height: 300)
-                    
-                } placeholder: {
-                    ProgressView()
-                }
-                .clipShape(
-                    .rect(
-                        topLeadingRadius: 0,
-                        bottomLeadingRadius: 40,
-                        bottomTrailingRadius: 0,
-                        topTrailingRadius: 0
+                if viewModel.SpotInfos.count != 0 {
+                    AsyncImage(url: URL(string: (viewModel.SpotInfos[0].image == "" && viewModel.SpotInfos[1].image == "") ? sampleImage[0] : (viewModel.SpotInfos[0].image == "") ? viewModel.SpotInfos[1].image : viewModel.SpotInfos[0].image)) { image in ///メイン画像
+                        image.resizable().scaledToFill().frame(width: UIScreen.main.bounds.width, height: 300)
+                        
+                    } placeholder: {
+                        ProgressView()
+                    }
+                    .clipShape(
+                        .rect(
+                            topLeadingRadius: 0,
+                            bottomLeadingRadius: 40,
+                            bottomTrailingRadius: 0,
+                            topTrailingRadius: 0
+                        )
                     )
-                )
+                }
                 
                 VStack(spacing: 30){
                     HStack{ ///日付
