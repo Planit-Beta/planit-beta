@@ -31,7 +31,8 @@ struct SpotListView: View {
             Color(UIColor(hexString: "FDF5F3"))
                 .ignoresSafeArea()
             ScrollView{
-                AsyncImage(url: URL(string: viewModel.SpotInfos[0].image == "" && viewModel.SpotInfos[1].image == "" ? sampleImage[0] : viewModel.SpotInfos[0].image == "" ? viewModel.SpotInfos[1].image : viewModel.SpotInfos[0].image)) { image in ///メイン画像
+                
+                AsyncImage(url: URL(string: (viewModel.SpotInfos[0].image == "" && viewModel.SpotInfos[1].image == "") ? sampleImage[0] : (viewModel.SpotInfos[0].image == "") ? viewModel.SpotInfos[1].image : viewModel.SpotInfos[0].image)) { image in ///メイン画像
                     image.resizable().scaledToFill().frame(width: UIScreen.main.bounds.width, height: 300)
                     
                 } placeholder: {
@@ -87,6 +88,9 @@ struct SpotListView: View {
             self.nowDate = Date()
             dateText = (dateFormatter.string(from: nowDate))
         }
+        .onDisappear(perform: {
+            viewModel.reset()
+        })
     }
 }
 

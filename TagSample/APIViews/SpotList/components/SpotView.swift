@@ -88,10 +88,6 @@ struct SpotView: View {
             .compositingGroup()
             .shadow(color: .black.opacity(0.25), radius: 3, x: 1, y: 1)
         }
-//        .onAppear(perform: {
-//            print("")
-//            print("spot: \(spot)")
-//        })
     }
 }
 

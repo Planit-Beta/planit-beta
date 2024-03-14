@@ -50,9 +50,6 @@ struct DetailScreen: View {
                         SpotView(spot: info, sampleImage: [""])
                     }
                 }.padding().padding(.bottom, 70)
-                
-                
-                
             }
         }.ignoresSafeArea().navigationBarBackButtonHidden(true).toolbarBackground(.hidden, for: .navigationBar)
         .navigationBarItems(leading: BackButton(action: {presentationMode.wrappedValue.dismiss()}), trailing: Image("threeDot"))

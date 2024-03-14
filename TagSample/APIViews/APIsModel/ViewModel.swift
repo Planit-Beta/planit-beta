@@ -28,7 +28,7 @@ struct Option: Codable {
 final class ViewModel: ObservableObject {
     let searchPlace = SearchPlace()
     
-    var csvArray: [String] = []
+    var csvArray: [String] = []/// apikey
     @State var APIArray: [String] = []
     
     @Published public var messages: [Message] = []
@@ -59,6 +59,22 @@ final class ViewModel: ObservableObject {
         _APIArray = State(initialValue: self.csvArray[0].components(separatedBy: ","))
         print(APIArray[1])
         self.token = APIArray[1]
+    }
+    
+    func reset() {
+        messages = []
+        isAsking = false
+        errorText = ""
+        showAlert = false
+        visitSpots = []
+        foodType = "和食"
+        SpotInfos = []
+        
+        isShowModal = false
+        
+        option = Option(start: "", time: "0", withWho: "", detail1: "", detail2: "インスタ映え", detail3: "人気", foodType: "", season: "")
+        
+        selectedOptions = ["インスタ映え", "人気"]
     }
     
     func loadCSV(fileName: String) -> [String] {
