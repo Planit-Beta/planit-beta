@@ -13,11 +13,10 @@ struct SplashPage3: View {
             Color(UIColor(hexString: "FDF5F3")).ignoresSafeArea()
             
             VStack(spacing: 40){
-//                Spacer()
                 Image(decorative: "planit_logo")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 180)
+                    .frame(width: 230)
                 VStack(spacing: 10){
                     Text("あなたもPlanitを使って").foregroundStyle(.black).font(.custom("ZenMaruGothic-Medium", size: 16))
                     Text("最高の休日を").foregroundStyle(.black).font(.custom("ZenMaruGothic-Medium", size: 16))
@@ -29,7 +28,6 @@ struct SplashPage3: View {
                     Divider().frame(width: 250).background(.black)
                     ButtonView(action: {}, backColor: "F8714F", textColor: "FFFFFF", text: "新規登録")
                 }
-                
             }
         }
     }

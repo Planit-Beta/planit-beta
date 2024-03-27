@@ -22,7 +22,6 @@ struct ButtonView: View {
                 .cornerRadius(20)
                 .shadow(color: .gray, radius: 2, x: 0, y: 2)
         }
-//        .padding(.vertical)
     }
 }
 
