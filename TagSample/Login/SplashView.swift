@@ -36,7 +36,7 @@ struct SplashView: View {
                         } else if selection == 2 {
                             SplashPage2()
                         } else {
-//                               PageThreeView()
+                            SplashPage3()
                         }
                     }
                     .padding()

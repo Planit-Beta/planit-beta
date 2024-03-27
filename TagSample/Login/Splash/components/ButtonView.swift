@@ -8,11 +8,24 @@
 import SwiftUI
 
 struct ButtonView: View {
+    let action: () -> Void
+    let backColor: String
+    let textColor: String
+    let text: String
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button(action: action){
+            Text(text)
+                .font(.custom("ZenMaruGothic-Medium", size: 14.0))
+                .foregroundStyle(Color(UIColor(hexString: textColor)))
+                .frame(width: 180, height: 40)
+                .background(Color(UIColor(hexString: backColor)))
+                .cornerRadius(20)
+                .shadow(color: .gray, radius: 2, x: 0, y: 2)
+        }
+//        .padding(.vertical)
     }
 }
 
 #Preview {
-    ButtonView()
+    ButtonView(action: {}, backColor: "F8714F", textColor: "FFFFFF", text: "ログイン")
 }
