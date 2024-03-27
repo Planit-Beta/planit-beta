@@ -19,41 +19,28 @@ struct SplashView: View {
     
     @State var selection = 1
     
+    @State var accentColor: String = "FDF5F3"
+    @State var subColor: String = "FFB3A0"
+    
     var body: some View {
         NavigationView{
             ZStack(alignment: .bottom){
                 Color(UIColor(hexString: "FDF5F3")).ignoresSafeArea()
                 VStack(spacing: 10){
-//                    VStack(alignment: .leading){ ///画面上部のバー
-//                        Text("新しく旅程を作成する").padding().font(.custom("ZenMaruGothic-Medium", size: 20.0)).foregroundStyle(Color(UIColor(hexString: "333333")))
-//                        ProgressView(value: min(max(progressVal, 0.0), 100), total: 100)
-//                            .animation(.easeInOut, value: progressVal)//バーのアニメーション
-//                            .tint(Color(UIColor(hexString: "333333")))//バーの色
-//                            .scaleEffect(x: 1, y: 0.5)//バーの高さ
-//                    }
                     
                     Spacer()
                     
-//                    ScrollView(showsIndicators: false){
-                        VStack{
-                            if selection == 1 {
-                                SplashPage1()
-//                                PageOneView(inputName: $inputName, inputDestination: $inputDestination)
-                            } else if selection == 2 {
-//                                PageTwoView()
-                                
-                            } else {
-//                                PageThreeView()
-                                
-                            }
-                            
-                            
+                    VStack{
+                        if selection == 1 {
+                            SplashPage1()
+                        } else if selection == 2 {
+                            SplashPage2()
+                        } else {
+//                               PageThreeView()
                         }
-                        .padding()
-                        .animation(.easeInOut, value: selection)
-//                    }
-                    
-                    
+                    }
+                    .padding()
+                    .animation(.easeInOut, value: selection)
                 }
                 HStack(spacing: 50) {///画面下部の矢印ボタン
                     Spacer()
@@ -61,9 +48,13 @@ struct SplashView: View {
                         backToPriveousPage()
                         progressVal -= 50
                         selection -= 1
+                        if selection != 3 {
+                            accentColor = "FDF5F3"
+                            subColor = "FFB3A0"
+                        }
                     } label: {
                         Image(systemName: "arrowtriangle.backward.fill")
-                            .foregroundColor(Color(UIColor(hexString: "FDF5F3")))
+                            .foregroundColor(Color(UIColor(hexString: accentColor)))
                             .font(.system(size: 50))
                         
                     }
@@ -75,7 +66,7 @@ struct SplashView: View {
                         ForEach(0..<3, id: \.self) { index in
                             
                             Circle()
-                                .fill(Color(UIColor(hexString: index == selection-1 ? "FDF5F3" : "FFB3A0")))
+                                .fill(Color(UIColor(hexString: index == selection-1 ? accentColor : subColor)))
                                 .frame(width: 12, height: 12)
                                 .scaleEffect(index == selection-1 ? 1.2 : 1)
                                 .animation(.easeInOut, value: selection)
@@ -87,9 +78,14 @@ struct SplashView: View {
                         goToNextPage()
                         progressVal += 50
                         selection += 1
+                        print(selection)
+                        if selection == 3 {
+                            accentColor = "F8714F"
+                            subColor = "D9D9D9"
+                        }
                     } label: {
                         Image(systemName: "arrowtriangle.forward.fill")
-                            .foregroundColor(Color(UIColor(hexString: "FDF5F3")))
+                            .foregroundColor(Color(UIColor(hexString: accentColor)))
                             .font(.system(size: 50))
                         
                     }

@@ -1,5 +1,5 @@
 //
-//  SplashPage1.swift
+//  SplashPage2.swift
 //  TagSample
 //
 //  Created by 濱野遥斗 on 2024/03/27.
@@ -7,8 +7,7 @@
 
 import SwiftUI
 
-
-struct SplashPage1: View {
+struct SplashPage2: View {
 //    @EnvironmentObject var viewModel: ViewModel
     @State var progressVal = 0.0
     
@@ -20,15 +19,15 @@ struct SplashPage1: View {
                 
                 Circle().frame(width: 780).offset(CGSize(width: 0, height: -UIScreen.main.bounds.width/2 - 20)).foregroundColor(Color(UIColor(hexString: "FDF5F3")))
                 
-                Image(decorative: "splash")
+                Image(decorative: "loadingImg")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 180)
+                    .frame(width: 128)
                 
                 VStack(spacing: 10){
                     Spacer()
-                    Text("予定生成アプリ").foregroundStyle(.white).font(.custom("ZenMaruGothic-Medium", size: 16))
-                    Text("Planitへようこそ！").foregroundStyle(.white).font(.custom("ZenMaruGothic-Medium", size: 16))
+                    Text("あなたに合う最適な予定を").foregroundStyle(.white).font(.custom("ZenMaruGothic-Medium", size: 16))
+                    Text("AI生成によって提案します！").foregroundStyle(.white).font(.custom("ZenMaruGothic-Medium", size: 16))
                     
                 }.offset(CGSize(width: 0, height: -UIScreen.main.bounds.width/1.5/2))
             }
@@ -36,5 +35,6 @@ struct SplashPage1: View {
 }
 
 #Preview {
-    SplashPage1()
+    SplashPage2()
 }
+
