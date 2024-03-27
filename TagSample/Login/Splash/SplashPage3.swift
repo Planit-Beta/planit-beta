@@ -25,7 +25,7 @@ struct SplashPage3: View {
                 VStack(spacing: 25){
                     ButtonView(action: {}, backColor: "FDF5F3", textColor: "333333", text: "ログイン")
                     ButtonView(action: {}, backColor: "FDF5F3", textColor: "333333", text: "Googleでログイン")
-                    Divider().frame(width: 250).background(.black)
+                    Divider().frame(width: 240, height: 1).background(Color(UIColor(hexString: "333333")))
                     ButtonView(action: {}, backColor: "F8714F", textColor: "FFFFFF", text: "新規登録")
                 }
             }
