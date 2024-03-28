@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SplashPage3: View {
     @State var isMoveToLogin: Bool = false
+    @State var isMoveToRegister: Bool = false
     
     var body: some View {
         ZStack{
@@ -28,12 +29,17 @@ struct SplashPage3: View {
                     ButtonView(action: {isMoveToLogin = true}, backColor: "FDF5F3", textColor: "333333", text: "ログイン")
                     ButtonView(action: {}, backColor: "FDF5F3", textColor: "333333", text: "Googleでログイン")
                     Divider().frame(width: 240, height: 1).background(Color(UIColor(hexString: "333333")))
-                    ButtonView(action: {}, backColor: "F8714F", textColor: "FFFFFF", text: "新規登録")
+                    ButtonView(action: {isMoveToRegister = true}, backColor: "F8714F", textColor: "FFFFFF", text: "新規登録")
                 }
             }
             NavigationLink(
                 destination: LoginView(),
                 isActive: $isMoveToLogin,
+                label: { EmptyView() }
+            ).hidden()
+            NavigationLink(
+                destination: RegisterView(),
+                isActive: $isMoveToRegister,
                 label: { EmptyView() }
             ).hidden()
         }
