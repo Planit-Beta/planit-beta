@@ -49,6 +49,7 @@
 		64DD91B32BB45FAA00237137 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DD91B22BB45FAA00237137 /* ButtonView.swift */; };
 		64DD91B52BB4635000237137 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DD91B42BB4635000237137 /* LoginView.swift */; };
 		64DD91B72BB5B7FB00237137 /* CustomBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DD91B62BB5B7FB00237137 /* CustomBackButton.swift */; };
+		64DD91B92BB5BC0900237137 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DD91B82BB5BC0900237137 /* RegisterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +127,7 @@
 		64DD91B22BB45FAA00237137 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		64DD91B42BB4635000237137 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		64DD91B62BB5B7FB00237137 /* CustomBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackButton.swift; sourceTree = "<group>"; };
+		64DD91B82BB5BC0900237137 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -324,6 +326,7 @@
 			children = (
 				64DD91A92BB4513500237137 /* SplashView.swift */,
 				64DD91B42BB4635000237137 /* LoginView.swift */,
+				64DD91B82BB5BC0900237137 /* RegisterView.swift */,
 				64DD91B62BB5B7FB00237137 /* CustomBackButton.swift */,
 				64DD91A82BB4511000237137 /* Splash */,
 			);
@@ -502,6 +505,7 @@
 				6408B0D42B95EC0F005401F9 /* ProgressingView.swift in Sources */,
 				642A10EA2B7F06BC003007A1 /* TagSampleApp.swift in Sources */,
 				642A113E2B805152003007A1 /* HomeScreen.swift in Sources */,
+				64DD91B92BB5BC0900237137 /* RegisterView.swift in Sources */,
 				6408B0CB2B95EC0F005401F9 /* SpotView.swift in Sources */,
 				6408B0CC2B95EC0F005401F9 /* OperateButton.swift in Sources */,
 				648198602B9AA61A003E15C4 /* EnvironmentData.swift in Sources */,
