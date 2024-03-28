@@ -10,10 +10,9 @@ import SwiftUI
 struct RegisterView: View {
     @Environment(\.dismiss) var dismiss
     
-    @State var isMoveToHome: Bool = false
+    @State var isMoveToRegisterInfo: Bool = false
     
     @State var inputEmail: String = ""
-    @State var inputPassword: String = ""
     var body: some View {
         ZStack{
             Color(UIColor(hexString: "FDF5F3")).ignoresSafeArea()
@@ -37,11 +36,11 @@ struct RegisterView: View {
                         )
                 }
                 
-                ButtonView(action: {isMoveToHome = true}, backColor: "FDF5F3", textColor: "333333", text: "メールを送る")
+                ButtonView(action: {isMoveToRegisterInfo = true}, backColor: "FDF5F3", textColor: "333333", text: "メールを送る")
             }
             NavigationLink(
-                destination: HomeView(),
-                isActive: $isMoveToHome,
+                destination: RegisterInfoView(),
+                isActive: $isMoveToRegisterInfo,
                 label: { EmptyView() }
             ).hidden()
         }
