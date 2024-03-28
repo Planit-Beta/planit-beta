@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct LoginView: View {
+    @Environment(\.dismiss) var dismiss
+    
     @State var inputEmail: String = ""
     @State var inputPassword: String = ""
     var body: some View {
@@ -50,6 +52,7 @@ struct LoginView: View {
                 ButtonView(action: {}, backColor: "F8714F", textColor: "FFFFFF", text: "ログインする")
             }
         }
+        .customBackButton()///戻るボタン
     }
 }
 
