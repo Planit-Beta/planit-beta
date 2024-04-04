@@ -28,6 +28,7 @@ struct LoginView: View {
                     VStack(alignment: .leading, spacing: 10){
                         Text("メールアドレス").foregroundStyle(.black).font(.custom("ZenMaruGothic-Regular", size: 14))
                         TextField("", text: $inputEmail)
+                            .autocapitalization(.none)
                             .frame(width: 240, height: 30)
                             .multilineTextAlignment(TextAlignment.center)
                             .font(.custom("ZenMaruGothic-Regular", size: 15.0)).foregroundStyle(Color(UIColor(hexString: "333333"))).background(.clear)
@@ -39,7 +40,8 @@ struct LoginView: View {
                     }
                     VStack(alignment: .leading, spacing: 10){
                         Text("パスワード").foregroundStyle(.black).font(.custom("ZenMaruGothic-Regular", size: 14))
-                        TextField("", text: $inputPassword)
+                        SecureField("", text: $inputPassword)
+                            .autocapitalization(.none)
                             .frame(width: 240, height: 30)
                             .multilineTextAlignment(TextAlignment.center)
                             .font(.custom("ZenMaruGothic-Regular", size: 15.0)).foregroundStyle(Color(UIColor(hexString: "333333"))).background(.clear)
@@ -54,7 +56,7 @@ struct LoginView: View {
                 ButtonView(action: {isMoveToHome = true}, backColor: "F8714F", textColor: "FFFFFF", text: "ログインする")
             }
             NavigationLink(
-                destination: HomeView(),
+                destination: HomeView().environmentObject(ViewModel()).environmentObject(EnvironmentData()),
                 isActive: $isMoveToHome,
                 label: { EmptyView() }
             ).hidden()
