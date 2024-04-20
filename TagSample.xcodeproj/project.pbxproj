@@ -36,6 +36,7 @@
 		642CE5392BD39671009E08EE /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 642CE5382BD39671009E08EE /* FirebaseFirestore */; };
 		642CE53B2BD39671009E08EE /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 642CE53A2BD39671009E08EE /* FirebaseFirestoreSwift */; };
 		642CE53D2BD39671009E08EE /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 642CE53C2BD39671009E08EE /* FirebaseStorage */; };
+		642CE5402BD3974B009E08EE /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642CE53F2BD3974B009E08EE /* AuthViewModel.swift */; };
 		6473C2E22B976C3400E3535A /* OptionTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6473C2E12B976C3400E3535A /* OptionTagView.swift */; };
 		6473C2F22B98C64B00E3535A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 6473C2F12B98C64B00E3535A /* Alamofire */; };
 		6473C2F42B9949E500E3535A /* SaveButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6473C2F32B9949E500E3535A /* SaveButtonView.swift */; };
@@ -117,6 +118,7 @@
 		642A11462B824371003007A1 /* PageThreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageThreeView.swift; sourceTree = "<group>"; };
 		642CE52B2BCEBAAA009E08EE /* API-TOKEN.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = "API-TOKEN.csv"; sourceTree = "<group>"; };
 		642CE5332BD3947B009E08EE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		642CE53F2BD3974B009E08EE /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		6473C2E12B976C3400E3535A /* OptionTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionTagView.swift; sourceTree = "<group>"; };
 		6473C2F32B9949E500E3535A /* SaveButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButtonView.swift; sourceTree = "<group>"; };
 		6473C2F62B99630500E3535A /* ZenMaruGothic-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ZenMaruGothic-Bold.ttf"; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 				6481985F2B9AA61A003E15C4 /* EnvironmentData.swift */,
 				642A113B2B805152003007A1 /* Screens */,
 				640DF5832B85EE4C001AE2BA /* HomeView.swift */,
+				642CE53E2BD39723009E08EE /* ViewModel */,
 				6408B0BD2B95EBCA005401F9 /* APIViews */,
 				642A11192B7F0CF1003007A1 /* View */,
 				642A10EF2B7F06BD003007A1 /* Preview Content */,
@@ -318,6 +321,14 @@
 				642A11462B824371003007A1 /* PageThreeView.swift */,
 			);
 			path = page3;
+			sourceTree = "<group>";
+		};
+		642CE53E2BD39723009E08EE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				642CE53F2BD3974B009E08EE /* AuthViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		6473C2F52B99630500E3535A /* Zen_Maru_Gothic */ = {
@@ -543,6 +554,7 @@
 				64DD91B52BB4635000237137 /* LoginView.swift in Sources */,
 				640DF5842B85EE4C001AE2BA /* HomeView.swift in Sources */,
 				64DD91B32BB45FAA00237137 /* ButtonView.swift in Sources */,
+				642CE5402BD3974B009E08EE /* AuthViewModel.swift in Sources */,
 				640DF5862B85F5FB001AE2BA /* TagView.swift in Sources */,
 				64DD91B72BB5B7FB00237137 /* CustomBackButton.swift in Sources */,
 				64DD91AE2BB4575400237137 /* SplashPage2.swift in Sources */,

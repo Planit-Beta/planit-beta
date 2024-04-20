@@ -23,7 +23,7 @@ struct TagSampleApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView().environmentObject(AuthViewModel()).environmentObject(ViewModel()).environmentObject(EnvironmentData())
         }
     }
 }
