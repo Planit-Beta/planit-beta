@@ -13,7 +13,6 @@
 		6408B0D02B95EC0F005401F9 /* GoogleMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6408B0C62B95EC0F005401F9 /* GoogleMapModel.swift */; };
 		6408B0D12B95EC0F005401F9 /* ChatGPTResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6408B0C72B95EC0F005401F9 /* ChatGPTResponse.swift */; };
 		6408B0D22B95EC0F005401F9 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6408B0C82B95EC0F005401F9 /* ViewModel.swift */; };
-		6408B0D32B95EC0F005401F9 /* API-TOKEN.csv in Resources */ = {isa = PBXBuildFile; fileRef = 6408B0C92B95EC0F005401F9 /* API-TOKEN.csv */; };
 		6408B0D42B95EC0F005401F9 /* ProgressingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6408B0CA2B95EC0F005401F9 /* ProgressingView.swift */; };
 		6408B0D62B95EC36005401F9 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 6408B0D52B95EC36005401F9 /* .gitignore */; };
 		640DF5842B85EE4C001AE2BA /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640DF5832B85EE4C001AE2BA /* HomeView.swift */; };
@@ -31,6 +30,8 @@
 		642A113F2B805152003007A1 /* DetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642A113D2B805152003007A1 /* DetailScreen.swift */; };
 		642A11422B823872003007A1 /* PageTwoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642A11412B823872003007A1 /* PageTwoView.swift */; };
 		642A11472B824371003007A1 /* PageThreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642A11462B824371003007A1 /* PageThreeView.swift */; };
+		642CE52C2BCEBAAA009E08EE /* API-TOKEN.csv in Resources */ = {isa = PBXBuildFile; fileRef = 642CE52B2BCEBAAA009E08EE /* API-TOKEN.csv */; };
+		642CE5342BD3947B009E08EE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 642CE5332BD3947B009E08EE /* GoogleService-Info.plist */; };
 		6473C2E22B976C3400E3535A /* OptionTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6473C2E12B976C3400E3535A /* OptionTagView.swift */; };
 		6473C2F22B98C64B00E3535A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 6473C2F12B98C64B00E3535A /* Alamofire */; };
 		6473C2F42B9949E500E3535A /* SaveButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6473C2F32B9949E500E3535A /* SaveButtonView.swift */; };
@@ -90,7 +91,6 @@
 		6408B0C62B95EC0F005401F9 /* GoogleMapModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapModel.swift; sourceTree = "<group>"; };
 		6408B0C72B95EC0F005401F9 /* ChatGPTResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatGPTResponse.swift; sourceTree = "<group>"; };
 		6408B0C82B95EC0F005401F9 /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
-		6408B0C92B95EC0F005401F9 /* API-TOKEN.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "API-TOKEN.csv"; sourceTree = "<group>"; };
 		6408B0CA2B95EC0F005401F9 /* ProgressingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressingView.swift; sourceTree = "<group>"; };
 		6408B0D52B95EC36005401F9 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		640DF5832B85EE4C001AE2BA /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -111,6 +111,8 @@
 		642A113D2B805152003007A1 /* DetailScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailScreen.swift; sourceTree = "<group>"; };
 		642A11412B823872003007A1 /* PageTwoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageTwoView.swift; sourceTree = "<group>"; };
 		642A11462B824371003007A1 /* PageThreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageThreeView.swift; sourceTree = "<group>"; };
+		642CE52B2BCEBAAA009E08EE /* API-TOKEN.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = "API-TOKEN.csv"; sourceTree = "<group>"; };
+		642CE5332BD3947B009E08EE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6473C2E12B976C3400E3535A /* OptionTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionTagView.swift; sourceTree = "<group>"; };
 		6473C2F32B9949E500E3535A /* SaveButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButtonView.swift; sourceTree = "<group>"; };
 		6473C2F62B99630500E3535A /* ZenMaruGothic-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ZenMaruGothic-Bold.ttf"; sourceTree = "<group>"; };
@@ -231,10 +233,11 @@
 				6481985F2B9AA61A003E15C4 /* EnvironmentData.swift */,
 				642A113B2B805152003007A1 /* Screens */,
 				640DF5832B85EE4C001AE2BA /* HomeView.swift */,
-				6408B0C92B95EC0F005401F9 /* API-TOKEN.csv */,
 				6408B0BD2B95EBCA005401F9 /* APIViews */,
 				642A11192B7F0CF1003007A1 /* View */,
 				642A10EF2B7F06BD003007A1 /* Preview Content */,
+				642CE52B2BCEBAAA009E08EE /* API-TOKEN.csv */,
+				642CE5332BD3947B009E08EE /* GoogleService-Info.plist */,
 			);
 			path = TagSample;
 			sourceTree = "<group>";
@@ -469,12 +472,13 @@
 				6473C3012B99630500E3535A /* OFL.txt in Resources */,
 				6408B0D62B95EC36005401F9 /* .gitignore in Resources */,
 				642A10F12B7F06BD003007A1 /* Preview Assets.xcassets in Resources */,
+				642CE52C2BCEBAAA009E08EE /* API-TOKEN.csv in Resources */,
 				6473C2FC2B99630500E3535A /* ZenMaruGothic-Bold.ttf in Resources */,
 				6473C3002B99630500E3535A /* ZenMaruGothic-Regular.ttf in Resources */,
 				642A111E2B7F0CF1003007A1 /* Assets.xcassets in Resources */,
 				6473C2FD2B99630500E3535A /* ZenMaruGothic-Light.ttf in Resources */,
+				642CE5342BD3947B009E08EE /* GoogleService-Info.plist in Resources */,
 				6473C2FF2B99630500E3535A /* ZenMaruGothic-Black.ttf in Resources */,
-				6408B0D32B95EC0F005401F9 /* API-TOKEN.csv in Resources */,
 				6473C2FE2B99630500E3535A /* ZenMaruGothic-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
