@@ -12,6 +12,7 @@ struct HomeView: View {
     @State var isActive: Bool = false
     @EnvironmentObject var envData: EnvironmentData
     @EnvironmentObject var authViewModel: AuthViewModel
+    @EnvironmentObject var dbViewModel: DBViewModel
     
     @State var isShowProfile: Bool = false
     
@@ -20,14 +21,16 @@ struct HomeView: View {
             ZStack{
                 Color(UIColor(hexString: "FDF5F3"))
                     .ignoresSafeArea()
+                
                 VStack(){
+                    
                     VStack{
                         HStack(){
-                            Text("かわすけ").font(.custom("ZenMaruGothic-Regular", size: 20.0)).foregroundStyle(Color(UIColor(hexString: "333333")))
+                            Text(dbViewModel.users.count == 0 ? "" :  dbViewModel.users[0].name).font(.custom("ZenMaruGothic-Regular", size: 20.0)).foregroundStyle(Color(UIColor(hexString: "333333")))
                             Spacer()
                         }
                         HStack{
-                            Text("user-e-mail-address@sample.")
+                            Text(authViewModel.getEmail())
                                 .font(.custom("ZenMaruGothic-Regular", size: 11.0)).foregroundStyle(Color(UIColor(hexString: "333333")).opacity(0.5))
                             Spacer()
                         }
@@ -83,6 +86,9 @@ struct HomeView: View {
                 }
             }
         }.navigationBarHidden(true).navigationBarBackButtonHidden(true)
+            .onAppear(perform: {
+                dbViewModel.fetchUsers(user_id: authViewModel.getUserID())
+            })
     }
 }
 
