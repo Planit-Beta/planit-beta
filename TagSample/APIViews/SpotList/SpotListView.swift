@@ -10,6 +10,8 @@ import SwiftUI
 struct SpotListView: View {
     @EnvironmentObject var viewModel: ViewModel
     @EnvironmentObject var envData: EnvironmentData
+    @EnvironmentObject var authViewModel: AuthViewModel
+    @EnvironmentObject var dbViewModel: DBViewModel
     
     @State var nowDate = Date()
     @State var dateText = ""
@@ -79,7 +81,20 @@ struct SpotListView: View {
                 
                 HStack{ ///確定ボタン
                     Spacer()
-                    SaveButtonView(action: {envData.isNavigationActive.wrappedValue = false})
+                    
+                    SaveButtonView(action: {
+                        dbViewModel.AddPlan() { error in
+                            if let error = error {
+                                print("Error: \(error.localizedDescription)")
+                            } else {
+                                print("User saved successfully.")
+                                dbViewModel.plan = []
+                                dbViewModel.fetchUsers(user_id: authViewModel.getUserID())
+                                envData.isNavigationActive.wrappedValue = false
+                            }
+                        }
+                    })
+                    
                     Spacer()
                 }.padding(.top, 50).padding(.bottom, 70)
                 

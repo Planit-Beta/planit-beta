@@ -14,4 +14,5 @@ struct User {
     var gender: String
     var age: String
     var image: String
+    var plans: [[SpotInfo]]
 }

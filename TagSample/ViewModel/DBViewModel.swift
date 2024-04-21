@@ -12,7 +12,7 @@ import FirebaseStorage
 class DBViewModel: ObservableObject {
     private var db = Firestore.firestore()
     
-    @Published var user: User = User(id: "", name: "", email: "", gender: "", age: "", image: "")
+    @Published var user: User = User(id: "", name: "", email: "", gender: "", age: "", image: "", plans: [])
     
     @Published var users: [User] = []
     
@@ -28,7 +28,7 @@ class DBViewModel: ObservableObject {
     func saveUser(completion: @escaping (Error?) -> Void) {
         let docRef = db.collection("users").document()
         
-        let user = User(id: user.id, name: user.name, email: user.email, gender: user.gender, age: user.age, image: user.image)
+        let user = User(id: user.id, name: user.name, email: user.email, gender: user.gender, age: user.age, image: user.image, plans: user.plans)
         
         docRef.setData([
             "id": user.id,
@@ -37,6 +37,7 @@ class DBViewModel: ObservableObject {
             "gender": user.gender,
             "age": user.age,
             "image": user.image,
+            "plans": user.plans
         ]) { error in
             completion(error)
         }
@@ -53,26 +54,27 @@ class DBViewModel: ObservableObject {
                          email: $0.data()["email"] as? String ?? "",
                          gender: $0.data()["gender"] as? String ?? "",
                          age: $0.data()["age"] as? String ?? "",
-                         image: $0.data()["image"] as? String ?? "")
+                         image: $0.data()["image"] as? String ?? "",
+                         plans: $0.data()["plans"] as? [[SpotInfo]] ?? []
+                    )
                 } ?? []
             }
         }
     }
     
     
-//    func AddPost(completion: @escaping (Error?) -> Void) {
-//        let docRef = db.collection("plans").document()
-//        
-//        let plan = viewModel.SpotInfos
-//        
-//        docRef.setData([
-//            "plans": plan,
-//        ]) { error in
-//            completion(error)
-//        }
-//    }
-//    
-//    
+    func AddPlan(completion: @escaping (Error?) -> Void) {
+        let docRef = db.collection("plans").document()
+        
+        let plan = viewModel.SpotInfos
+        
+        docRef.updateData([
+            "plans": plan,
+        ]) { error in
+            completion(error)
+        }
+    }
+
 //    func fetchPosts(user_email: String) {
 //        db.collection("plans")
 //            .whereField("members_sns", arrayContains: user_email).getDocuments { snapshot, error in
