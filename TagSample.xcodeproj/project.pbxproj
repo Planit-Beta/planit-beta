@@ -245,7 +245,6 @@
 				642A11182B7F0CF1003007A1 /* Assets.xcassets */,
 				6473C2F52B99630500E3535A /* Zen_Maru_Gothic */,
 				642A11172B7F0CF1003007A1 /* ContentView.swift */,
-				6481985F2B9AA61A003E15C4 /* EnvironmentData.swift */,
 				642A113B2B805152003007A1 /* Screens */,
 				640DF5832B85EE4C001AE2BA /* HomeView.swift */,
 				642CE53E2BD39723009E08EE /* ViewModel */,
@@ -331,6 +330,7 @@
 		642CE53E2BD39723009E08EE /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				6481985F2B9AA61A003E15C4 /* EnvironmentData.swift */,
 				642CE53F2BD3974B009E08EE /* AuthViewModel.swift */,
 				642CE5412BD4B9A6009E08EE /* DBViewModel.swift */,
 			);
