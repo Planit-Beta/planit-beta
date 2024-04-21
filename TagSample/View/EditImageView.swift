@@ -20,18 +20,34 @@ struct EditImageView: View {
             Color(UIColor(hexString: "FDF5F3")).ignoresSafeArea()
             
             VStack(spacing: 40){
-                if dbViewModel.users[0].image == "" {
-                    Rectangle()
-                        .frame(width: 200,height: 200)
-                        .cornerRadius(10)
-                } else {
-                    AsyncImage(url: URL(string: dbViewModel.users[0].image)) { image in
-                        image.resizable()
-                    } placeholder: {
-                        ProgressView()
+                Button(action: {
+                    isShowPhotoLibrary = true
+                }){
+                    if dbViewModel.selectedImage.count < 1 {
+                        if dbViewModel.users[0].image != "" {
+                            AsyncImage(url: URL(string: dbViewModel.users[0].image)) { image in
+                                image.resizable()
+                            } placeholder: {
+                                ProgressView()
+                            }
+                            .frame(width: 200,height: 200)
+                            .cornerRadius(10)
+                            
+                        } else {
+                            Image(systemName: "person.fill")
+                                .resizable()
+                                .foregroundColor(Color(UIColor(hexString: "F8714F")))
+                                .frame(width: 200,height: 200)
+                                .cornerRadius(10)
+                        }
+                    } else {
+                        if let uiImage = UIImage(data: dbViewModel.selectedImage[0]) {
+                            Image(uiImage: uiImage)
+                                .resizable()
+                                .frame(width: 200,height: 200)
+                                .cornerRadius(10)
+                        }
                     }
-                    .frame(width: 200,height: 200)
-                    .cornerRadius(10)
                 }
                 
                 VStack(spacing: 20){
@@ -39,23 +55,31 @@ struct EditImageView: View {
                     Divider().frame(width: 240, height: 1).background(Color(UIColor(hexString: "333333")))
                 }
                 
+                Button("Log Out") {
+                                   // ログアウトしてログイン画面へ遷移する
+                                   authViewModel.signOut()
+                               }
+                
                 ButtonView(action: {
                     
-                    dbViewModel.AddImage() {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                            dbViewModel.EditImage(user_id: authViewModel.getUserID()){ error in
-                                if let error = error {
+                    if dbViewModel.selectedImage.count < 0 {
+                        dbViewModel.AddImage() {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                                dbViewModel.EditImage(user_id: authViewModel.getUserID()){ error in
+                                    if let error = error {
                                         print("Error: \(error.localizedDescription)")
-                                } else {
-                                    print("User saved successfully.")
-                                    dbViewModel.user.image = ""
-                                    dbViewModel.fetchUsers(user_id: authViewModel.getUserID())
+                                    } else {
+                                        print("User saved successfully.")
+                                        dbViewModel.selectedImage = []
+                                        dbViewModel.user.image = ""
+                                        dbViewModel.fetchUsers(user_id: authViewModel.getUserID())
+                                    }
                                 }
                             }
                         }
                     }
                     
-                }, backColor: "FDF5F3", textColor: "333333", text: "メールを送る")
+                }, backColor: "FDF5F3", textColor: "333333", text: "変更する")
             }
         }.sheet(isPresented: $isShowPhotoLibrary, content: {
             ImagePicker(sourceType: .photoLibrary, selectedImage: self.$image)
@@ -64,6 +88,9 @@ struct EditImageView: View {
                         print(image)
                     }
                 }
+        })
+        .onDisappear(perform: {
+            dbViewModel.selectedImage = []
         })
     }
 }

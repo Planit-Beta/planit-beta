@@ -20,7 +20,7 @@ class DBViewModel: ObservableObject {
     
     @Published var plans: [[SpotInfo]] = []
     
-    @Published var selectedImage: Data = Data()
+    @Published var selectedImage: [Data] = []
     
     @EnvironmentObject var viewModel: ViewModel
     
@@ -94,7 +94,7 @@ class DBViewModel: ObservableObject {
         metadata.contentType = "image/jpeg"
 
         let ref = storageref.child("users/\(Date().timeIntervalSince1970).jpg")
-        ref.putData(self.selectedImage as Data, metadata: metadata) { (metadata, error) in
+        ref.putData(self.selectedImage[0] as Data, metadata: metadata) { (metadata, error) in
             if let _ = metadata {
                 // ②storageへの保存が成功した場合はdownloadURLの取得を行う
                 ref.downloadURL{(url,error) in

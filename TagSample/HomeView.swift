@@ -24,31 +24,51 @@ struct HomeView: View {
                 
                 VStack(){
                     
-                    VStack{
-                        HStack(){
-                            Text(dbViewModel.users.count == 0 ? "" :  dbViewModel.users[0].name).font(.custom("ZenMaruGothic-Regular", size: 20.0)).foregroundStyle(Color(UIColor(hexString: "333333")))
-                            Spacer()
-                        }
-                        HStack{
-                            Text(authViewModel.getEmail())
-                                .font(.custom("ZenMaruGothic-Regular", size: 11.0)).foregroundStyle(Color(UIColor(hexString: "333333")).opacity(0.5))
-                            Spacer()
-                        }
-                    }.padding(.horizontal)
-                        .overlay(
-                            HStack{
+                    HStack{
+                        VStack{
+                            HStack(){
+                                Text(dbViewModel.users.count == 0 ? "" :  dbViewModel.users[0].name).font(.custom("ZenMaruGothic-Regular", size: 20.0)).foregroundStyle(Color(UIColor(hexString: "333333")))
                                 Spacer()
-                                Button(action:{
-                                    isShowProfile = true
-                                }){
-                                    Image(decorative: "sample_1")
+                            }
+                            HStack{
+                                Text(authViewModel.getEmail())
+                                    .font(.custom("ZenMaruGothic-Regular", size: 11.0)).foregroundStyle(Color(UIColor(hexString: "333333")).opacity(0.5))
+                                Spacer()
+                            }
+                        }
+                        
+                        Spacer()
+                        
+                        Button(action:{
+                            isShowProfile = true
+                        }){
+                            if dbViewModel.users.count == 0 {
+                                ProgressView()
+                                    .frame(width: 45, height: 45)
+                            } else {
+                                if dbViewModel.users[0].image != "" {
+                                    AsyncImage(url: URL(string: dbViewModel.users[0].image)) { image in
+                                        image
+                                            .resizable()
+                                    } placeholder: {
+                                        ProgressView()
+                                    }
+                                    .frame(width: 45, height: 45)
+                                    .scaledToFit()
+                                    .clipShape(Circle())
+                                    
+                                } else {
+                                    Image(systemName: "person.fill")
                                         .resizable()
+                                        .foregroundColor(Color(UIColor(hexString: "F8714F")))
+                                        .frame(width: 45, height: 45)
                                         .scaledToFit()
                                         .clipShape(Circle())
                                 }
                             }
-                        ).padding(.horizontal)
-                    
+                        }
+                    }.padding(.horizontal).padding(.horizontal)
+                        
                     Spacer()
                     
                     Button {
@@ -81,10 +101,6 @@ struct HomeView: View {
                 }
             }.sheet(isPresented: $isShowProfile) {
                 EditImageView()
-//                Button("Log Out") {
-//                    // ログアウトしてログイン画面へ遷移する
-//                    authViewModel.signOut()
-//                }
             }
         }.navigationBarHidden(true).navigationBarBackButtonHidden(true)
             .onAppear(perform: {

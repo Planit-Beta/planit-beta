@@ -43,7 +43,11 @@ struct ImagePicker: UIViewControllerRepresentable {
      
             if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
                 parent.selectedImage = image
-                parent.dbViewModel.selectedImage = (image.jpegData(compressionQuality: 0.3)! as NSData) as Data
+                if parent.dbViewModel.selectedImage.count == 0 {
+                    parent.dbViewModel.selectedImage.append((image.jpegData(compressionQuality: 0.3)! as NSData) as Data)
+                } else {
+                    parent.dbViewModel.selectedImage[0] = (image.jpegData(compressionQuality: 0.3)! as NSData) as Data
+                }
                 
 //                imageData = selectImage.jpegData(compressionQuality: 0.8)
                 
