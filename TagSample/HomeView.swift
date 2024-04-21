@@ -11,6 +11,9 @@ import SwiftUI
 struct HomeView: View {
     @State var isActive: Bool = false
     @EnvironmentObject var envData: EnvironmentData
+    @EnvironmentObject var authViewModel: AuthViewModel
+    
+    @State var isShowProfile: Bool = false
     
     var body: some View {
         NavigationView {
@@ -29,15 +32,19 @@ struct HomeView: View {
                             Spacer()
                         }
                     }.padding(.horizontal)
-                     .overlay(
-                        HStack{
-                            Spacer()
-                            Image(decorative: "sample_1")
-                                .resizable()
-                                .scaledToFit()
-                                .clipShape(Circle())
-                        }
-                     ).padding(.horizontal)
+                        .overlay(
+                            HStack{
+                                Spacer()
+                                Button(action:{
+                                    isShowProfile = true
+                                }){
+                                    Image(decorative: "sample_1")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .clipShape(Circle())
+                                }
+                            }
+                        ).padding(.horizontal)
                     
                     Spacer()
                     
@@ -68,6 +75,11 @@ struct HomeView: View {
                         HomeScreen()
                     }
                     Spacer()
+                }
+            }.sheet(isPresented: $isShowProfile) {
+                Button("Log Out") {
+                    // ログアウトしてログイン画面へ遷移する
+                    authViewModel.signOut()
                 }
             }
         }.navigationBarHidden(true).navigationBarBackButtonHidden(true)
