@@ -80,10 +80,11 @@ struct HomeView: View {
                     Spacer()
                 }
             }.sheet(isPresented: $isShowProfile) {
-                Button("Log Out") {
-                    // ログアウトしてログイン画面へ遷移する
-                    authViewModel.signOut()
-                }
+                EditImageView()
+//                Button("Log Out") {
+//                    // ログアウトしてログイン画面へ遷移する
+//                    authViewModel.signOut()
+//                }
             }
         }.navigationBarHidden(true).navigationBarBackButtonHidden(true)
             .onAppear(perform: {

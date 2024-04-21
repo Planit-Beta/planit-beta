@@ -83,7 +83,7 @@ struct SpotListView: View {
                     Spacer()
                     
                     SaveButtonView(action: {
-                        dbViewModel.AddPlan() { error in
+                        dbViewModel.AddPlan(user_id: authViewModel.getUserID()) { error in
                             if let error = error {
                                 print("Error: \(error.localizedDescription)")
                             } else {
