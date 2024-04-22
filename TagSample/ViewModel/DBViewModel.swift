@@ -12,7 +12,7 @@ import FirebaseStorage
 class DBViewModel: ObservableObject {
     private var db = Firestore.firestore()
     
-    @Published var user: User = User(id: "", name: "", email: "", gender: "", age: "", image: "", plans: [])
+    @Published var user: User = User(id: "", name: "", email: "", gender: "", age: 0, image: "", plans: [])
     
     @Published var users: [User] = []
     
@@ -21,6 +21,9 @@ class DBViewModel: ObservableObject {
     @Published var plans: [[SpotInfo]] = []
     
     @Published var selectedImage: [Data] = []
+    @Published var inputUserName: String = ""
+    @Published var inputAge: Int = 0
+    @Published var inputGender: String = ""
     
     @EnvironmentObject var viewModel: ViewModel
     
@@ -53,7 +56,7 @@ class DBViewModel: ObservableObject {
                          name: $0.data()["name"] as? String ?? "",
                          email: $0.data()["email"] as? String ?? "",
                          gender: $0.data()["gender"] as? String ?? "",
-                         age: $0.data()["age"] as? String ?? "",
+                         age: $0.data()["age"] as? Int ?? 0,
                          image: $0.data()["image"] as? String ?? "",
                          plans: $0.data()["plans"] as? [[SpotInfo]] ?? []
                     )
@@ -70,6 +73,23 @@ class DBViewModel: ObservableObject {
         
         docRef.updateData([
             "plans": user.plans.append(plan),
+        ]) { error in
+            completion(error)
+        }
+    }
+    
+    func EditProfile(user_id: String, completion: @escaping (Error?) -> Void) {
+        
+        let docRef = db.collection("users").document(user_id)
+        
+        let name = self.inputUserName
+        let age = self.inputAge
+        let gender = self.inputGender
+        
+        docRef.updateData([
+            "name": name,
+            "age": age,
+            "gender": gender,
         ]) { error in
             completion(error)
         }

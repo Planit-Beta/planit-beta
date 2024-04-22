@@ -1,21 +1,19 @@
 //
-//  RegisterInfoView.swift
+//  EditProfileView.swift
 //  TagSample
 //
-//  Created by 濱野遥斗 on 2024/03/28.
+//  Created by 濱野遥斗 on 2024/04/22.
 //
 
 import SwiftUI
 
-struct RegisterInfoView: View {
+struct EditProfileView: View {
     @EnvironmentObject var authViewModel: AuthViewModel
     @EnvironmentObject var dbViewModel: DBViewModel
     
     @State var isMoveToHome: Bool = false
     
-    @State var inputUserName: String = ""
-    @State var inputGender: String = ""
-    @State var inputAge: String = ""
+    @State var value: Decimal.FormatStyle.FormatInput = 0.0
     
     var body: some View {
         ZStack{
@@ -33,7 +31,7 @@ struct RegisterInfoView: View {
                 VStack(spacing: 20){
                     VStack(alignment: .leading, spacing: 10){
                         Text("ユーザー名").foregroundStyle(.black).font(.custom("ZenMaruGothic-Regular", size: 14))
-                        TextField("", text: $dbViewModel.user.name)
+                        TextField("", text: $dbViewModel.inputUserName)
                             .autocapitalization(.none)
                             .frame(width: 240, height: 30)
                             .multilineTextAlignment(TextAlignment.center)
@@ -46,20 +44,24 @@ struct RegisterInfoView: View {
                     }
                     VStack(alignment: .leading, spacing: 10){
                         Text("性別").foregroundStyle(.black).font(.custom("ZenMaruGothic-Regular", size: 14))
-                        TextField("", text: $dbViewModel.user.gender)
-                            .autocapitalization(.none)
-                            .frame(width: 240, height: 30)
-                            .multilineTextAlignment(TextAlignment.center)
-                            .font(.custom("ZenMaruGothic-Regular", size: 15.0)).foregroundStyle(Color(UIColor(hexString: "333333"))).background(.clear)
-                            .cornerRadius(5)
-                            .overlay(
-                                   RoundedRectangle(cornerSize: CGSize(width: 5.0, height: 5.0))
-                                    .stroke(Color(UIColor(hexString: "333333")), lineWidth: 0.5)
-                           )
+                        Picker("性別を選択", selection: $dbViewModel.inputGender) {
+                            Text("男").tag("男")
+                            Text("女").tag("女")
+                            Text("その他").tag("その他")
+                        }
+                        .tint(Color(UIColor(hexString: "333333")).opacity(0.75))
+                        .frame(width: 240, height: 30)
+                        .multilineTextAlignment(TextAlignment.center)
+                        .font(.custom("ZenMaruGothic-Regular", size: 15.0)).foregroundStyle(Color(UIColor(hexString: "333333"))).background(.clear)
+                        .cornerRadius(5)
+                        .overlay(
+                            RoundedRectangle(cornerSize: CGSize(width: 5.0, height: 5.0))
+                                .stroke(Color(UIColor(hexString: "333333")), lineWidth: 0.5)
+                        )
                     }
                     VStack(alignment: .leading, spacing: 10){
                         Text("年齢").foregroundStyle(.black).font(.custom("ZenMaruGothic-Regular", size: 14))
-                        TextField("", value: $dbViewModel.user.age, format: .number)
+                        TextField("", value: $dbViewModel.inputAge, format: .number)
                             .autocapitalization(.none)
                             .frame(width: 240, height: 30)
                             .multilineTextAlignment(TextAlignment.center)
@@ -73,8 +75,21 @@ struct RegisterInfoView: View {
                 }
                 
                 ButtonView(action: {
+//                    dbViewModel.user.id = authViewModel.getUserID()
                     
-                    dbViewModel.user.id = authViewModel.getUserID()
+                    if dbViewModel.inputUserName.trimmingCharacters(in: .whitespacesAndNewlines) != "" {
+                        dbViewModel.EditProfile(user_id: authViewModel.getUserID()){ error in
+                            if let error = error {
+                                print("Error: \(error.localizedDescription)")
+                            } else {
+                                print("User saved successfully.")
+                                dbViewModel.inputUserName = ""
+                                dbViewModel.inputAge = 0
+                                dbViewModel.inputGender = ""
+                                dbViewModel.fetchUsers(user_id: authViewModel.getUserID())
+                            }
+                        }
+                    }
                     
                     if dbViewModel.user.name.trimmingCharacters(in: .whitespacesAndNewlines) != "" {
                         dbViewModel.saveUser(){ error in
@@ -94,17 +109,19 @@ struct RegisterInfoView: View {
                 }, backColor: "FDF5F3", textColor: "333333", text: "登録する")
             }
             
-//            NavigationLink(
-//                destination: HomeView(),
-//                isActive: $isMoveToHome,
-//                label: { EmptyView() }
-//            ).hidden()
-        }.navigationBarHidden(true).navigationBarBackButtonHidden(true)
+        }.onAppear(perform: {
+            dbViewModel.inputUserName = dbViewModel.users[0].name
+            dbViewModel.inputGender = dbViewModel.users[0].gender
+            dbViewModel.inputAge = dbViewModel.users[0].age
+        })
+        .onDisappear(perform: {
+            dbViewModel.inputUserName = ""
+            dbViewModel.inputAge = 0
+            dbViewModel.inputGender = ""
+        })
     }
 }
 
-
-
 #Preview {
-    RegisterInfoView()
+    EditProfileView()
 }
