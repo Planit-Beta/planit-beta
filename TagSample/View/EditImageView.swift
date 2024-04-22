@@ -64,7 +64,7 @@ struct EditImageView: View {
                 
                 ButtonView(action: {
                     
-                    if dbViewModel.selectedImage.count < 0 {
+                    if dbViewModel.selectedImage.count > 0 {
                         dbViewModel.AddImage() {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                                 dbViewModel.EditImage(user_id: authViewModel.getUserID()){ error in
