@@ -15,16 +15,15 @@ struct EditProfileView: View {
     
     @State var value: Decimal.FormatStyle.FormatInput = 0.0
     
+    @Binding var isCloseModal: Bool
+    
     var body: some View {
         ZStack{
             Color(UIColor(hexString: "FDF5F3")).ignoresSafeArea()
             
             VStack(spacing: 80){
-                VStack(spacing: 15){
-                    VStack{
-                        Text("メールアドレスを認証しました!").foregroundStyle(Color(UIColor(hexString: "333333"))).font(.custom("ZenMaruGothic-Regular", size: 14))
-                        Text("少しだけあなたのことを教えてください").foregroundStyle(Color(UIColor(hexString: "333333"))).font(.custom("ZenMaruGothic-Regular", size: 14))
-                    }
+                VStack(spacing: 20){
+                    Text("プロフィールを変更する").foregroundStyle(Color(UIColor(hexString: "333333"))).font(.custom("ZenMaruGothic-Medium", size: 20))
                     Divider().frame(width: 240, height: 1).background(Color(UIColor(hexString: "333333")))
                 }
                 
@@ -83,6 +82,7 @@ struct EditProfileView: View {
                                 print("Error: \(error.localizedDescription)")
                             } else {
                                 print("User saved successfully.")
+                                isCloseModal = false
                                 dbViewModel.inputUserName = ""
                                 dbViewModel.inputAge = 0
                                 dbViewModel.inputGender = ""
@@ -91,22 +91,7 @@ struct EditProfileView: View {
                         }
                     }
                     
-                    if dbViewModel.user.name.trimmingCharacters(in: .whitespacesAndNewlines) != "" {
-                        dbViewModel.saveUser(){ error in
-                            if let error = error {
-                                print("Error: \(error.localizedDescription)")
-                            } else {
-                                print("User saved successfully.")
-                                dbViewModel.fetchUsers(user_id: authViewModel.getUserID())
-                                
-                                authViewModel.isMoveToRegisterInfo = false
-                                authViewModel.isCorrectRegisterInfo = true
-                                authViewModel.isAuthenticated = true
-                            }
-                        }
-                    }
-                    
-                }, backColor: "FDF5F3", textColor: "333333", text: "登録する")
+                }, backColor: "FDF5F3", textColor: "333333", text: "変更する")
             }
             
         }.onAppear(perform: {
@@ -122,6 +107,6 @@ struct EditProfileView: View {
     }
 }
 
-#Preview {
-    EditProfileView()
-}
+//#Preview {
+//    EditProfileView()
+//}

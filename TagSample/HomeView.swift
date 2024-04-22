@@ -99,10 +99,10 @@ struct HomeView: View {
                     Spacer()
                 }
             }.sheet(isPresented: $isEditImage) {
-                EditImageView()
+                EditImageView(isCloseModal: $isEditImage)
             }
             .sheet(isPresented: $isShowProfile) {
-                EditProfileView()
+                EditProfileView(isCloseModal: $isShowProfile)
             }
         }.navigationBarHidden(true).navigationBarBackButtonHidden(true)
             .onAppear(perform: {

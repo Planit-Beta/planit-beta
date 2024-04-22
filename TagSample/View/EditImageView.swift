@@ -13,6 +13,8 @@ struct EditImageView: View {
     
     @State private var image = UIImage()
     @State private var isShowPhotoLibrary = false
+    
+    @Binding var isCloseModal: Bool
 
     
     var body: some View {
@@ -70,6 +72,7 @@ struct EditImageView: View {
                                         print("Error: \(error.localizedDescription)")
                                     } else {
                                         print("User saved successfully.")
+                                        isCloseModal = false
                                         dbViewModel.selectedImage = []
                                         dbViewModel.user.image = ""
                                         dbViewModel.fetchUsers(user_id: authViewModel.getUserID())
@@ -95,6 +98,6 @@ struct EditImageView: View {
     }
 }
 
-#Preview {
-    EditImageView()
-}
+//#Preview {
+//    EditImageView()
+//}
