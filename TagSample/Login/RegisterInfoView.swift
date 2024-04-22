@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct RegisterInfoView: View {
-//    @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var authViewModel: AuthViewModel
+    @EnvironmentObject var dbViewModel: DBViewModel
     
     @State var isMoveToHome: Bool = false
     
     @State var inputUserName: String = ""
     @State var inputGender: String = ""
     @State var inputAge: String = ""
+    
     var body: some View {
         ZStack{
             Color(UIColor(hexString: "FDF5F3")).ignoresSafeArea()
@@ -31,7 +33,8 @@ struct RegisterInfoView: View {
                 VStack(spacing: 20){
                     VStack(alignment: .leading, spacing: 10){
                         Text("ユーザー名").foregroundStyle(.black).font(.custom("ZenMaruGothic-Regular", size: 14))
-                        TextField("", text: $inputUserName)
+                        TextField("", text: $dbViewModel.user.name)
+                            .autocapitalization(.none)
                             .frame(width: 240, height: 30)
                             .multilineTextAlignment(TextAlignment.center)
                             .font(.custom("ZenMaruGothic-Regular", size: 15.0)).foregroundStyle(Color(UIColor(hexString: "333333"))).background(.clear)
@@ -43,7 +46,8 @@ struct RegisterInfoView: View {
                     }
                     VStack(alignment: .leading, spacing: 10){
                         Text("性別").foregroundStyle(.black).font(.custom("ZenMaruGothic-Regular", size: 14))
-                        TextField("", text: $inputGender)
+                        TextField("", text: $dbViewModel.user.gender)
+                            .autocapitalization(.none)
                             .frame(width: 240, height: 30)
                             .multilineTextAlignment(TextAlignment.center)
                             .font(.custom("ZenMaruGothic-Regular", size: 15.0)).foregroundStyle(Color(UIColor(hexString: "333333"))).background(.clear)
@@ -55,7 +59,8 @@ struct RegisterInfoView: View {
                     }
                     VStack(alignment: .leading, spacing: 10){
                         Text("年齢").foregroundStyle(.black).font(.custom("ZenMaruGothic-Regular", size: 14))
-                        TextField("", text: $inputAge)
+                        TextField("", text: $dbViewModel.user.age)
+                            .autocapitalization(.none)
                             .frame(width: 240, height: 30)
                             .multilineTextAlignment(TextAlignment.center)
                             .font(.custom("ZenMaruGothic-Regular", size: 15.0)).foregroundStyle(Color(UIColor(hexString: "333333"))).background(.clear)
@@ -67,13 +72,33 @@ struct RegisterInfoView: View {
                     }
                 }
                 
-                ButtonView(action: {isMoveToHome = true}, backColor: "FDF5F3", textColor: "333333", text: "登録する")
+                ButtonView(action: {
+                    
+                    dbViewModel.user.id = authViewModel.getUserID()
+                    
+                    if dbViewModel.user.name.trimmingCharacters(in: .whitespacesAndNewlines) != "" {
+                        dbViewModel.saveUser(){ error in
+                            if let error = error {
+                                print("Error: \(error.localizedDescription)")
+                            } else {
+                                print("User saved successfully.")
+                                dbViewModel.fetchUsers(user_id: authViewModel.getUserID())
+                                
+                                authViewModel.isMoveToRegisterInfo = false
+                                authViewModel.isCorrectRegisterInfo = true
+                                authViewModel.isAuthenticated = true
+                            }
+                        }
+                    }
+                    
+                }, backColor: "FDF5F3", textColor: "333333", text: "登録する")
             }
-            NavigationLink(
-                destination: HomeView(),
-                isActive: $isMoveToHome,
-                label: { EmptyView() }
-            ).hidden()
+            
+//            NavigationLink(
+//                destination: HomeView(),
+//                isActive: $isMoveToHome,
+//                label: { EmptyView() }
+//            ).hidden()
         }.navigationBarHidden(true).navigationBarBackButtonHidden(true)
     }
 }

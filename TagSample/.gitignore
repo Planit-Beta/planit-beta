@@ -43,3 +43,4 @@ fastlane/test_output
 iOSInjectionProject/
 
 API-TOKEN.csv
+GoogleService-Info.plist

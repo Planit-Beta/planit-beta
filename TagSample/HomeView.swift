@@ -5,39 +5,70 @@
 //  Created by 濱野遥斗 on 2024/02/21.
 //
 
+
 import SwiftUI
 
 struct HomeView: View {
     @State var isActive: Bool = false
     @EnvironmentObject var envData: EnvironmentData
+    @EnvironmentObject var authViewModel: AuthViewModel
+    @EnvironmentObject var dbViewModel: DBViewModel
+    
+    @State var isShowProfile: Bool = false
     
     var body: some View {
         NavigationView {
             ZStack{
                 Color(UIColor(hexString: "FDF5F3"))
                     .ignoresSafeArea()
+                
                 VStack(){
-                    VStack{
-                        HStack(){
-                            Text("かわすけ").font(.custom("ZenMaruGothic-Regular", size: 20.0)).foregroundStyle(Color(UIColor(hexString: "333333")))
-                            Spacer()
-                        }
-                        HStack{
-                            Text("user-e-mail-address@sample.")
-                                .font(.custom("ZenMaruGothic-Regular", size: 11.0)).foregroundStyle(Color(UIColor(hexString: "333333")).opacity(0.5))
-                            Spacer()
-                        }
-                    }.padding(.horizontal)
-                     .overlay(
-                        HStack{
-                            Spacer()
-                            Image(decorative: "sample_1")
-                                .resizable()
-                                .scaledToFit()
-                                .clipShape(Circle())
-                        }
-                     ).padding(.horizontal)
                     
+                    HStack{
+                        VStack{
+                            HStack(){
+                                Text(dbViewModel.users.count == 0 ? "" :  dbViewModel.users[0].name).font(.custom("ZenMaruGothic-Regular", size: 20.0)).foregroundStyle(Color(UIColor(hexString: "333333")))
+                                Spacer()
+                            }
+                            HStack{
+                                Text(authViewModel.getEmail())
+                                    .font(.custom("ZenMaruGothic-Regular", size: 11.0)).foregroundStyle(Color(UIColor(hexString: "333333")).opacity(0.5))
+                                Spacer()
+                            }
+                        }
+                        
+                        Spacer()
+                        
+                        Button(action:{
+                            isShowProfile = true
+                        }){
+                            if dbViewModel.users.count == 0 {
+                                ProgressView()
+                                    .frame(width: 45, height: 45)
+                            } else {
+                                if dbViewModel.users[0].image != "" {
+                                    AsyncImage(url: URL(string: dbViewModel.users[0].image)) { image in
+                                        image
+                                            .resizable()
+                                    } placeholder: {
+                                        ProgressView()
+                                    }
+                                    .frame(width: 45, height: 45)
+                                    .scaledToFit()
+                                    .clipShape(Circle())
+                                    
+                                } else {
+                                    Image(systemName: "person.fill")
+                                        .resizable()
+                                        .foregroundColor(Color(UIColor(hexString: "F8714F")))
+                                        .frame(width: 45, height: 45)
+                                        .scaledToFit()
+                                        .clipShape(Circle())
+                                }
+                            }
+                        }
+                    }.padding(.horizontal).padding(.horizontal)
+                        
                     Spacer()
                     
                     Button {
@@ -68,8 +99,13 @@ struct HomeView: View {
                     }
                     Spacer()
                 }
+            }.sheet(isPresented: $isShowProfile) {
+                EditImageView()
             }
         }.navigationBarHidden(true).navigationBarBackButtonHidden(true)
+            .onAppear(perform: {
+                dbViewModel.fetchUsers(user_id: authViewModel.getUserID())
+            })
     }
 }
 

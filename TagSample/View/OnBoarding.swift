@@ -36,7 +36,6 @@ struct OnBoarding: View {
                                 
                             } else {
                                 PageThreeView()
-                                
                             }
                             
                             

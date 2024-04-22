@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LoginView: View {
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var authViewModel: AuthViewModel
     
     @State var isMoveToHome: Bool = false
     
@@ -53,13 +54,11 @@ struct LoginView: View {
                     }
                 }
                 
-                ButtonView(action: {isMoveToHome = true}, backColor: "F8714F", textColor: "FFFFFF", text: "ログインする")
+                ButtonView(action: {
+                    authViewModel.signIn(email: inputEmail, password: inputPassword)
+                }, backColor: "F8714F", textColor: "FFFFFF", text: "ログインする")
             }
-            NavigationLink(
-                destination: HomeView().environmentObject(ViewModel()).environmentObject(EnvironmentData()),
-                isActive: $isMoveToHome,
-                label: { EmptyView() }
-            ).hidden()
+
         }
         .customBackButton()///戻るボタン
     }
