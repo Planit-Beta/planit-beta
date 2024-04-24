@@ -15,6 +15,7 @@ struct HomeView: View {
     @EnvironmentObject var dbViewModel: DBViewModel
     
     @State var isShowProfile: Bool = false
+    @State var isEditImage: Bool = false
     
     var body: some View {
         NavigationView {
@@ -25,22 +26,20 @@ struct HomeView: View {
                 VStack(){
                     
                     HStack{
-                        VStack{
-                            HStack(){
+                        Button(action: {
+                            isShowProfile = true
+                        }){
+                            VStack(alignment: .leading){
                                 Text(dbViewModel.users.count == 0 ? "" :  dbViewModel.users[0].name).font(.custom("ZenMaruGothic-Regular", size: 20.0)).foregroundStyle(Color(UIColor(hexString: "333333")))
-                                Spacer()
-                            }
-                            HStack{
                                 Text(authViewModel.getEmail())
                                     .font(.custom("ZenMaruGothic-Regular", size: 11.0)).foregroundStyle(Color(UIColor(hexString: "333333")).opacity(0.5))
-                                Spacer()
                             }
                         }
                         
                         Spacer()
                         
                         Button(action:{
-                            isShowProfile = true
+                            isEditImage = true
                         }){
                             if dbViewModel.users.count == 0 {
                                 ProgressView()
@@ -99,8 +98,11 @@ struct HomeView: View {
                     }
                     Spacer()
                 }
-            }.sheet(isPresented: $isShowProfile) {
-                EditImageView()
+            }.sheet(isPresented: $isEditImage) {
+                EditImageView(isCloseModal: $isEditImage)
+            }
+            .sheet(isPresented: $isShowProfile) {
+                EditProfileView(isCloseModal: $isShowProfile)
             }
         }.navigationBarHidden(true).navigationBarBackButtonHidden(true)
             .onAppear(perform: {

@@ -12,7 +12,7 @@ struct User {
     var name: String
     var email: String
     var gender: String
-    var age: String
+    var age: Int
     var image: String
     var plans: [[SpotInfo]]
 }
