@@ -72,7 +72,7 @@ class DBViewModel: ObservableObject {
         let plan = viewModel.SpotInfos
         
         docRef.updateData([
-            "plans": user.plans.append(plan),
+            "plans": users[0].plans.append(plan),
         ]) { error in
             completion(error)
         }
