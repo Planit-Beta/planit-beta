@@ -49,8 +49,6 @@ struct ImagePicker: UIViewControllerRepresentable {
                     parent.dbViewModel.selectedImage[0] = (image.jpegData(compressionQuality: 0.3)! as NSData) as Data
                 }
                 
-//                imageData = selectImage.jpegData(compressionQuality: 0.8)
-                
             }
      
             parent.presentationMode.wrappedValue.dismiss()

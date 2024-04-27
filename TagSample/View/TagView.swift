@@ -110,8 +110,6 @@ struct selectedTagView: View {
 
 struct TagView_Previews: PreviewProvider {
     static var previews: some View {
-//        PageTwoView(inputName: .constant("京都旅行"), inputDestination:.constant("清水寺"))
-//        TagView()
         selectedTagView()
     }
 }
