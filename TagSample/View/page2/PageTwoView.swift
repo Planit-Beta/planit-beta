@@ -80,18 +80,6 @@ struct PageTwoView: View {
                 }
                 Spacer()
                 
-//                VStack(spacing: 10){
-//                    HStack{
-//                        Text("食事(軽食)")
-//                            .font(.custom("ZenMaruGothic-Regular", size: 20.0))
-//                            .foregroundStyle(Color(UIColor(hexString: "333333")))
-//                        Spacer()
-//                    }
-//                    
-//                    ToggleTagView(tags: $snack,  option: viewModel.option.d)
-//                }
-//                Spacer()
-                
                 
             }.padding(.horizontal)
             
