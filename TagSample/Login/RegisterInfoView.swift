@@ -46,16 +46,20 @@ struct RegisterInfoView: View {
                     }
                     VStack(alignment: .leading, spacing: 10){
                         Text("性別").foregroundStyle(.black).font(.custom("ZenMaruGothic-Regular", size: 14))
-                        TextField("", text: $dbViewModel.user.gender)
-                            .autocapitalization(.none)
-                            .frame(width: 240, height: 30)
-                            .multilineTextAlignment(TextAlignment.center)
-                            .font(.custom("ZenMaruGothic-Regular", size: 15.0)).foregroundStyle(Color(UIColor(hexString: "333333"))).background(.clear)
-                            .cornerRadius(5)
-                            .overlay(
-                                   RoundedRectangle(cornerSize: CGSize(width: 5.0, height: 5.0))
-                                    .stroke(Color(UIColor(hexString: "333333")), lineWidth: 0.5)
-                           )
+                        Picker("性別を選択", selection: $dbViewModel.user.gender) {
+                            Text("男").tag("男")
+                            Text("女").tag("女")
+                            Text("その他").tag("その他")
+                        }
+                        .tint(Color(UIColor(hexString: "333333")).opacity(0.75))
+                        .frame(width: 240, height: 30)
+                        .multilineTextAlignment(TextAlignment.center)
+                        .font(.custom("ZenMaruGothic-Regular", size: 15.0)).foregroundStyle(Color(UIColor(hexString: "333333"))).background(.clear)
+                        .cornerRadius(5)
+                        .overlay(
+                            RoundedRectangle(cornerSize: CGSize(width: 5.0, height: 5.0))
+                                .stroke(Color(UIColor(hexString: "333333")), lineWidth: 0.5)
+                        )
                     }
                     VStack(alignment: .leading, spacing: 10){
                         Text("年齢").foregroundStyle(.black).font(.custom("ZenMaruGothic-Regular", size: 14))
