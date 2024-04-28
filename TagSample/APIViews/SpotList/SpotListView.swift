@@ -88,8 +88,8 @@ struct SpotListView: View {
                                 print("Error: \(error.localizedDescription)")
                             } else {
                                 print("User saved successfully.")
-                                dbViewModel.plans = []
                                 dbViewModel.fetchUsers(user_id: authViewModel.getUserID())
+                                viewModel.SpotInfos = []
                                 envData.isNavigationActive.wrappedValue = false
                             }
                         }
