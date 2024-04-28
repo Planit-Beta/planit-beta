@@ -9,6 +9,8 @@ import SwiftUI
 
 struct DetailScreen: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @EnvironmentObject var envData: EnvironmentData
+    
     let spotInfo: [SpotInfo]
     var body: some View {
         ZStack{
@@ -53,6 +55,9 @@ struct DetailScreen: View {
             }
         }.ignoresSafeArea().navigationBarBackButtonHidden(true).toolbarBackground(.hidden, for: .navigationBar)
         .navigationBarItems(leading: BackButton(action: {presentationMode.wrappedValue.dismiss()}), trailing: Image("threeDot"))
+        .sheet(isPresented: $envData.isImplementingModal) {
+            DevelopingView()
+        }
     }
     
 }
