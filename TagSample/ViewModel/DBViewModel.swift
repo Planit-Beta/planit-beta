@@ -16,9 +16,7 @@ class DBViewModel: ObservableObject {
     
     @Published var users: [User] = []
     
-    @Published var plan: [SpotInfo] = []
-    
-    @Published var plans: [[SpotInfo]] = []
+    @Published var plans: [Plan] = []
     
     @Published var selectedImage: [Data] = []
     @Published var inputUserName: String = ""
@@ -66,17 +64,53 @@ class DBViewModel: ObservableObject {
     }
     
     
-    func AddPlan(user_id: String, completion: @escaping (Error?) -> Void) {
-        let docRef = db.collection("users").document(user_id)
+    func AddPlan(user_id: String, plan: [SpotInfo], completion: @escaping (Error?) -> Void) {
+        let docRef = db.collection("plans").document()
         
-        let plan = viewModel.SpotInfos
+        let plan = Plan(id: docRef.documentID, uid: user_id, plan: plan)
         
-        docRef.updateData([
-            "plans": users[0].plans.append(plan),
+        docRef.setData([
+            "id": plan.id,
+            "uid": plan.uid,
+            "spots": plan.plan.map { $0.toDictionary() }
         ]) { error in
             completion(error)
         }
     }
+    
+    func fetchPlans(user_id: String) {
+        db.collection("plans")
+            .whereField("uid", isEqualTo: user_id)
+            .getDocuments { snapshot, error in
+                if let error = error {
+                    print("Error getting documents: \(error)")
+                } else {
+                    print("Fetched plans successfully for user: \(user_id)")
+                    let decoder = JSONDecoder()
+                    self.plans = snapshot?.documents.compactMap { document -> Plan? in
+                        let id = document.data()["id"] as? String ?? ""
+                        let uid = document.data()["uid"] as? String ?? ""
+                        if let spotsData = document.data()["spots"] as? [[String: Any]] {
+                            let spots = spotsData.compactMap { spotDict -> SpotInfo? in
+                                do {
+                                    let jsonData = try JSONSerialization.data(withJSONObject: spotDict)
+                                    return try decoder.decode(SpotInfo.self, from: jsonData)
+                                } catch {
+                                    print("Decoding error for spot: \(error)")
+                                    return nil
+                                }
+                            }
+                            return Plan(id: id, uid: uid, plan: spots)
+                        }
+                        return nil
+                    } ?? []
+                    if !self.plans.isEmpty {
+                        print("First plan spots: \(self.plans[0].plan)")
+                    }
+                }
+        }
+    }
+
     
     func EditProfile(user_id: String, completion: @escaping (Error?) -> Void) {
         

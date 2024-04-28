@@ -3,9 +3,6 @@
 import Foundation
 import SwiftUI
 
-//struct VisitSpots: Encodable {
-//    let out: [Spot]
-//}
 
 struct VisitSpots:Codable{
     let out: [Spot]
@@ -20,23 +17,6 @@ struct Spot: Codable{
     let lon: String //経度
     let other: String
     let description: String
-}
-
-struct SpotInfo: Decodable{
-    let junre: String
-    let time: String
-    let location: String
-    let lat: String //緯度
-    let lon: String //経度
-    let other: String
-    let description: String
-    
-    let placeId: String
-    let placeName: String
-    let address: String
-    let photoReference: String
-    let image: String
-    
 }
 
 struct ChatGPTResponse: Codable {
