@@ -83,13 +83,13 @@ struct SpotListView: View {
                     Spacer()
                     
                     SaveButtonView(action: {
-                        dbViewModel.AddPlan(user_id: authViewModel.getUserID()) { error in
+                        dbViewModel.AddPlan(user_id: authViewModel.getUserID(), plan: viewModel.SpotInfos) { error in
                             if let error = error {
                                 print("Error: \(error.localizedDescription)")
                             } else {
                                 print("User saved successfully.")
-                                dbViewModel.plan = []
                                 dbViewModel.fetchUsers(user_id: authViewModel.getUserID())
+                                viewModel.SpotInfos = []
                                 envData.isNavigationActive.wrappedValue = false
                             }
                         }
@@ -107,6 +107,11 @@ struct SpotListView: View {
         .onDisappear(perform: {
             viewModel.reset()
         })
+        .sheet(isPresented: $envData.isImplementingModal) {
+            DevelopingView().presentationDetents([
+                .fraction(0.3)
+            ])
+        }
     }
 }
 

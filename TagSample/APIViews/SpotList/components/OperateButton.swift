@@ -8,24 +8,32 @@
 import SwiftUI
 
 struct OperateButton: View {
+    @EnvironmentObject var envData: EnvironmentData
+    
     var body: some View {
         VStack{
             HStack(spacing: 17){
-                Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                Button(action: {
+                    envData.isImplementingModal = true
+                }, label: {
                     Image(decorative: "DeleteBtn")
                         .resizable()
                         .frame(width: 80, height: 80)
                         .shadow(color: .black.opacity(0.25), radius: 3, x: 1, y: 1)
                 })
                 
-                Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                Button(action: {
+                    envData.isImplementingModal = true
+                }, label: {
                     Image(decorative: "EditBtn")
                         .resizable()
                         .frame(width: 80, height: 80)
                         .shadow(color: .black.opacity(0.25), radius: 3, x: 1, y: 1)
                 })
                 
-                Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                Button(action: {
+                    envData.isImplementingModal = true
+                }, label: {
                     Image(decorative: "ShareBtn")
                         .resizable()
                         .frame(width: 80, height: 80)
