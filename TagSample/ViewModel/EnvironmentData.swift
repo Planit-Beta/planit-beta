@@ -11,5 +11,5 @@ import SwiftUI
 class EnvironmentData: ObservableObject {
     @Published var isNavigationActive: Binding<Bool> = Binding<Bool>.constant(false)
     
-    @Published var isImplementingModal: Bool = false
+    @Published var isImplementingModal = false
 }

@@ -13,12 +13,16 @@ struct OnBoarding: View {
     @State var selection = 1
     
     var body: some View {
+        let bounds = UIScreen.main.bounds
+        let width = Int(bounds.width)
+        
         NavigationView{
             ZStack{
                 Color(UIColor(hexString: "FDF5F3")).ignoresSafeArea()
                 VStack(spacing: 10){
                     VStack(alignment: .leading){ ///画面上部のバー
                         Text("新しく旅程を作成する").padding().font(.custom("ZenMaruGothic-Medium", size: 20.0)).foregroundStyle(Color(UIColor(hexString: "333333")))
+                            .padding(.horizontal)
                         ProgressView(value: min(max(progressVal, 0.0), 100), total: 100)
                             .animation(.easeInOut, value: progressVal)//バーのアニメーション
                             .tint(Color(UIColor(hexString: "333333")))//バーの色
@@ -31,11 +35,12 @@ struct OnBoarding: View {
                         VStack{
                             if selection == 1 {
                                 PageOneView(inputName: $inputName, inputDestination: $inputDestination)
+                                    .frame(width: bounds.width)
                             } else if selection == 2 {
-                                PageTwoView()
+                                PageTwoView().frame(width: bounds.width)
                                 
                             } else {
-                                PageThreeView()
+                                PageThreeView().frame(width: bounds.width)
                             }
                             
                             

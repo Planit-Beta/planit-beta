@@ -107,6 +107,11 @@ struct SpotListView: View {
         .onDisappear(perform: {
             viewModel.reset()
         })
+        .sheet(isPresented: $envData.isImplementingModal) {
+            DevelopingView().presentationDetents([
+                .fraction(0.3)
+            ])
+        }
     }
 }
 

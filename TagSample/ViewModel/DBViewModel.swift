@@ -12,11 +12,13 @@ import FirebaseStorage
 class DBViewModel: ObservableObject {
     private var db = Firestore.firestore()
     
-    @Published var user: User = User(id: "", name: "", email: "", gender: "", age: 0, image: "", plans: [])
+    @Published var user: User = User(id: "", name: "", email: "", gender: "男", age: 0, image: "", plans: [])
     
     @Published var users: [User] = []
     
     @Published var plans: [Plan] = []
+    
+    @Published var plansArray: [[SpotInfo]] = []
     
     @Published var selectedImage: [Data] = []
     @Published var inputUserName: String = ""
@@ -100,6 +102,8 @@ class DBViewModel: ObservableObject {
                                     return nil
                                 }
                             }
+                            self.plansArray.append(spots)
+                            print(self.plansArray)
                             return Plan(id: id, uid: uid, plan: spots)
                         }
                         return nil
