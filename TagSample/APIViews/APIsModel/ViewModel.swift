@@ -32,7 +32,10 @@ final class ViewModel: ObservableObject {
     @State var APIArray: [String] = []
     
     @Published public var messages: [Message] = []
+    
     @Published public var isAsking: Bool = false
+    @Published public var progressVal: Double = 0
+    
     @Published public var errorText: String = ""
     @Published public var showAlert = false
     @Published public var visitSpots: [Spot] = []
@@ -93,6 +96,7 @@ final class ViewModel: ObservableObject {
     
     public func askChatGPT(text: String) {
         if text.isEmpty { return }
+        
         isAsking = true
         add(text: text, role: .user)
         send(text: text, foodType: foodType)
@@ -156,7 +160,7 @@ extension ViewModel {
                 if let jsonData = res.choices[0].message.content.data(using: .utf8) {
                     do {
                         let json = try! JSONDecoder().decode(VisitSpots.self, from: jsonData)
-                        print(json)
+                        print(json.out.count)
                         json.out.forEach{
                             print($0)
                             if $0.junre.contains("観光") {
@@ -181,8 +185,11 @@ extension ViewModel {
                                 self.searchPlace.reset()
                                 print(self.SpotInfos)
                             }
+                            self.progressVal += Double(100 / json.out.count)
+                            print(self.progressVal)
                         }
                         
+//                        self.isAsking = false
                     } catch {
                         print("Error converting string to JSON: \(error)")
                     }

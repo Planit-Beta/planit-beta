@@ -28,14 +28,15 @@ struct ProgressingView: View {
                 VStack(spacing: 30){
                     Spacer()
                     Text("旅程を生成しています…").foregroundStyle(.white).font(.custom("ZenMaruGothic-Regular", size: 20))
-                    ProgressView(value: progressVal, total: 100)
-                        .animation(.easeInOut, value: progressVal)//バーのアニメーション
+                    ProgressView(value: viewModel.progressVal, total: 100)
+                        .animation(.easeInOut, value: viewModel.progressVal)//バーのアニメーション
                         .tint(Color(.white))//バーの色
                         .background(Color(UIColor(hexString: "F8714F")))
                         .scaleEffect(x: 0.3, y: 2.5)//バーの高さ
                         .onReceive(timer, perform: { _ in
+                            print(viewModel.progressVal)
                             if progressVal < 100 {
-                                progressVal += 1
+                                progressVal = viewModel.progressVal
                             }
                         })
                 }.offset(CGSize(width: 0, height: -UIScreen.main.bounds.width/2/2))
