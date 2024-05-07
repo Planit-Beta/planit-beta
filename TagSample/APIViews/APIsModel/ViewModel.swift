@@ -105,7 +105,7 @@ final class ViewModel: ObservableObject {
     private func responseSuccess(data: ChatGPTResponse) {
         guard let message = data.choices.first?.message else { return }
         add(text: message.content, role: .assistant)
-        sleep(10)
+//        sleep(10)
 //        isAsking = false
         isShowModal = true
     }
@@ -185,8 +185,10 @@ extension ViewModel {
                                 self.searchPlace.reset()
                                 print(self.SpotInfos)
                             }
-                            self.progressVal += Double(100 / json.out.count)
-                            print(self.progressVal)
+                            DispatchQueue.main.async {
+                                self.progressVal += Double(100 / json.out.count)
+                            }
+//                            self.progressVal += Double(100 / json.out.count)
                         }
                         
 //                        self.isAsking = false
@@ -216,3 +218,4 @@ extension ViewModel {
         return messages.map { ["content": $0.content, "role": $0.role.rawValue] }
     }
 }
+

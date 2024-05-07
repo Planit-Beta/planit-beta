@@ -10,7 +10,6 @@ import SwiftUI
 struct ProgressingView: View {
     @EnvironmentObject var viewModel: ViewModel
     @State var progressVal = 0.0
-    
     let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
     
     var body: some View {
@@ -28,15 +27,14 @@ struct ProgressingView: View {
                 VStack(spacing: 30){
                     Spacer()
                     Text("旅程を生成しています…").foregroundStyle(.white).font(.custom("ZenMaruGothic-Regular", size: 20))
-                    ProgressView(value: viewModel.progressVal, total: 100)
-                        .animation(.easeInOut, value: viewModel.progressVal)//バーのアニメーション
+                    ProgressView(value: progressVal, total: 100)
+                        .animation(.easeInOut, value: progressVal)//バーのアニメーション
                         .tint(Color(.white))//バーの色
                         .background(Color(UIColor(hexString: "F8714F")))
                         .scaleEffect(x: 0.3, y: 2.5)//バーの高さ
                         .onReceive(timer, perform: { _ in
-                            print(viewModel.progressVal)
                             if progressVal < 100 {
-                                progressVal = viewModel.progressVal
+                                progressVal += 1
                             }
                         })
                 }.offset(CGSize(width: 0, height: -UIScreen.main.bounds.width/2/2))
