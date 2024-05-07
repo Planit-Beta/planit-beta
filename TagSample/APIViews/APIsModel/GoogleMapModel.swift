@@ -244,8 +244,6 @@ class SearchPlace:ObservableObject{
         self.image = "\(request)"
         
         
-        
-        
 //        URLSession.shared.dataTask(with: request) { (data, response, error) in
 //            if let error = error {
 //                print("Error: \(error.localizedDescription)")

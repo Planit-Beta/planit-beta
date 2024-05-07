@@ -10,7 +10,6 @@ import SwiftUI
 struct ProgressingView: View {
     @EnvironmentObject var viewModel: ViewModel
     @State var progressVal = 0.0
-    
     let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
     
     var body: some View {
