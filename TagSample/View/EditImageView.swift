@@ -93,7 +93,6 @@ struct EditImageView: View {
                                         print("User saved successfully.")
                                         isCloseModal = false
                                         dbViewModel.selectedImage = []
-                                        dbViewModel.user.image = ""
                                         dbViewModel.fetchUsers(user_id: authViewModel.getUserID())
                                     }
                                 }
