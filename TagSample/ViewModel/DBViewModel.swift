@@ -66,14 +66,15 @@ class DBViewModel: ObservableObject {
     }
     
     
-    func AddPlan(user_id: String, plan: [SpotInfo], completion: @escaping (Error?) -> Void) {
+    func AddPlan(user_id: String, date: String, plan: [SpotInfo], completion: @escaping (Error?) -> Void) {
         let docRef = db.collection("plans").document()
         
-        let plan = Plan(id: docRef.documentID, uid: user_id, plan: plan)
+        let plan = Plan(id: docRef.documentID, uid: user_id, date: date, plan: plan)
         
         docRef.setData([
             "id": plan.id,
             "uid": plan.uid,
+            "date": plan.date,
             "spots": plan.plan.map { $0.toDictionary() }
         ]) { error in
             completion(error)
@@ -92,6 +93,7 @@ class DBViewModel: ObservableObject {
                     self.plans = snapshot?.documents.compactMap { document -> Plan? in
                         let id = document.data()["id"] as? String ?? ""
                         let uid = document.data()["uid"] as? String ?? ""
+                        let date = document.data()["date"] as? String ?? ""
                         if let spotsData = document.data()["spots"] as? [[String: Any]] {
                             let spots = spotsData.compactMap { spotDict -> SpotInfo? in
                                 do {
@@ -104,7 +106,7 @@ class DBViewModel: ObservableObject {
                             }
                             self.plansArray.append(spots)
                             print(self.plansArray)
-                            return Plan(id: id, uid: uid, plan: spots)
+                            return Plan(id: id, uid: uid, date: date, plan: spots)
                         }
                         return nil
                     } ?? []

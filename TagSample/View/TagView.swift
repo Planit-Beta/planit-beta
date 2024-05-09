@@ -89,7 +89,8 @@ struct selectedTagView: View {
                     HStack {
                         ForEach(index..<min(index + 4, viewModel.selectedOptions.count), id: \.self) { tagIndex in
                             Toggle(isOn: $isOn, label: {
-                                Text(viewModel.selectedOptions[tagIndex]).font(.custom("ZenMaruGothic-Regular", size: 14.0))
+                                Text(viewModel.selectedOptions[tagIndex])
+                                    .font(.custom("ZenMaruGothic-Regular", size: 14.0))
                                     .foregroundStyle(Color(UIColor(hexString: "333333")))
                                 })
                                 .background(Color(UIColor(hexString: "FFFFFF")))
