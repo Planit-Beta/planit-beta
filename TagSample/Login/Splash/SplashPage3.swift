@@ -10,6 +10,7 @@ import SwiftUI
 struct SplashPage3: View {
     @State var isMoveToLogin: Bool = false
     @State var isMoveToRegister: Bool = false
+    @EnvironmentObject var envData: EnvironmentData
     
     var body: some View {
         ZStack{
@@ -27,11 +28,12 @@ struct SplashPage3: View {
                 
                 VStack(spacing: 25){
                     ButtonView(action: {isMoveToLogin = true}, backColor: "FDF5F3", textColor: "333333", text: "ログイン")
-                    ButtonView(action: {}, backColor: "FDF5F3", textColor: "333333", text: "Googleでログイン")
+                    ButtonView(action: {envData.isImplementingModal = true}, backColor: "FDF5F3", textColor: "333333", text: "Googleでログイン")
                     Divider().frame(width: 240, height: 1).background(Color(UIColor(hexString: "333333")))
                     ButtonView(action: {isMoveToRegister = true}, backColor: "F8714F", textColor: "FFFFFF", text: "新規登録")
                 }
             }
+            
             NavigationLink(
                 destination: LoginView(),
                 isActive: $isMoveToLogin,
@@ -42,6 +44,10 @@ struct SplashPage3: View {
                 isActive: $isMoveToRegister,
                 label: { EmptyView() }
             ).hidden()
+        }.sheet(isPresented: $envData.isImplementingModal) {
+            DevelopingView().presentationDetents([
+                .fraction(0.3)
+            ])
         }
     }
 }

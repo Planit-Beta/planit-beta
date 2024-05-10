@@ -10,17 +10,17 @@ import SwiftUI
 struct HomeScreen: View {
     @State private var selectedIndex: Int = 1
     
-    var SpotInfos: [[SpotInfo]]
+    var plans: [Plan]
     
     var body: some View {
         
         ScrollView (.horizontal, showsIndicators: false) {
             HStack (spacing: 0) {
-                ForEach(SpotInfos.indices) { i in
+                ForEach(plans.indices) { i in
                     NavigationLink(
-                        destination: DetailScreen(spotInfo: SpotInfos[i]),
+                        destination: DetailScreen(plan: plans[i]),
                         label: {
-                            ProductCardView(spots: SpotInfos[i], size: 250)
+                            ProductCardView(spots: plans[i].plan, size: 250)
                         })
                     .navigationBarHidden(true)
                     .foregroundColor(.black)
@@ -46,7 +46,7 @@ struct ProductCardView: View {
     
     var body: some View {
         VStack {
-            AsyncImage(url: URL(string: spots[0].image)) { image in
+            AsyncImage(url: URL(string: (spots[0].image.isEmpty ? (spots[1].image.isEmpty ? sampleImage[0] : spots[1].image) : spots[0].image))) { image in
                     image.resizable()
                     .scaledToFill()
                     .frame(width: size, height: 400)
@@ -63,11 +63,11 @@ struct ProductCardView: View {
                         VStack{
                             HStack{
                                 Spacer()
-                                Text(spots[0].placeName)
+                                Text(spots[0].junre == "移動" ? spots[1].location : spots[0].location)
                                     .font(.custom("ZenMaruGothic-Black", size: 24.0))
                                     .foregroundStyle(Color(UIColor(hexString: "FFFFFF")))
                                     .overlay(
-                                        Text(spots[0].placeName)
+                                        Text(spots[0].junre == "移動" ? spots[1].location : spots[0].location)
                                             .font(.custom("ZenMaruGothic-Regular", size: 24.0))
                                             .foregroundStyle(Color(UIColor(hexString: "333333")))
                                     )

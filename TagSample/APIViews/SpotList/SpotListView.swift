@@ -83,7 +83,7 @@ struct SpotListView: View {
                     Spacer()
                     
                     SaveButtonView(action: {
-                        dbViewModel.AddPlan(user_id: authViewModel.getUserID(), plan: viewModel.SpotInfos) { error in
+                        dbViewModel.AddPlan(user_id: authViewModel.getUserID(), date: dateText, plan: viewModel.SpotInfos) { error in
                             if let error = error {
                                 print("Error: \(error.localizedDescription)")
                             } else {
@@ -91,6 +91,7 @@ struct SpotListView: View {
                                 dbViewModel.fetchUsers(user_id: authViewModel.getUserID())
                                 viewModel.SpotInfos = []
                                 envData.isNavigationActive.wrappedValue = false
+                                dbViewModel.fetchPlans(user_id: authViewModel.getUserID())
                             }
                         }
                     })
