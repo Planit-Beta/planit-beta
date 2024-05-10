@@ -91,6 +91,7 @@ struct SpotListView: View {
                                 dbViewModel.fetchUsers(user_id: authViewModel.getUserID())
                                 viewModel.SpotInfos = []
                                 envData.isNavigationActive.wrappedValue = false
+                                dbViewModel.fetchPlans(user_id: authViewModel.getUserID())
                             }
                         }
                     })

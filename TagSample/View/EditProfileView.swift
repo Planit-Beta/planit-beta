@@ -73,25 +73,34 @@ struct EditProfileView: View {
                     }
                 }
                 
-                ButtonView(action: {
-//                    dbViewModel.user.id = authViewModel.getUserID()
-                    
-                    if dbViewModel.inputUserName.trimmingCharacters(in: .whitespacesAndNewlines) != "" {
-                        dbViewModel.EditProfile(user_id: authViewModel.getUserID()){ error in
-                            if let error = error {
-                                print("Error: \(error.localizedDescription)")
-                            } else {
-                                print("User saved successfully.")
-                                isCloseModal = false
-                                dbViewModel.inputUserName = ""
-                                dbViewModel.inputAge = 0
-                                dbViewModel.inputGender = ""
-                                dbViewModel.fetchUsers(user_id: authViewModel.getUserID())
+                VStack(spacing: 10){
+                    ButtonView(action: {
+                        //                    dbViewModel.user.id = authViewModel.getUserID()
+                        
+                        if dbViewModel.inputUserName.trimmingCharacters(in: .whitespacesAndNewlines) != "" {
+                            dbViewModel.EditProfile(user_id: authViewModel.getUserID()){ error in
+                                if let error = error {
+                                    print("Error: \(error.localizedDescription)")
+                                } else {
+                                    print("User saved successfully.")
+                                    isCloseModal = false
+                                    dbViewModel.inputUserName = ""
+                                    dbViewModel.inputAge = 0
+                                    dbViewModel.inputGender = ""
+                                    dbViewModel.fetchUsers(user_id: authViewModel.getUserID())
+                                }
                             }
                         }
-                    }
+                        
+                    }, backColor: "FDF5F3", textColor: "333333", text: "変更する")
                     
-                }, backColor: "FDF5F3", textColor: "333333", text: "変更する")
+                    HStack(spacing: 0){
+                        Text("サインアウトは").foregroundStyle(Color(UIColor(hexString: "333333"))).font(.custom("ZenMaruGothic-Regular", size: 14))
+                        Button(action: {authViewModel.signOut()}){
+                            Text("こちら").foregroundStyle(Color(UIColor(hexString: "F8714F"))).font(.custom("ZenMaruGothic-Medium", size: 14))
+                        }
+                    }
+                }
             }
             
         }.onAppear(perform: {

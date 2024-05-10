@@ -63,24 +63,6 @@ struct EditImageView: View {
                     Divider().frame(width: 240, height: 1).background(Color(UIColor(hexString: "333333")))
                 }
                 
-//                Button("save") {
-//                                   // kari
-//                    dbViewModel.AddPlan(user_id: authViewModel.getUserID(), date: <#String#>, plan: spots)
-//                    { error in
-//                        if let error = error {
-//                            print("Error: \(error.localizedDescription)")
-//                        } else {
-//                            print("User saved successfully.")
-//                            dbViewModel.fetchPlans(user_id: authViewModel.getUserID())
-//                        }
-//                    }
-//                }
-                
-                Button("Log Out") {
-                                   // ログアウトしてログイン画面へ遷移する
-                                   authViewModel.signOut()
-                               }
-                
                 ButtonView(action: {
                     
                     if dbViewModel.selectedImage.count > 0 {

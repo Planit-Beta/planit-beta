@@ -123,17 +123,18 @@ struct HomeView: View {
                         Spacer()
                     }
                 }
-            }.sheet(isPresented: $isEditImage) {
+            }
+            .onAppear(perform: {
+                dbViewModel.fetchUsers(user_id: authViewModel.getUserID())
+                dbViewModel.fetchPlans(user_id: authViewModel.getUserID())
+            })
+            .sheet(isPresented: $isEditImage) {
                 EditImageView(isCloseModal: $isEditImage)
             }
             .sheet(isPresented: $isShowProfile) {
                 EditProfileView(isCloseModal: $isShowProfile)
             }
         }.navigationBarHidden(true).navigationBarBackButtonHidden(true)
-            .onAppear(perform: {
-                dbViewModel.fetchUsers(user_id: authViewModel.getUserID())
-                dbViewModel.fetchPlans(user_id: authViewModel.getUserID())
-            })
     }
 }
 
