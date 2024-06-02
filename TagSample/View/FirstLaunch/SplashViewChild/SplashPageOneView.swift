@@ -8,7 +8,7 @@
 import SwiftUI
 
 
-struct SplashPage1: View {
+struct SplashPageOneView: View {
     @State var progressVal = 0.0
     
     let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
@@ -35,5 +35,5 @@ struct SplashPage1: View {
 }
 
 #Preview {
-    SplashPage1()
+    SplashPageOneView()
 }

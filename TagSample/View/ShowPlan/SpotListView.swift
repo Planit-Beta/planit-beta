@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SpotListView: View {
-    @EnvironmentObject var viewModel: ViewModel
+    @ObservedObject private var chatGPTViewModel = ChatGPTViewModel.shared
     @EnvironmentObject var envData: EnvironmentData
     @EnvironmentObject var authViewModel: AuthViewModel
     @EnvironmentObject var dbViewModel: DBViewModel
@@ -33,8 +33,8 @@ struct SpotListView: View {
             Color(UIColor(hexString: "FDF5F3"))
                 .ignoresSafeArea()
             ScrollView{
-                if viewModel.SpotInfos.count != 0 {
-                    AsyncImage(url: URL(string: (viewModel.SpotInfos[0].image == "" && viewModel.SpotInfos[1].image == "") ? sampleImage[0] : (viewModel.SpotInfos[0].image == "") ? viewModel.SpotInfos[1].image : viewModel.SpotInfos[0].image)) { image in ///メイン画像
+                if chatGPTViewModel.SpotInfos.count != 0 {
+                    AsyncImage(url: URL(string: (chatGPTViewModel.SpotInfos[0].image == "" && chatGPTViewModel.SpotInfos[1].image == "") ? sampleImage[0] : (chatGPTViewModel.SpotInfos[0].image == "") ? chatGPTViewModel.SpotInfos[1].image : chatGPTViewModel.SpotInfos[0].image)) { image in ///メイン画像
                         image.resizable().scaledToFill().frame(width: UIScreen.main.bounds.width, height: 300)
                         
                     } placeholder: {
@@ -56,17 +56,17 @@ struct SpotListView: View {
                         Spacer()
                     }
                     HStack{ ///　タグ４つ
-                        OptionTagView(option: viewModel.option.withWho)
-                        OptionTagView(option: viewModel.option.season)
-                        OptionTagView(option: viewModel.option.detail1)
-                        OptionTagView(option: viewModel.option.foodType)
+                        OptionTagView(option: chatGPTViewModel.option.withWho)
+                        OptionTagView(option: chatGPTViewModel.option.season)
+                        OptionTagView(option: chatGPTViewModel.option.detail1)
+                        OptionTagView(option: chatGPTViewModel.option.foodType)
                         Spacer()
                     }
                     OperateButton() /// ボタン３つ
                 }.padding().padding(.horizontal)
                 
                 VStack(spacing: 30){ ///旅程リスト
-                    ForEach(viewModel.SpotInfos, id: \.time) { info in
+                    ForEach(chatGPTViewModel.SpotInfos, id: \.time) { info in
                         
                         if info.junre.contains("移動") {
                             TransportView(spot: info).onAppear(perform: {
@@ -83,13 +83,13 @@ struct SpotListView: View {
                     Spacer()
                     
                     SaveButtonView(action: {
-                        dbViewModel.AddPlan(user_id: authViewModel.getUserID(), date: dateText, plan: viewModel.SpotInfos) { error in
+                        dbViewModel.AddPlan(user_id: authViewModel.getUserID(), date: dateText, plan: chatGPTViewModel.SpotInfos) { error in
                             if let error = error {
                                 print("Error: \(error.localizedDescription)")
                             } else {
                                 print("User saved successfully.")
                                 dbViewModel.fetchUsers(user_id: authViewModel.getUserID())
-                                viewModel.SpotInfos = []
+                                chatGPTViewModel.SpotInfos = []
                                 envData.isNavigationActive.wrappedValue = false
                                 dbViewModel.fetchPlans(user_id: authViewModel.getUserID())
                             }
@@ -106,7 +106,7 @@ struct SpotListView: View {
             dateText = (dateFormatter.string(from: nowDate))
         }
         .onDisappear(perform: {
-            viewModel.reset()
+            chatGPTViewModel.reset()
         })
         .sheet(isPresented: $envData.isImplementingModal) {
             DevelopingView().presentationDetents([
@@ -117,5 +117,5 @@ struct SpotListView: View {
 }
 
 #Preview {
-    SpotListView().environmentObject(ViewModel())
+    SpotListView()
 }

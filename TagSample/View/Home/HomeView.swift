@@ -93,7 +93,7 @@ struct HomeView: View {
                                 .shadow(color: .gray, radius: 2, x: 0, y: 2)
                         }.padding(.top, 20)
                         
-                        NavigationLink(destination: OnBoarding(), isActive: $isActive) {
+                        NavigationLink(destination: OnBoardingView(), isActive: $isActive) {
                             EmptyView()
                         }
                         
@@ -105,7 +105,7 @@ struct HomeView: View {
                                     Text("自分の旅程").font(.custom("ZenMaruGothic-Regular", size: 20.0)).foregroundStyle(Color(UIColor(hexString: "333333")))
                                     Spacer()
                                 }.padding(.horizontal).padding(.horizontal)
-                                HomeScreen(plans: dbViewModel.plans)
+                                PlansListView(plans: dbViewModel.plans)
                                     .onAppear(perform: {
                                         print(dbViewModel.plans[0])
                                     })
@@ -118,7 +118,7 @@ struct HomeView: View {
                                 Text("おすすめの旅程").font(.custom("ZenMaruGothic-Regular", size: 20.0)).foregroundStyle(Color(UIColor(hexString: "333333")))
                                 Spacer()
                             }.padding(.horizontal).padding(.horizontal)
-                            HomeScreen(plans: recommendPlans)
+                            PlansListView(plans: recommendPlans)
                         }
                         Spacer()
                     }

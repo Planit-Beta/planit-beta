@@ -13,14 +13,9 @@ var interestTags: [String] = ["Memes", "News", "Music", "Crypto",
 "Travel", "Parenting", "Gardening", "Skateboarding",
  "Witchcraft", "Love", "Relationships"]
 
-struct Tag: Identifiable {
-    var id = UUID().uuidString
-    var name: String
-    var isSelected: Bool = false
-}
 
 struct ToggleTagView: View {
-    @EnvironmentObject var viewModel: ViewModel
+    @ObservedObject private var chatGPTViewModel = ChatGPTViewModel.shared
     @Binding var tags: [Tag]
     @Binding var option: String
 //    var index: Int
@@ -54,7 +49,7 @@ struct ToggleTagView: View {
                                         }
                                     }
                                     option = tags[index].name
-                                    viewModel.selectedOptions.append(tags[index].name)
+                                    chatGPTViewModel.selectedOptions.append(tags[index].name)
                                     print("Tag number \(tags[index].name) selected.")
                                 }
                             }
@@ -71,18 +66,18 @@ struct ToggleTagView: View {
 
 
 struct selectedTagView: View {
-    @EnvironmentObject var viewModel: ViewModel
+    @ObservedObject private var chatGPTViewModel = ChatGPTViewModel.shared
     
     @State var isOn: Bool = false
     
     var body: some View {
         VStack(spacing: 10){
-            ForEach(0..<viewModel.selectedOptions.count, id: \.self) { index in
+            ForEach(0..<chatGPTViewModel.selectedOptions.count, id: \.self) { index in
                 if index % 4 == 0 {
                     HStack {
-                        ForEach(index..<min(index + 4, viewModel.selectedOptions.count), id: \.self) { tagIndex in
+                        ForEach(index..<min(index + 4,  chatGPTViewModel.selectedOptions.count), id: \.self) { tagIndex in
                             Toggle(isOn: $isOn, label: {
-                                Text(viewModel.selectedOptions[tagIndex])
+                                Text(chatGPTViewModel.selectedOptions[tagIndex])
                                     .font(.custom("ZenMaruGothic-Regular", size: 14.0))
                                     .foregroundStyle(Color(UIColor(hexString: "333333")))
                                 })
@@ -91,7 +86,7 @@ struct selectedTagView: View {
                                 .clipShape(RoundedRectangle(cornerRadius: 10))
                                 .disabled(true)
                             
-                                if tagIndex != viewModel.selectedOptions.count - 1 {
+                                if tagIndex != chatGPTViewModel.selectedOptions.count - 1 {
                                     Spacer()
                                 }
                             }

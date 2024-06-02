@@ -17,8 +17,6 @@ class AuthViewModel: ObservableObject {
     @Published var isCorrectRegisterInfo = false
     @Published var isNewUser = false
     
-//    @EnvironmentObject var dbViewModel: DBViewModel
-    
     // イニシャライザメソッドを呼び出して、アプリの起動時に認証状態をチェックする
     init() {
         observeAuthChanges()
@@ -31,9 +29,7 @@ class AuthViewModel: ObservableObject {
                     self?.isAuthenticated = user != nil && self?.isCorrectRegisterInfo == true
                 } else {
                     self?.isAuthenticated = user != nil
-                    print(Auth.auth().currentUser?.email)
                 }
-//                self?.isMoveToRegisterInfo = true
             }
         }
     }
@@ -54,7 +50,6 @@ class AuthViewModel: ObservableObject {
         Auth.auth().createUser(withEmail: email, password: password) { [weak self] result, error in
             DispatchQueue.main.async {
                 if result != nil, error == nil {
-//                    self?.isAuthenticated = true
                     self?.isMoveToRegisterInfo = true
                 } else {
                     self?.isNewUser = false

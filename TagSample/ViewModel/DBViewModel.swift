@@ -25,8 +25,6 @@ class DBViewModel: ObservableObject {
     @Published var inputAge: Int = 0
     @Published var inputGender: String = ""
     
-    @EnvironmentObject var viewModel: ViewModel
-    
 
     func saveUser(completion: @escaping (Error?) -> Void) {
         let docRef = db.collection("users").document(user.id)

@@ -32,11 +32,11 @@ struct SplashView: View {
                     
                     VStack{
                         if selection == 1 {
-                            SplashPage1()
+                            SplashPageOneView()
                         } else if selection == 2 {
-                            SplashPage2()
+                            SplashPageTwoView()
                         } else {
-                            SplashPage3()
+                            SplashPageThreeView()
                         }
                     }
                     .padding()

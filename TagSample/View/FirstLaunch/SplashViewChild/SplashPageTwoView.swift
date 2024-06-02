@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SplashPage2: View {
+struct SplashPageTwoView: View {
 //    @EnvironmentObject var viewModel: ViewModel
     @State var progressVal = 0.0
     
@@ -35,6 +35,6 @@ struct SplashPage2: View {
 }
 
 #Preview {
-    SplashPage2()
+    SplashPageTwoView()
 }
 
