@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ProgressingView: View {
-    @EnvironmentObject var viewModel: ViewModel
+    @ObservedObject private var chatGPTViewModel = ChatGPTViewModel.shared
     @State var progressVal = 0.0
     let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
     
@@ -41,7 +41,7 @@ struct ProgressingView: View {
                 
                 NavigationLink( ///旅程リストへ画面遷移
                     destination: SpotListView(),
-                    isActive: $viewModel.isShowModal,
+                    isActive: $chatGPTViewModel.isShowModal,
                     label: { EmptyView() }
                 ).hidden()
             }

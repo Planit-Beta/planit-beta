@@ -45,3 +45,25 @@ struct ChatGPTResponse: Codable {
         var total_tokens: Int
     }
 }
+
+struct Message: Hashable {
+    var content: String
+    var role: Role
+    
+    enum Role: String {
+        case system = "system"
+        case user = "user"
+        case assistant = "assistant"
+    }
+}
+
+struct Option: Codable {
+    var start: String
+    var time: String
+    var withWho: String
+    var detail1: String //緯度
+    var detail2: String //緯度
+    var detail3: String //緯度
+    var foodType: String //経度
+    var season: String
+}

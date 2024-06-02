@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PageOneView: View {
-    @EnvironmentObject var viewModel: ViewModel
+    @ObservedObject private var chatGPTViewModel = ChatGPTViewModel.shared
     @Binding var inputName: String
     @Binding var inputDestination: String
     
@@ -31,7 +31,7 @@ struct PageOneView: View {
                             
                             Spacer()
                             
-                            TextField("場所を入力", text: $viewModel.option.start)
+                            TextField("場所を入力", text: $chatGPTViewModel.option.start)
                                 .frame(width: 150, height: 30)
                                 .multilineTextAlignment(TextAlignment.center)
                             //                            .padding(5)
@@ -55,7 +55,7 @@ struct PageOneView: View {
                             
                             Spacer()
                             
-                            TextField("時刻を入力", text: $viewModel.option.time)
+                            TextField("時刻を入力", text: $chatGPTViewModel.option.time)
                                 .frame(width: 150, height: 30)
                                 .multilineTextAlignment(TextAlignment.center)
                             //                            .padding(5)

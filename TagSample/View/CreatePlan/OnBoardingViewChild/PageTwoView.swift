@@ -15,7 +15,7 @@ var foodTags:  [String] = ["和風", "中華", "ラーメン", "韓国料理", "
 var snackTags:  [String] = ["コーヒー", "スイーツ", "食べ歩き"]
 
 struct PageTwoView: View {
-    @EnvironmentObject var viewModel: ViewModel
+    @ObservedObject private var chatGPTViewModel = ChatGPTViewModel.shared
     @State private var pageTwoInputName: String = ""
     
     @State var situation: [Tag] = situationTags.map { Tag(name: $0) }
@@ -40,7 +40,7 @@ struct PageTwoView: View {
                         Spacer()
                     }
                     
-                    ToggleTagView(tags: $situation, option: $viewModel.option.withWho)
+                    ToggleTagView(tags: $situation, option: $chatGPTViewModel.option.withWho)
                 }
                 Spacer()
                 
@@ -52,7 +52,7 @@ struct PageTwoView: View {
                         Spacer()
                     }
                     
-                    ToggleTagView(tags: $season,  option: $viewModel.option.season)
+                    ToggleTagView(tags: $season,  option: $chatGPTViewModel.option.season)
                 }
                 Spacer()
                 
@@ -64,7 +64,7 @@ struct PageTwoView: View {
                         Spacer()
                     }
                     
-                    ToggleTagView(tags: $tour, option: $viewModel.option.detail1)
+                    ToggleTagView(tags: $tour, option: $chatGPTViewModel.option.detail1)
                 }
                 Spacer()
                 
@@ -76,7 +76,7 @@ struct PageTwoView: View {
                         Spacer()
                     }
                     
-                    ToggleTagView(tags: $food, option: $viewModel.option.foodType)
+                    ToggleTagView(tags: $food, option: $chatGPTViewModel.option.foodType)
                 }
                 Spacer()
                 
