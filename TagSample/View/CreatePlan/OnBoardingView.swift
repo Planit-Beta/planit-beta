@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct OnBoarding: View {
+struct OnBoardingView: View {
     
     @State var offset: CGFloat = .zero
     @State var isShowBackBtn: Bool = false
@@ -138,6 +138,6 @@ struct OnBoarding: View {
 
 struct OnBoarding_Previews: PreviewProvider {
     static var previews: some View {
-        OnBoarding()
+        OnBoardingView()
     }
 }

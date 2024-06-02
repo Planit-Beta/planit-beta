@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SplashPage3: View {
+struct SplashPageThreeView: View {
     @State var isMoveToLogin: Bool = false
     @State var isMoveToRegister: Bool = false
     @EnvironmentObject var envData: EnvironmentData
@@ -53,5 +53,5 @@ struct SplashPage3: View {
 }
 
 #Preview {
-    SplashPage3()
+    SplashPageThreeView()
 }

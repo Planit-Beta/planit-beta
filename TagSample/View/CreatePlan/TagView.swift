@@ -13,11 +13,6 @@ var interestTags: [String] = ["Memes", "News", "Music", "Crypto",
 "Travel", "Parenting", "Gardening", "Skateboarding",
  "Witchcraft", "Love", "Relationships"]
 
-struct Tag: Identifiable {
-    var id = UUID().uuidString
-    var name: String
-    var isSelected: Bool = false
-}
 
 struct ToggleTagView: View {
     @EnvironmentObject var viewModel: ViewModel
