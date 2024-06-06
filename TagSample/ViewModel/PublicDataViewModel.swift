@@ -8,7 +8,9 @@
 import Foundation
 import SwiftUI
 
-class EnvironmentData: ObservableObject {
+class PublicDataViewModel: ObservableObject {
+    static let shared = PublicDataViewModel()
+    
     @Published var isNavigationActive: Binding<Bool> = Binding<Bool>.constant(false)
     
     @Published var isImplementingModal = false

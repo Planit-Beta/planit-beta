@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct SplashPageThreeView: View {
+    @ObservedObject private var publicDataViewModel = PublicDataViewModel.shared
     @State var isMoveToLogin: Bool = false
     @State var isMoveToRegister: Bool = false
-    @EnvironmentObject var envData: EnvironmentData
     
     var body: some View {
         ZStack{
@@ -28,7 +28,7 @@ struct SplashPageThreeView: View {
                 
                 VStack(spacing: 25){
                     ButtonView(action: {isMoveToLogin = true}, backColor: "FDF5F3", textColor: "333333", text: "ログイン")
-                    ButtonView(action: {envData.isImplementingModal = true}, backColor: "FDF5F3", textColor: "333333", text: "Googleでログイン")
+                    ButtonView(action: {publicDataViewModel .isImplementingModal = true}, backColor: "FDF5F3", textColor: "333333", text: "Googleでログイン")
                     Divider().frame(width: 240, height: 1).background(Color(UIColor(hexString: "333333")))
                     ButtonView(action: {isMoveToRegister = true}, backColor: "F8714F", textColor: "FFFFFF", text: "新規登録")
                 }
@@ -44,7 +44,7 @@ struct SplashPageThreeView: View {
                 isActive: $isMoveToRegister,
                 label: { EmptyView() }
             ).hidden()
-        }.sheet(isPresented: $envData.isImplementingModal) {
+        }.sheet(isPresented: $publicDataViewModel.isImplementingModal) {
             DevelopingView().presentationDetents([
                 .fraction(0.3)
             ])

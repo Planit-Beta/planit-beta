@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct OperateButton: View {
-    @EnvironmentObject var envData: EnvironmentData
+    @ObservedObject private var publicDataViewModel = PublicDataViewModel.shared
     
     var body: some View {
         VStack{
             HStack(spacing: 17){
                 Button(action: {
-                    envData.isImplementingModal = true
+                    publicDataViewModel.isImplementingModal = true
                 }, label: {
                     Image(decorative: "DeleteBtn")
                         .resizable()
@@ -23,7 +23,7 @@ struct OperateButton: View {
                 })
                 
                 Button(action: {
-                    envData.isImplementingModal = true
+                    publicDataViewModel.isImplementingModal = true
                 }, label: {
                     Image(decorative: "EditBtn")
                         .resizable()
@@ -32,7 +32,7 @@ struct OperateButton: View {
                 })
                 
                 Button(action: {
-                    envData.isImplementingModal = true
+                    publicDataViewModel.isImplementingModal = true
                 }, label: {
                     Image(decorative: "ShareBtn")
                         .resizable()

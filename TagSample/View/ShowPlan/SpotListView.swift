@@ -9,9 +9,9 @@ import SwiftUI
 
 struct SpotListView: View {
     @ObservedObject private var chatGPTViewModel = ChatGPTViewModel.shared
-    @EnvironmentObject var envData: EnvironmentData
-    @EnvironmentObject var authViewModel: AuthViewModel
-    @EnvironmentObject var dbViewModel: DBViewModel
+    @ObservedObject private var publicDataViewModel = PublicDataViewModel.shared
+    @ObservedObject private var firebaseAuthViewModel = FirebaseAuthViewModel.shared
+    @ObservedObject private var firestoreViewModel = FirestoreViewModel.shared
     
     @State var nowDate = Date()
     @State var dateText = ""
@@ -83,15 +83,15 @@ struct SpotListView: View {
                     Spacer()
                     
                     SaveButtonView(action: {
-                        dbViewModel.AddPlan(user_id: authViewModel.getUserID(), date: dateText, plan: chatGPTViewModel.SpotInfos) { error in
+                        firestoreViewModel.AddPlan(user_id: firebaseAuthViewModel.getUserID(), date: dateText, plan: chatGPTViewModel.SpotInfos) { error in
                             if let error = error {
                                 print("Error: \(error.localizedDescription)")
                             } else {
                                 print("User saved successfully.")
-                                dbViewModel.fetchUsers(user_id: authViewModel.getUserID())
+                                firestoreViewModel.fetchUsers(user_id: firebaseAuthViewModel.getUserID())
                                 chatGPTViewModel.SpotInfos = []
-                                envData.isNavigationActive.wrappedValue = false
-                                dbViewModel.fetchPlans(user_id: authViewModel.getUserID())
+                                publicDataViewModel.isNavigationActive.wrappedValue = false
+                                firestoreViewModel.fetchPlans(user_id: firebaseAuthViewModel.getUserID())
                             }
                         }
                     })
@@ -108,7 +108,7 @@ struct SpotListView: View {
         .onDisappear(perform: {
             chatGPTViewModel.reset()
         })
-        .sheet(isPresented: $envData.isImplementingModal) {
+        .sheet(isPresented: $publicDataViewModel.isImplementingModal) {
             DevelopingView().presentationDetents([
                 .fraction(0.3)
             ])

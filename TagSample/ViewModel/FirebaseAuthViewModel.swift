@@ -9,7 +9,9 @@
 import SwiftUI
 import FirebaseAuth
 
-class AuthViewModel: ObservableObject {
+class FirebaseAuthViewModel: ObservableObject {
+    static let shared = FirebaseAuthViewModel()
+    
     @Published var isAuthenticated = false
     
     @Published var isShowPostPage = false

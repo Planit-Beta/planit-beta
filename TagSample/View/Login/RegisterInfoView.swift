@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct RegisterInfoView: View {
-    @EnvironmentObject var authViewModel: AuthViewModel
-    @EnvironmentObject var dbViewModel: DBViewModel
+    @ObservedObject private var firebaseAuthViewModel = FirebaseAuthViewModel.shared
+    @ObservedObject private var firestoreViewModel = FirestoreViewModel.shared
     
     @State var isMoveToHome: Bool = false
     
@@ -33,7 +33,7 @@ struct RegisterInfoView: View {
                 VStack(spacing: 20){
                     VStack(alignment: .leading, spacing: 10){
                         Text("ユーザー名").foregroundStyle(.black).font(.custom("ZenMaruGothic-Regular", size: 14))
-                        TextField("", text: $dbViewModel.user.name)
+                        TextField("", text: $firestoreViewModel.user.name)
                             .autocapitalization(.none)
                             .frame(width: 240, height: 30)
                             .multilineTextAlignment(TextAlignment.center)
@@ -46,7 +46,7 @@ struct RegisterInfoView: View {
                     }
                     VStack(alignment: .leading, spacing: 10){
                         Text("性別").foregroundStyle(.black).font(.custom("ZenMaruGothic-Regular", size: 14))
-                        Picker("性別を選択", selection: $dbViewModel.user.gender) {
+                        Picker("性別を選択", selection: $firestoreViewModel.user.gender) {
                             Text("男").tag("男")
                             Text("女").tag("女")
                             Text("その他").tag("その他")
@@ -63,7 +63,7 @@ struct RegisterInfoView: View {
                     }
                     VStack(alignment: .leading, spacing: 10){
                         Text("年齢").foregroundStyle(.black).font(.custom("ZenMaruGothic-Regular", size: 14))
-                        TextField("", value: $dbViewModel.user.age, format: .number)
+                        TextField("", value: $firestoreViewModel.user.age, format: .number)
                             .autocapitalization(.none)
                             .frame(width: 240, height: 30)
                             .multilineTextAlignment(TextAlignment.center)
@@ -78,19 +78,19 @@ struct RegisterInfoView: View {
                 
                 ButtonView(action: {
                     
-                    dbViewModel.user.id = authViewModel.getUserID()
+                    firestoreViewModel.user.id = firebaseAuthViewModel.getUserID()
                     
-                    if dbViewModel.user.name.trimmingCharacters(in: .whitespacesAndNewlines) != "" {
-                        dbViewModel.saveUser(){ error in
+                    if firestoreViewModel.user.name.trimmingCharacters(in: .whitespacesAndNewlines) != "" {
+                        firestoreViewModel.saveUser(){ error in
                             if let error = error {
                                 print("Error: \(error.localizedDescription)")
                             } else {
                                 print("User saved successfully.")
-                                dbViewModel.fetchUsers(user_id: authViewModel.getUserID())
+                                firestoreViewModel.fetchUsers(user_id: firebaseAuthViewModel.getUserID())
                                 
-                                authViewModel.isMoveToRegisterInfo = false
-                                authViewModel.isCorrectRegisterInfo = true
-                                authViewModel.isAuthenticated = true
+                                firebaseAuthViewModel.isMoveToRegisterInfo = false
+                                firebaseAuthViewModel.isCorrectRegisterInfo = true
+                                firebaseAuthViewModel.isAuthenticated = true
                             }
                         }
                     }

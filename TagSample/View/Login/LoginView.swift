@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LoginView: View {
     @Environment(\.dismiss) var dismiss
-    @EnvironmentObject var authViewModel: AuthViewModel
+    @ObservedObject private var firebaseAuthViewModel = FirebaseAuthViewModel.shared
     
     @State var isMoveToHome: Bool = false
     
@@ -55,7 +55,7 @@ struct LoginView: View {
                 }
                 
                 ButtonView(action: {
-                    authViewModel.signIn(email: inputEmail, password: inputPassword)
+                    firebaseAuthViewModel.signIn(email: inputEmail, password: inputPassword)
                 }, backColor: "F8714F", textColor: "FFFFFF", text: "ログインする")
             }
 

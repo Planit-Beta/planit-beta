@@ -15,7 +15,7 @@ let samplefoodImage: [String] = ["https://images.unsplash.com/photo-170773300580
 
 struct DetailScreen: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @EnvironmentObject var envData: EnvironmentData
+    @ObservedObject private var publicDataViewModel = PublicDataViewModel.shared
     
     let plan: Plan
     
@@ -86,7 +86,7 @@ struct DetailScreen: View {
         }
         .ignoresSafeArea().navigationBarBackButtonHidden(true).toolbarBackground(.hidden, for: .navigationBar)
         .navigationBarItems(leading: BackButton(action: {presentationMode.wrappedValue.dismiss()}), trailing: Image("threeDot"))
-        .sheet(isPresented: $envData.isImplementingModal) {
+        .sheet(isPresented: $publicDataViewModel.isImplementingModal) {
             DevelopingView().presentationDetents([
                 .fraction(0.3)
             ])

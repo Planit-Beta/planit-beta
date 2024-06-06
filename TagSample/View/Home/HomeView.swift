@@ -10,9 +10,9 @@ import SwiftUI
 
 struct HomeView: View {
     @State var isActive: Bool = false
-    @EnvironmentObject var envData: EnvironmentData
-    @EnvironmentObject var authViewModel: AuthViewModel
-    @EnvironmentObject var dbViewModel: DBViewModel
+    @ObservedObject private var firebaseAuthViewModel = FirebaseAuthViewModel.shared
+    @ObservedObject private var firestoreViewModel = FirestoreViewModel.shared
+    @ObservedObject private var publicDataViewModel = PublicDataViewModel.shared
     
     @State var isShowProfile: Bool = false
     @State var isEditImage: Bool = false
@@ -40,8 +40,8 @@ struct HomeView: View {
                                 isShowProfile = true
                             }){
                                 VStack(alignment: .leading){
-                                    Text(dbViewModel.users.count == 0 ? "" :  dbViewModel.users[0].name).font(.custom("ZenMaruGothic-Regular", size: 20.0)).foregroundStyle(Color(UIColor(hexString: "333333")))
-                                    Text(authViewModel.getEmail())
+                                    Text(firestoreViewModel.users.count == 0 ? "" :  firestoreViewModel.users[0].name).font(.custom("ZenMaruGothic-Regular", size: 20.0)).foregroundStyle(Color(UIColor(hexString: "333333")))
+                                    Text(firebaseAuthViewModel.getEmail())
                                         .font(.custom("ZenMaruGothic-Regular", size: 11.0)).foregroundStyle(Color(UIColor(hexString: "333333")).opacity(0.5))
                                 }
                             }
@@ -51,12 +51,12 @@ struct HomeView: View {
                             Button(action:{
                                 isEditImage = true
                             }){
-                                if dbViewModel.users.count == 0 {
+                                if firestoreViewModel.users.count == 0 {
                                     ProgressView()
                                         .frame(width: 45, height: 45)
                                 } else {
-                                    if dbViewModel.users[0].image != "" {
-                                        AsyncImage(url: URL(string: dbViewModel.users[0].image)) { image in
+                                    if firestoreViewModel.users[0].image != "" {
+                                        AsyncImage(url: URL(string: firestoreViewModel.users[0].image)) { image in
                                             image
                                                 .resizable()
                                         } placeholder: {
@@ -82,7 +82,7 @@ struct HomeView: View {
                         
                         Button {
                             isActive = true
-                            envData.isNavigationActive = $isActive
+                            publicDataViewModel.isNavigationActive = $isActive
                         } label: {
                             Text("新しく旅程を生成する")
                                 .font(.custom("ZenMaruGothic-Medium", size: 24.0))
@@ -99,15 +99,15 @@ struct HomeView: View {
                         
                         Spacer()
                         
-                        if !dbViewModel.plans.isEmpty {
+                        if !firestoreViewModel.plans.isEmpty {
                             VStack{
                                 HStack(){
                                     Text("自分の旅程").font(.custom("ZenMaruGothic-Regular", size: 20.0)).foregroundStyle(Color(UIColor(hexString: "333333")))
                                     Spacer()
                                 }.padding(.horizontal).padding(.horizontal)
-                                PlansListView(plans: dbViewModel.plans)
+                                PlansListView(plans: firestoreViewModel.plans)
                                     .onAppear(perform: {
-                                        print(dbViewModel.plans[0])
+                                        print(firestoreViewModel.plans.isEmpty)
                                     })
                             }
                             Spacer()
@@ -125,8 +125,8 @@ struct HomeView: View {
                 }
             }
             .onAppear(perform: {
-                dbViewModel.fetchUsers(user_id: authViewModel.getUserID())
-                dbViewModel.fetchPlans(user_id: authViewModel.getUserID())
+                firestoreViewModel.fetchUsers(user_id: firebaseAuthViewModel.getUserID())
+                firestoreViewModel.fetchPlans(user_id: firebaseAuthViewModel.getUserID())
             })
             .sheet(isPresented: $isEditImage) {
                 EditImageView(isCloseModal: $isEditImage)

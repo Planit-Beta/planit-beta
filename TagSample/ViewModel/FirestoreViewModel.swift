@@ -9,7 +9,9 @@ import SwiftUI
 import FirebaseFirestore
 import FirebaseStorage
 
-class DBViewModel: ObservableObject {
+class FirestoreViewModel: ObservableObject {
+    static let shared = FirestoreViewModel()
+
     private var db = Firestore.firestore()
     
     @Published var user: User = User(id: "", name: "", email: "", gender: "男", age: 0, image: "", plans: [])

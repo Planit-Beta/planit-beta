@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct EditProfileView: View {
-    @EnvironmentObject var authViewModel: AuthViewModel
-    @EnvironmentObject var dbViewModel: DBViewModel
+    @ObservedObject private var firebaseAuthViewModel = FirebaseAuthViewModel.shared
+    @ObservedObject private var firestoreViewModel = FirestoreViewModel.shared
+    
     
     @State var isMoveToHome: Bool = false
     
@@ -30,7 +31,7 @@ struct EditProfileView: View {
                 VStack(spacing: 20){
                     VStack(alignment: .leading, spacing: 10){
                         Text("ユーザー名").foregroundStyle(.black).font(.custom("ZenMaruGothic-Regular", size: 14))
-                        TextField("", text: $dbViewModel.inputUserName)
+                        TextField("", text: $firestoreViewModel.inputUserName)
                             .autocapitalization(.none)
                             .frame(width: 240, height: 30)
                             .multilineTextAlignment(TextAlignment.center)
@@ -43,7 +44,7 @@ struct EditProfileView: View {
                     }
                     VStack(alignment: .leading, spacing: 10){
                         Text("性別").foregroundStyle(.black).font(.custom("ZenMaruGothic-Regular", size: 14))
-                        Picker("性別を選択", selection: $dbViewModel.inputGender) {
+                        Picker("性別を選択", selection: $firestoreViewModel.inputGender) {
                             Text("男").tag("男")
                             Text("女").tag("女")
                             Text("その他").tag("その他")
@@ -60,7 +61,7 @@ struct EditProfileView: View {
                     }
                     VStack(alignment: .leading, spacing: 10){
                         Text("年齢").foregroundStyle(.black).font(.custom("ZenMaruGothic-Regular", size: 14))
-                        TextField("", value: $dbViewModel.inputAge, format: .number)
+                        TextField("", value: $firestoreViewModel.inputAge, format: .number)
                             .autocapitalization(.none)
                             .frame(width: 240, height: 30)
                             .multilineTextAlignment(TextAlignment.center)
@@ -77,17 +78,17 @@ struct EditProfileView: View {
                     ButtonView(action: {
                         //                    dbViewModel.user.id = authViewModel.getUserID()
                         
-                        if dbViewModel.inputUserName.trimmingCharacters(in: .whitespacesAndNewlines) != "" {
-                            dbViewModel.EditProfile(user_id: authViewModel.getUserID()){ error in
+                        if firestoreViewModel.inputUserName.trimmingCharacters(in: .whitespacesAndNewlines) != "" {
+                            firestoreViewModel.EditProfile(user_id: firebaseAuthViewModel.getUserID()){ error in
                                 if let error = error {
                                     print("Error: \(error.localizedDescription)")
                                 } else {
                                     print("User saved successfully.")
                                     isCloseModal = false
-                                    dbViewModel.inputUserName = ""
-                                    dbViewModel.inputAge = 0
-                                    dbViewModel.inputGender = ""
-                                    dbViewModel.fetchUsers(user_id: authViewModel.getUserID())
+                                    firestoreViewModel.inputUserName = ""
+                                    firestoreViewModel.inputAge = 0
+                                    firestoreViewModel.inputGender = ""
+                                    firestoreViewModel.fetchUsers(user_id: firebaseAuthViewModel.getUserID())
                                 }
                             }
                         }
@@ -96,7 +97,7 @@ struct EditProfileView: View {
                     
                     HStack(spacing: 0){
                         Text("サインアウトは").foregroundStyle(Color(UIColor(hexString: "333333"))).font(.custom("ZenMaruGothic-Regular", size: 14))
-                        Button(action: {authViewModel.signOut()}){
+                        Button(action: {firebaseAuthViewModel.signOut()}){
                             Text("こちら").foregroundStyle(Color(UIColor(hexString: "F8714F"))).font(.custom("ZenMaruGothic-Medium", size: 14))
                         }
                     }
@@ -104,14 +105,14 @@ struct EditProfileView: View {
             }
             
         }.onAppear(perform: {
-            dbViewModel.inputUserName = dbViewModel.users[0].name
-            dbViewModel.inputGender = dbViewModel.users[0].gender
-            dbViewModel.inputAge = dbViewModel.users[0].age
+            firestoreViewModel.inputUserName = firestoreViewModel.users[0].name
+            firestoreViewModel.inputGender = firestoreViewModel.users[0].gender
+            firestoreViewModel.inputAge = firestoreViewModel.users[0].age
         })
         .onDisappear(perform: {
-            dbViewModel.inputUserName = ""
-            dbViewModel.inputAge = 0
-            dbViewModel.inputGender = ""
+            firestoreViewModel.inputUserName = ""
+            firestoreViewModel.inputAge = 0
+            firestoreViewModel.inputGender = ""
         })
     }
 }

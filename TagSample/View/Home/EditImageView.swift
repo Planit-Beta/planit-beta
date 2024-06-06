@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct EditImageView: View {
-    @EnvironmentObject var dbViewModel: DBViewModel
-    @EnvironmentObject var authViewModel: AuthViewModel
+    @ObservedObject private var firestoreViewModel = FirestoreViewModel.shared
+    @ObservedObject private var firebaseAuthViewModel = FirebaseAuthViewModel.shared
     
     @State private var image = UIImage()
     @State private var isShowPhotoLibrary = false
@@ -31,9 +31,9 @@ struct EditImageView: View {
                 Button(action: {
                     isShowPhotoLibrary = true
                 }){
-                    if dbViewModel.selectedImage.count < 1 {
-                        if dbViewModel.users[0].image != "" {
-                            AsyncImage(url: URL(string: dbViewModel.users[0].image)) { image in
+                    if firestoreViewModel.selectedImage.count < 1 {
+                        if firestoreViewModel.users[0].image != "" {
+                            AsyncImage(url: URL(string: firestoreViewModel.users[0].image)) { image in
                                 image.resizable()
                             } placeholder: {
                                 ProgressView()
@@ -49,7 +49,7 @@ struct EditImageView: View {
                                 .cornerRadius(10)
                         }
                     } else {
-                        if let uiImage = UIImage(data: dbViewModel.selectedImage[0]) {
+                        if let uiImage = UIImage(data: firestoreViewModel.selectedImage[0]) {
                             Image(uiImage: uiImage)
                                 .resizable()
                                 .frame(width: 200,height: 200)
@@ -65,17 +65,17 @@ struct EditImageView: View {
                 
                 ButtonView(action: {
                     
-                    if dbViewModel.selectedImage.count > 0 {
-                        dbViewModel.AddImage() {
+                    if firestoreViewModel.selectedImage.count > 0 {
+                        firestoreViewModel.AddImage() {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                                dbViewModel.EditImage(user_id: authViewModel.getUserID()){ error in
+                                firestoreViewModel.EditImage(user_id: firebaseAuthViewModel.getUserID()){ error in
                                     if let error = error {
                                         print("Error: \(error.localizedDescription)")
                                     } else {
                                         print("User saved successfully.")
                                         isCloseModal = false
-                                        dbViewModel.selectedImage = []
-                                        dbViewModel.fetchUsers(user_id: authViewModel.getUserID())
+                                        firestoreViewModel.selectedImage = []
+                                        firestoreViewModel.fetchUsers(user_id: firebaseAuthViewModel.getUserID())
                                     }
                                 }
                             }
@@ -93,7 +93,7 @@ struct EditImageView: View {
                 }
         })
         .onDisappear(perform: {
-            dbViewModel.selectedImage = []
+            firestoreViewModel.selectedImage = []
         })
     }
 }

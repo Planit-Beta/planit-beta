@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RegisterView: View {
     @Environment(\.dismiss) var dismiss
-    @EnvironmentObject var authViewModel: AuthViewModel
+    @ObservedObject private var firebaseAuthViewModel = FirebaseAuthViewModel.shared
     
     @State var isMoveToRegisterInfo: Bool = false
     
@@ -56,14 +56,14 @@ struct RegisterView: View {
                 }
                 
                 ButtonView(action: {
-                    authViewModel.isNewUser = true
-                    authViewModel.signUp(email: inputEmail, password: inputPassword)
+                    firebaseAuthViewModel.isNewUser = true
+                    firebaseAuthViewModel.signUp(email: inputEmail, password: inputPassword)
                 }, backColor: "FDF5F3", textColor: "333333", text: "メールを送る")
             }
             
             NavigationLink(
                 destination: RegisterInfoView(),
-                isActive: $authViewModel.isMoveToRegisterInfo,
+                isActive: $firebaseAuthViewModel.isMoveToRegisterInfo,
                 label: { EmptyView() }
             ).hidden()
         }

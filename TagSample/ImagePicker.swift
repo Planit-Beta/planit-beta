@@ -26,7 +26,7 @@ struct ImagePicker: UIViewControllerRepresentable {
     // MARK: - Using Coordinator to Adopt the UIImagePickerControllerDelegate Protocol
     @Binding var selectedImage: UIImage
     @Environment(\.presentationMode) private var presentationMode
-    @EnvironmentObject var dbViewModel: DBViewModel
+    @ObservedObject private var firestoreViewModel = FirestoreViewModel.shared
     
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
@@ -43,10 +43,10 @@ struct ImagePicker: UIViewControllerRepresentable {
      
             if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
                 parent.selectedImage = image
-                if parent.dbViewModel.selectedImage.count == 0 {
-                    parent.dbViewModel.selectedImage.append((image.jpegData(compressionQuality: 0.3)! as NSData) as Data)
+                if parent.firestoreViewModel.selectedImage.count == 0 {
+                    parent.firestoreViewModel.selectedImage.append((image.jpegData(compressionQuality: 0.3)! as NSData) as Data)
                 } else {
-                    parent.dbViewModel.selectedImage[0] = (image.jpegData(compressionQuality: 0.3)! as NSData) as Data
+                    parent.firestoreViewModel.selectedImage[0] = (image.jpegData(compressionQuality: 0.3)! as NSData) as Data
                 }
                 
             }
